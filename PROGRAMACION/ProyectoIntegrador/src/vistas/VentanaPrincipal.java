@@ -1,6 +1,7 @@
 package vistas;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.*;
@@ -101,7 +102,33 @@ public class VentanaPrincipal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-	}
+
+		// JLabel "Daweishine8"
+		JLabel labelDaweishine8 = new JLabel("Daweishine8");
+		labelDaweishine8.setFont(new Font("Arial", Font.BOLD, 40));
+		labelDaweishine8.setForeground(Color.WHITE);
+		labelDaweishine8.setHorizontalAlignment(JLabel.CENTER);
+		labelDaweishine8.setBounds(-122, 43, 650, 30);
+		contentPane.add(labelDaweishine8);
+
+		// JLabel en el centro
+		JLabel label = new JLabel("<html>INTRODUCCION<br><br>P.I. Para usar el programa<br><br>- Alta: Para dar de alta a un alumno en el programa<br>- Consulta: para ver los datos y tener la posibilidad de modificarlos o borrarlos</html>");
+		label.setFont(new Font("Arial", Font.PLAIN, 16));
+		label.setForeground(Color.WHITE);
+		label.setHorizontalAlignment(JLabel.CENTER);
+		label.setBounds(50, 100, 650, 150);
+		contentPane.add(label);	
+		
+		
+		// JLabel con imagen a la derecha
+		Image resizedImage2 = originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		ImageIcon resizedIcon2 = new ImageIcon(resizedImage2);
+		JLabel labelImagen = new JLabel(resizedIcon2);
+		labelImagen.setBounds(506, 25, 100, 100);
+		contentPane.add(labelImagen);
+}
+
+	
 
     public	void hacerVisible() {
 		setVisible(true);

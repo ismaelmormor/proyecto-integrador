@@ -51,7 +51,8 @@ public class VentanaPrincipal extends JFrame {
 		
 		Consulta.addActionListener(new ActionListener() { //action listener que abre consulta 
 		    public void actionPerformed(ActionEvent e) {
-		        Consulta ventanaConsulta = new Consulta();
+				dispose();
+		        ConsultaW ventanaConsulta = new ConsultaW();
 		        ventanaConsulta.setVisible(true);
 		      
 		    }
@@ -59,6 +60,14 @@ public class VentanaPrincipal extends JFrame {
 
 		JMenuItem Alta = new JMenuItem("Alta");
 		PI.add(Alta);
+
+		Alta.addActionListener(new ActionListener() { //action listener que abre alta
+		    public void actionPerformed(ActionEvent e) {
+		        Alta ventanaAlta = new Alta();
+		        ventanaAlta.setVisible(true);
+		      
+		    }
+		});
 
 		JMenuItem Baja = new JMenuItem("Baja");
 		PI.add(Baja);
@@ -72,6 +81,15 @@ public class VentanaPrincipal extends JFrame {
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
 		Alumnos.add(Lista);
+
+		Lista.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		    public void actionPerformed(ActionEvent e) {
+		        ListaDeAlumnos ventanaLista = new ListaDeAlumnos();
+		        ventanaLista.setVisible(true);
+				
+		      
+		    }
+		});
 		
 		JMenuItem Añadir = new JMenuItem("Añadir");
 		Alumnos.add(Añadir);
@@ -130,7 +148,7 @@ public class VentanaPrincipal extends JFrame {
 
 	
 
-    public	void hacerVisible() {
+    public void hacerVisible() {
 		setVisible(true);
 	}
 

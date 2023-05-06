@@ -24,36 +24,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class Alta
-		extends JFrame {
+public class Alta  extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(
-			String[] args) {
-		EventQueue.invokeLater(
-				new Runnable() {
-					public void run() {
-						try {
-							Alta frame = new Alta();
-							frame.setVisible(
-									true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	/**
-	 * 
-	 */
+	
 	public Alta() {
 		setDefaultCloseOperation(
 				JFrame.EXIT_ON_CLOSE);
@@ -63,6 +42,7 @@ public class Alta
 		ImageIcon logo1=new ImageIcon(logo);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
+		contentPane.setBackground(new Color(3, 8, 62));
 		contentPane.setBorder(
 				new EmptyBorder(5, 5, 5,
 						5));
@@ -72,8 +52,7 @@ public class Alta
 		
 		JMenuBar menuBar = new JMenuBar();
 		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(142, 124, 195));
-		menuBar.setBackground(new Color(142, 124, 195));
+
 		menuBar.setBounds(0, 0, 959, 59);
 		
 		

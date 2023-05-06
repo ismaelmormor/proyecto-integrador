@@ -2,7 +2,8 @@ package vistas;
 
 import java.awt.EventQueue;
 import java.awt.Image;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -30,25 +31,7 @@ public class ConsultaW
 	private JPanel contentPane;
 	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(
-			String[] args) {
-		EventQueue.invokeLater(
-				new Runnable() {
-					public void run() {
-						try {
-							ConsultaW frame = new ConsultaW();
-							frame.setVisible(
-									true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -59,10 +42,8 @@ public class ConsultaW
 		setDefaultCloseOperation(
 				JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
-		ImageIcon img=new ImageIcon("D:\\DAW\\Javalearn\\Proyecto2023\\src\\logo.png");
-		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
-		ImageIcon logo1=new ImageIcon(logo);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(3, 8, 62));
 		contentPane.setToolTipText("");
 		contentPane.setBorder(
 				new EmptyBorder(5, 5, 5,
@@ -72,15 +53,18 @@ public class ConsultaW
 		contentPane.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(142, 124, 195));
-		menuBar.setBackground(new Color(142, 124, 195));
-		menuBar.setBounds(0, 0, 959, 59);
+		setJMenuBar(menuBar);
+		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
+		Image originalImage = logo.getImage();
+		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon resizedIcon = new ImageIcon(resizedImage);
+		JMenuItem item = new JMenuItem(resizedIcon);
+		item.setRolloverEnabled(false);
+		
+		item.setIcon(resizedIcon);
+		menuBar.add(item);
 		
 		
-		JLabel ic = new JLabel("");
-		ic.setIcon(logo1);
-		menuBar.add(ic);
 		
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
@@ -90,6 +74,15 @@ public class ConsultaW
 		
 		JMenuItem Alta = new JMenuItem("Alta");
 		PI.add(Alta);
+
+		Alta.addActionListener(new ActionListener() { //action listener que abre alta
+		    public void actionPerformed(ActionEvent e) {
+				dispose();
+		        Alta ventanaAlta = new Alta();
+		        ventanaAlta.setVisible(true);
+		      
+		    }
+		});
 		
 		JMenuItem Baja = new JMenuItem("Baja");
 		PI.add(Baja);
@@ -104,7 +97,7 @@ public class ConsultaW
 		menuBar.add(Area);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 86, 939, 114);
+		panel.setBounds(10, 22, 939, 114);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -177,7 +170,7 @@ public class ConsultaW
 		panel.add(btnNewButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 233, 939, 340);
+		scrollPane.setBounds(10, 167, 939, 340);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();

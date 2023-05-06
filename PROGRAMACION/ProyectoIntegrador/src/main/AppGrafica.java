@@ -13,7 +13,7 @@ public class AppGrafica {
 			public void run() {
 				try {
 					VentanaPrincipal frame = new VentanaPrincipal();
-					frame.setVisible(true);
+					frame.hacerVisible();;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

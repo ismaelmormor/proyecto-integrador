@@ -1,7 +1,10 @@
 package main;
 
+import java.awt.EventQueue;
 import java.awt.event.*;
 import javax.swing.*;
+
+import vistas.VentanaPrincipal;
 
 public class AppGrafica {
 

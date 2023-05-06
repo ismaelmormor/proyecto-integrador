@@ -12,23 +12,19 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Color;
 
-public class VentanaPrincipal extends JFrame {
+public class Consulta extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
-	 * sea crea el frame
+	 * Creamos el frame
 	 */
-	public VentanaPrincipal() {
+	public Consulta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 748, 410);
 
-
-        //menu
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
@@ -47,14 +43,6 @@ public class VentanaPrincipal extends JFrame {
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
-		
-		Consulta.addActionListener(new ActionListener() { //action listener que abre consulta 
-		    public void actionPerformed(ActionEvent e) {
-		        Consulta ventanaConsulta = new Consulta();
-		        ventanaConsulta.setVisible(true);
-		      
-		    }
-		});
 
 		JMenuItem Alta = new JMenuItem("Alta");
 		PI.add(Alta);
@@ -95,16 +83,12 @@ public class VentanaPrincipal extends JFrame {
 		Area.add(Juegos);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(3, 8, 62));
+		contentPane.setBackground(Color.PINK);
 		contentPane.setToolTipText("");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-	}
-
-    public	void hacerVisible() {
-		setVisible(true);
 	}
 
 }

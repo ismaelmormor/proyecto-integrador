@@ -1,4 +1,4 @@
-
+package vistas;
 import java.awt.EventQueue;
 import java.awt.Image;
 

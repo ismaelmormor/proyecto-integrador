@@ -14,14 +14,14 @@ import javax.swing.JMenuItem;
 import java.awt.Toolkit;
 import java.awt.Color;
 
-public class Consulta extends JFrame {
+public class Animacion3D extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Creamos el frame
 	 */
-	public Consulta() {
+	public Animacion3D() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 748, 410);
 

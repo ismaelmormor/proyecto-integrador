@@ -1,4 +1,5 @@
 package vistas;
+
 import java.awt.EventQueue;
 import java.awt.Image;
 
@@ -9,8 +10,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Toolkit;
+import java.util.Vector;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.DefaultCellEditor;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.awt.Panel;
@@ -22,19 +25,43 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class ListaDeAlumnos
 		extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 
-	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(
+			String[] args) {
+		EventQueue.invokeLater(
+				new Runnable() {
+					public void run() {
+						try {
+							ListaDeAlumnos frame = new ListaDeAlumnos();
+							frame.setVisible(
+									true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+	}
 
 	/**
 	 * Create the frame.
 	 */
-	
+	/**
+	 * 
+	 */
 	public ListaDeAlumnos() {
 		setDefaultCloseOperation(
 				JFrame.EXIT_ON_CLOSE);
@@ -53,8 +80,8 @@ public class ListaDeAlumnos
 		
 		JMenuBar menuBar = new JMenuBar();
 		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(3, 8, 62));
-		menuBar.setBackground(new Color(3, 8, 62));
+		menuBar.setForeground(new Color(142, 124, 195));
+		menuBar.setBackground(new Color(142, 124, 195));
 		menuBar.setBounds(0, 0, 959, 59);
 		
 		
@@ -63,7 +90,6 @@ public class ListaDeAlumnos
 		menuBar.add(ic);
 		
 		JMenu PI = new JMenu("P.I.");
-		PI.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 		menuBar.add(PI);
 		
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -79,14 +105,9 @@ public class ListaDeAlumnos
 		PI.add(Modificacion);
 		
 		JMenu Alumnos = new JMenu("Alumnos");
-		Alumnos.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 		menuBar.add(Alumnos);
-
-		JMenuItem Añadir = new JMenuItem("Añadir");
-		Alumnos.add(Añadir);
 		
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 		menuBar.add(Area);
 		
 		JPanel panel = new JPanel();
@@ -148,22 +169,22 @@ public class ListaDeAlumnos
 		table.setForeground(new Color(0, 128, 255));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
 			},
 			new String[] {
 				"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apeilldo", "ID_Proyecto", ""
@@ -176,6 +197,9 @@ public class ListaDeAlumnos
 		table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 		
+		
 	}
 }
+
+
 

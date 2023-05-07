@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.Toolkit;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Vector;
@@ -33,11 +33,15 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultCellEditor;
-import javax.swing.JSpinner;
+
 
 public class ConsultaW
 		extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 
@@ -226,22 +230,10 @@ public class ConsultaW
 		v.add("Modificar");
 		v.add("Dar de baja");
 		final JComboBox<String> comboBox = new JComboBox<String>(v);
-		comboBox.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(
-					ItemEvent e) {
-				if (e.getStateChange()==ItemEvent.SELECTED) {
-					System.out
-							.println(comboBox.getSelectedItem());
-				}
-				// TODO Auto-generated method stub
-				
-			}
-		});
 		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 		
 		
 	}
 }
+

@@ -226,10 +226,10 @@ public class ConsultaW
 			}
 		));
 
-		Vector<String> v=new Vector<String>();
+		Vector<Object> v=new Vector<Object>();
 		v.add("Modificar");
 		v.add("Dar de baja");
-		final JComboBox<String> comboBox = new JComboBox<String>(v);
+		JComboBox<Object> comboBox = new JComboBox<Object>(v);
 		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 		

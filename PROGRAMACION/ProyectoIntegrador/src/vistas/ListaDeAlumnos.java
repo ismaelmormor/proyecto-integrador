@@ -166,22 +166,15 @@ public class ListaDeAlumnos
 				{null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apeilldo", "ID_Proyecto", "Modificar", "Dar de baja "
+				"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apeilldo", "ID_Proyecto", ""
 			}
-		) {
-			Class[] columnTypes = new Class[] {
-				Integer.class, String.class, String.class, String.class, Integer.class, Boolean.class, Boolean.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		table.getColumnModel().getColumn(1).setPreferredWidth(114);
-		table.getColumnModel().getColumn(2).setPreferredWidth(94);
-		table.getColumnModel().getColumn(3).setPreferredWidth(101);
-		table.getColumnModel().getColumn(4).setPreferredWidth(132);
+		));
+		Vector<Object> v=new Vector<Object>();
+		v.add("Modificar");
+		v.add("Dar de baja");
+		JComboBox<Object> comboBox = new JComboBox<Object>(v);
+		table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
-		
 		
 	}
 }

@@ -8,7 +8,7 @@ import vistas.VentanaPrincipal;
 
 public class AppGrafica {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { //s
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

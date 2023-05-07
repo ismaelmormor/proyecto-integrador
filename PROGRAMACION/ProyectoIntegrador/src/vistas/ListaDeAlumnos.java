@@ -53,8 +53,8 @@ public class ListaDeAlumnos
 		
 		JMenuBar menuBar = new JMenuBar();
 		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(142, 124, 195));
-		menuBar.setBackground(new Color(142, 124, 195));
+		menuBar.setForeground(new Color(3, 8, 62));
+		menuBar.setBackground(new Color(3, 8, 62));
 		menuBar.setBounds(0, 0, 959, 59);
 		
 		
@@ -63,6 +63,7 @@ public class ListaDeAlumnos
 		menuBar.add(ic);
 		
 		JMenu PI = new JMenu("P.I.");
+		PI.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 		menuBar.add(PI);
 		
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -78,9 +79,14 @@ public class ListaDeAlumnos
 		PI.add(Modificacion);
 		
 		JMenu Alumnos = new JMenu("Alumnos");
+		Alumnos.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 		menuBar.add(Alumnos);
+
+		JMenuItem Añadir = new JMenuItem("Añadir");
+		Alumnos.add(Añadir);
 		
 		JMenu Area = new JMenu("Área");
+		Area.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 		menuBar.add(Area);
 		
 		JPanel panel = new JPanel();

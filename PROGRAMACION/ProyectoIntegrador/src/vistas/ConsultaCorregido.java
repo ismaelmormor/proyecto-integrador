@@ -2,8 +2,7 @@ package vistas;
 
 import java.awt.EventQueue;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,6 +10,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Vector;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.Icon;
@@ -21,9 +23,17 @@ import java.awt.Label;
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JSpinner;
 
 public class ConsultaW
 		extends JFrame {
@@ -31,7 +41,25 @@ public class ConsultaW
 	private JPanel contentPane;
 	private JTable table;
 
-	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(
+			String[] args) {
+		EventQueue.invokeLater(
+				new Runnable() {
+					public void run() {
+						try {
+							ConsultaW frame = new ConsultaW();
+							frame.setVisible(
+									true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -42,8 +70,10 @@ public class ConsultaW
 		setDefaultCloseOperation(
 				JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
+		ImageIcon img=new ImageIcon("D:\\DAW\\Javalearn\\Proyecto2023\\src\\logo.png");
+		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
+		ImageIcon logo1=new ImageIcon(logo);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(3, 8, 62));
 		contentPane.setToolTipText("");
 		contentPane.setBorder(
 				new EmptyBorder(5, 5, 5,
@@ -53,18 +83,15 @@ public class ConsultaW
 		contentPane.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
-		Image originalImage = logo.getImage();
-		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-		ImageIcon resizedIcon = new ImageIcon(resizedImage);
-		JMenuItem item = new JMenuItem(resizedIcon);
-		item.setRolloverEnabled(false);
-		
-		item.setIcon(resizedIcon);
-		menuBar.add(item);
+		contentPane.add(menuBar);
+		menuBar.setForeground(new Color(142, 124, 195));
+		menuBar.setBackground(new Color(142, 124, 195));
+		menuBar.setBounds(0, 0, 959, 59);
 		
 		
+		JLabel ic = new JLabel("");
+		ic.setIcon(logo1);
+		menuBar.add(ic);
 		
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
@@ -74,15 +101,6 @@ public class ConsultaW
 		
 		JMenuItem Alta = new JMenuItem("Alta");
 		PI.add(Alta);
-
-		Alta.addActionListener(new ActionListener() { //action listener que abre alta
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        Alta ventanaAlta = new Alta();
-		        ventanaAlta.setVisible(true);
-		      
-		    }
-		});
 		
 		JMenuItem Baja = new JMenuItem("Baja");
 		PI.add(Baja);
@@ -97,7 +115,7 @@ public class ConsultaW
 		menuBar.add(Area);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 22, 939, 114);
+		panel.setBounds(10, 86, 939, 114);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -169,8 +187,12 @@ public class ConsultaW
 		btnNewButton.setBounds(827, 49, 89, 23);
 		panel.add(btnNewButton);
 		
+		Label label_1 = new Label("ID_Proyecto");
+		label_1.setBounds(184, 3, 147, 36);
+		panel.add(label_1);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 167, 939, 340);
+		scrollPane.setBounds(10, 233, 939, 340);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -178,42 +200,48 @@ public class ConsultaW
 		table.setForeground(new Color(0, 128, 255));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null,null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"ID_Proyecto", "Nombre", "Curso", "Grupo", "A\u00F1o", "URL", "Nota", "ID_Area", "Modificar", "Dar de baja "
+				"ID_Proyecto", "Nombre", "Curso", "Grupo", "A\u00F1o", "URL", "Nota", "ID_Area", ""
 			}
-		) {
-			Class[] columnTypes = new Class[] {
-				Integer.class, String.class, Integer.class, String.class, Integer.class, Object.class, Integer.class, Integer.class, Boolean.class, Boolean.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
+		));
+
+		Vector<String> v=new Vector<String>();
+		v.add("Modificar");
+		v.add("Dar de baja");
+		final JComboBox<String> comboBox = new JComboBox<String>(v);
+		comboBox.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(
+					ItemEvent e) {
+				if (e.getStateChange()==ItemEvent.SELECTED) {
+					System.out
+							.println(comboBox.getSelectedItem());
+				}
+				// TODO Auto-generated method stub
+				
 			}
 		});
-		table.getColumnModel().getColumn(1).setPreferredWidth(70);
-		table.getColumnModel().getColumn(2).setPreferredWidth(45);
-		table.getColumnModel().getColumn(3).setPreferredWidth(45);
-		table.getColumnModel().getColumn(4).setPreferredWidth(36);
+		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 		
-		Label label_1 = new Label("ID_Proyecto");
-		label_1.setBounds(189, 95, 147, 36);
-		contentPane.add(label_1);
+		
 	}
 }

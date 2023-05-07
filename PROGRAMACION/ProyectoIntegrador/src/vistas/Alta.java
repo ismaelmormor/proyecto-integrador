@@ -1,28 +1,22 @@
 package vistas;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.Toolkit;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.Panel;
-import java.awt.TextField;
-import java.awt.Label;
-import java.awt.Font;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 
 public class Alta  extends JFrame {
 
@@ -60,26 +54,124 @@ public class Alta  extends JFrame {
 		ic.setIcon(logo1);
 		menuBar.add(ic);
 		
+		//PI
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
-		
+
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
 		
+		Consulta.addActionListener(new ActionListener() { //action listener que abre consulta 
+		    public void actionPerformed(ActionEvent e) {
+				dispose();
+		        ConsultaW ventanaConsulta = new ConsultaW();
+		        ventanaConsulta.setVisible(true);
+		      
+		    }
+		});
+
 		JMenuItem Alta = new JMenuItem("Alta");
 		PI.add(Alta);
-		
-		JMenuItem Baja = new JMenuItem("Baja");
-		PI.add(Baja);
-		
-		JMenuItem Modificacion = new JMenuItem("Modificación");
-		PI.add(Modificacion);
-		
+
+		Alta.addActionListener(new ActionListener() { //action listener que abre alta
+		    public void actionPerformed(ActionEvent e) {
+		        Alta ventanaAlta = new Alta();
+		        ventanaAlta.setVisible(true);
+		      
+		    }
+		});
+
+		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
 		
+		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
+		Alumnos.add(Lista);
+
+		Lista.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		    public void actionPerformed(ActionEvent e) {
+		        ListaDeAlumnos ventanaLista = new ListaDeAlumnos();
+		        ventanaLista.setVisible(true);
+				
+		      
+		    }
+		});
+		
+		JMenuItem Añadir = new JMenuItem("Añadir");
+		Alumnos.add(Añadir);
+		
+		Añadir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		    public void actionPerformed(ActionEvent e) {
+		        Add_Alumno ventanaAdd_Alumno = new Add_Alumno();
+		        ventanaAdd_Alumno.setVisible(true);
+				
+		      
+		    }
+		});
+
+		//Area
 		JMenu Area = new JMenu("Área");
 		menuBar.add(Area);
+		
+		JMenuItem Daw = new JMenuItem("DAW");
+		Area.add(Daw);
+
+		Daw.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		    public void actionPerformed(ActionEvent e) {
+		        DAW ventanaDAW = new DAW();
+		        ventanaDAW.setVisible(true);
+				
+		      
+		    }
+		});
+		
+		JMenuItem Dam = new JMenuItem("DAM");
+		Area.add(Dam);
+		
+		Dam.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		    public void actionPerformed(ActionEvent e) {
+		        DAM ventanaDAM = new DAM();
+		        ventanaDAM.setVisible(true);
+				
+		      
+		    }
+		});
+
+		JMenuItem Asir = new JMenuItem("ASIR");
+		Area.add(Asir);
+
+		Asir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		    public void actionPerformed(ActionEvent e) {
+		        Asir ventanaAsir = new Asir();
+		        ventanaAsir.setVisible(true);
+				
+		      
+		    }
+		});
+		
+		JMenuItem Animacion = new JMenuItem("ANIMACIONES 3D");
+		Area.add(Animacion);
+
+		Animacion.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		    public void actionPerformed(ActionEvent e) {
+		        Animacion3D ventanaAnim = new Animacion3D();
+		        ventanaAnim.setVisible(true);
+				
+		      
+		    }
+		});
+		
+		JMenuItem Juegos = new JMenuItem("VIDEOJUEGOS");
+		Area.add(Juegos);
+
+		Juegos.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		    public void actionPerformed(ActionEvent e) {
+		        Juegos ventanaJuegos = new Juegos();
+		        ventanaJuegos.setVisible(true);
+				
+		      
+		    }
+		});
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 86, 939, 524);

@@ -90,8 +90,8 @@ public class ConsultaW
 		
 		JMenuBar menuBar = new JMenuBar();
 		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(142, 124, 195));
-		menuBar.setBackground(new Color(142, 124, 195));
+		menuBar.setForeground(new Color(3, 8, 62));
+		menuBar.setBackground(new Color(3, 8, 62));
 		menuBar.setBounds(0, 0, 959, 59);
 		
 		
@@ -101,6 +101,7 @@ public class ConsultaW
 		
 		//PI
 		JMenu PI = new JMenu("P.I.");
+		PI.setForeground(Color.white);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -120,6 +121,7 @@ public class ConsultaW
 
 		Alta.addActionListener(new ActionListener() { //action listener que abre alta
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Alta ventanaAlta = new Alta();
 		        ventanaAlta.setVisible(true);
 		      
@@ -128,6 +130,7 @@ public class ConsultaW
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
+		Alumnos.setForeground(Color.white);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -135,6 +138,7 @@ public class ConsultaW
 
 		Lista.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        ListaDeAlumnos ventanaLista = new ListaDeAlumnos();
 		        ventanaLista.setVisible(true);
 				
@@ -147,6 +151,7 @@ public class ConsultaW
 		
 		Añadir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Add_Alumno ventanaAdd_Alumno = new Add_Alumno();
 		        ventanaAdd_Alumno.setVisible(true);
 				
@@ -156,6 +161,7 @@ public class ConsultaW
 
 		//Area
 		JMenu Area = new JMenu("Área");
+		Area.setForeground(Color.white);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -163,6 +169,7 @@ public class ConsultaW
 
 		Daw.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        DAW ventanaDAW = new DAW();
 		        ventanaDAW.setVisible(true);
 				
@@ -175,6 +182,7 @@ public class ConsultaW
 		
 		Dam.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        DAM ventanaDAM = new DAM();
 		        ventanaDAM.setVisible(true);
 				
@@ -187,6 +195,7 @@ public class ConsultaW
 
 		Asir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Asir ventanaAsir = new Asir();
 		        ventanaAsir.setVisible(true);
 				
@@ -199,6 +208,7 @@ public class ConsultaW
 
 		Animacion.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Animacion3D ventanaAnim = new Animacion3D();
 		        ventanaAnim.setVisible(true);
 				
@@ -211,6 +221,7 @@ public class ConsultaW
 
 		Juegos.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Juegos ventanaJuegos = new Juegos();
 		        ventanaJuegos.setVisible(true);
 				

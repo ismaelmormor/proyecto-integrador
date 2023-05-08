@@ -176,7 +176,7 @@ public class Asir extends JFrame {
 		 contentPane.add(texto);
 
 		 //label asir
-		 JLabel labelASIR = new JLabel("DAW");
+		 JLabel labelASIR = new JLabel("ASIR");
 		 labelASIR.setFont(new Font("Arial", Font.BOLD, 30));
 		 labelASIR.setHorizontalAlignment(JLabel.CENTER);
 		 labelASIR.setForeground(Color.WHITE);

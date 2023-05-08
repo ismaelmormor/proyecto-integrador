@@ -1,6 +1,7 @@
 package vistas;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.*;
@@ -165,6 +166,22 @@ public class Juegos extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		// JLabel centrado con el texto especificado
+		JLabel texto = new JLabel("<html>Codigo de area: 004<br></br><br></br>Descripcion:<br></br>El diseño de videojuegos incluye la creación de historias, personajes, metas, reglas y desafíos que impulsen las interacciones con otros personajes, usuarios u objetos. Se trata de definir en qué se va a convertir el juego y cómo se va a relacionar el jugador con todos los elementos que componen una historia interactiva.</html>");
+		texto.setFont(new Font("Arial", Font.PLAIN, 16));
+		texto.setHorizontalAlignment(JLabel.CENTER);
+		texto.setForeground(Color.white);
+		texto.setBounds(50, 50, 650, 250);
+		contentPane.add(texto);
+
+		//label ANIMACION
+		JLabel labelJuego = new JLabel("Videojuegos");
+		labelJuego.setFont(new Font("Arial", Font.BOLD, 30));
+		labelJuego.setHorizontalAlignment(JLabel.CENTER);
+		labelJuego.setForeground(Color.WHITE);
+		labelJuego.setBounds(50, 50, 650, 30);
+		contentPane.add(labelJuego);
 	}
 
 }

@@ -1,6 +1,7 @@
 package vistas;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.*;
@@ -165,6 +166,23 @@ public class Animacion3D extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		
+		 // JLabel centrado con el texto especificado
+		 JLabel texto = new JLabel("<html>Codigo de area: 005<br></br><br></br>Descripcion:<br></br>La animación 3D usa gráficos por computadora para que parezca que los objetos se mueven en un espacio tridimensional. Los artistas usan software de modelado 3D para crear los objetos. Después viene la manipulación, una representación virtual de un objeto o el esqueleto de un personaje.</html>");
+		 texto.setFont(new Font("Arial", Font.PLAIN, 16));
+		 texto.setHorizontalAlignment(JLabel.CENTER);
+		 texto.setForeground(Color.white);
+		 texto.setBounds(50, 50, 650, 250);
+		 contentPane.add(texto);
+
+		 //label ANIMACION
+		 JLabel label3D = new JLabel("ANIMACION 3D");
+		 label3D.setFont(new Font("Arial", Font.BOLD, 30));
+		 label3D.setHorizontalAlignment(JLabel.CENTER);
+		 label3D.setForeground(Color.WHITE);
+		 label3D.setBounds(50, 50, 650, 30);
+		 contentPane.add(label3D);
 	}
 
 }

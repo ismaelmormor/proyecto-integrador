@@ -1,6 +1,7 @@
 package vistas;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.*;
@@ -165,6 +166,22 @@ public class DAW extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		  // JLabel centrado con el texto especificado
+		  JLabel texto = new JLabel("<html>Codigo de area: 001<br></br><br></br>Descripcion:<br></br>El Desarrollo de Aplicaciones Web es aquel que permite crear herramientas a las que los usuarios pueden acceder a través de Internet. En la web podremos obtener información o interactuar con elementos que nos permitan la comunicación entre nosotros, los usuarios y la web</html>");
+		  texto.setFont(new Font("Arial", Font.PLAIN, 16));
+		  texto.setHorizontalAlignment(JLabel.CENTER);
+		  texto.setForeground(Color.white);
+		  texto.setBounds(50, 50, 650, 250);
+		  contentPane.add(texto);
+
+		  //label dam
+		  JLabel labelDAW = new JLabel("DAW");
+		  labelDAW.setFont(new Font("Arial", Font.BOLD, 30));
+		  labelDAW.setHorizontalAlignment(JLabel.CENTER);
+		  labelDAW.setForeground(Color.WHITE);
+		  labelDAW.setBounds(50, 50, 650, 30);
+		  contentPane.add(labelDAW);
 	}
 
 }

@@ -1,6 +1,7 @@
 package vistas;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.*;
@@ -165,6 +166,22 @@ public class DAM extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+                // JLabel centrado con el texto especificado
+                JLabel texto = new JLabel("<html>Codigo de area: 002<br></br><br></br>Descripcion:<br></br>El desarrollo de aplicaciones multiplataforma es una estrategia que utiliza software para crear aplicaciones para las plataformas iOS y Android simultáneamente. Esto permite a las empresas llegar a una base de clientes más amplia proporcionándoles una aplicación compatible con varios dispositivos.</html>");
+                texto.setFont(new Font("Arial", Font.PLAIN, 16));
+                texto.setHorizontalAlignment(JLabel.CENTER);
+                texto.setForeground(Color.white);
+                texto.setBounds(50, 50, 650, 250);
+                contentPane.add(texto);
+
+                //label dam
+                JLabel labelDAM = new JLabel("DAM");
+                labelDAM.setFont(new Font("Arial", Font.BOLD, 30));
+                labelDAM.setHorizontalAlignment(JLabel.CENTER);
+                labelDAM.setForeground(Color.WHITE);
+                labelDAM.setBounds(50, 50, 650, 30);
+                contentPane.add(labelDAM);
 	}
 
 }

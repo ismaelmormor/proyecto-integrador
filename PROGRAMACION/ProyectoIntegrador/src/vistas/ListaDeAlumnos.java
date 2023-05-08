@@ -82,8 +82,8 @@ public class ListaDeAlumnos
 		
 		JMenuBar menuBar = new JMenuBar();
 		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(142, 124, 195));
-		menuBar.setBackground(new Color(142, 124, 195));
+		menuBar.setForeground(new Color(3, 8, 62));
+		menuBar.setBackground(new Color(3, 8, 62));
 		menuBar.setBounds(0, 0, 959, 59);
 		
 		
@@ -93,6 +93,7 @@ public class ListaDeAlumnos
 		
 		//PI
 		JMenu PI = new JMenu("P.I.");
+		PI.setForeground(Color.white);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -120,6 +121,7 @@ public class ListaDeAlumnos
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
+		Alumnos.setForeground(Color.white);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -137,7 +139,7 @@ public class ListaDeAlumnos
 		JMenuItem Añadir = new JMenuItem("Añadir");
 		Alumnos.add(Añadir);
 		
-		Añadir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Añadir.addActionListener(new ActionListener() { //action listener que abre añadir alumno
 		    public void actionPerformed(ActionEvent e) {
 		        Add_Alumno ventanaAdd_Alumno = new Add_Alumno();
 		        ventanaAdd_Alumno.setVisible(true);
@@ -148,6 +150,7 @@ public class ListaDeAlumnos
 
 		//Area
 		JMenu Area = new JMenu("Área");
+		Area.setForeground(Color.white);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");

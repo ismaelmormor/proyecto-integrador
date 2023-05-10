@@ -61,6 +61,7 @@ public class DAW extends JFrame {
 
 		Alta.addActionListener(new ActionListener() { //action listener que abre alta
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Alta ventanaAlta = new Alta();
 		        ventanaAlta.setVisible(true);
 		      
@@ -76,6 +77,7 @@ public class DAW extends JFrame {
 
 		Lista.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        ListaDeAlumnos ventanaLista = new ListaDeAlumnos();
 		        ventanaLista.setVisible(true);
 				
@@ -86,8 +88,9 @@ public class DAW extends JFrame {
 		JMenuItem Añadir = new JMenuItem("Añadir");
 		Alumnos.add(Añadir);
 		
-		Añadir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Añadir.addActionListener(new ActionListener() { //action listener que abre add alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Add_Alumno ventanaAdd_Alumno = new Add_Alumno();
 		        ventanaAdd_Alumno.setVisible(true);
 				
@@ -102,8 +105,9 @@ public class DAW extends JFrame {
 		JMenuItem Daw = new JMenuItem("DAW");
 		Area.add(Daw);
 
-		Daw.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Daw.addActionListener(new ActionListener() { //action listener que abre ventana de daw
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        DAW ventanaDAW = new DAW();
 		        ventanaDAW.setVisible(true);
 				
@@ -114,8 +118,9 @@ public class DAW extends JFrame {
 		JMenuItem Dam = new JMenuItem("DAM");
 		Area.add(Dam);
 		
-		Dam.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Dam.addActionListener(new ActionListener() { //action listener que abre DAM
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        DAM ventanaDAM = new DAM();
 		        ventanaDAM.setVisible(true);
 				
@@ -126,8 +131,9 @@ public class DAW extends JFrame {
 		JMenuItem Asir = new JMenuItem("ASIR");
 		Area.add(Asir);
 
-		Asir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Asir.addActionListener(new ActionListener() { //action listener que abre asir
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Asir ventanaAsir = new Asir();
 		        ventanaAsir.setVisible(true);
 				
@@ -138,8 +144,9 @@ public class DAW extends JFrame {
 		JMenuItem Animacion = new JMenuItem("ANIMACIONES 3D");
 		Area.add(Animacion);
 
-		Animacion.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Animacion.addActionListener(new ActionListener() { //action listener que abre animacion 3d
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Animacion3D ventanaAnim = new Animacion3D();
 		        ventanaAnim.setVisible(true);
 				
@@ -150,8 +157,9 @@ public class DAW extends JFrame {
 		JMenuItem Juegos = new JMenuItem("VIDEOJUEGOS");
 		Area.add(Juegos);
 
-		Juegos.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Juegos.addActionListener(new ActionListener() { //action listener que abre videojuegos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Juegos ventanaJuegos = new Juegos();
 		        ventanaJuegos.setVisible(true);
 				

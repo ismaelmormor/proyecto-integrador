@@ -63,6 +63,7 @@ public class VentanaPrincipal extends JFrame {
 
 		Alta.addActionListener(new ActionListener() { //action listener que abre alta
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Alta ventanaAlta = new Alta();
 		        ventanaAlta.setVisible(true);
 		      

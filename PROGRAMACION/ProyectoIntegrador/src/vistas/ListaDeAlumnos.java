@@ -40,37 +40,12 @@ public class ListaDeAlumnos
 	private JTable table;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(
-			String[] args) {
-		EventQueue.invokeLater(
-				new Runnable() {
-					public void run() {
-						try {
-							ListaDeAlumnos frame = new ListaDeAlumnos();
-							frame.setVisible(
-									true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	/**
 	 * 
 	 */
 	public ListaDeAlumnos() {
 		setDefaultCloseOperation(
 				JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
-		ImageIcon img=new ImageIcon("D:\\DAW\\Javalearn\\Proyecto2023\\src\\logo.png");
-		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
-		ImageIcon logo1=new ImageIcon(logo);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBorder(
@@ -87,9 +62,16 @@ public class ListaDeAlumnos
 		menuBar.setBounds(0, 0, 959, 59);
 		
 		
-		JLabel ic = new JLabel("");
-		ic.setIcon(logo1);
-		menuBar.add(ic);
+		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
+		Image originalImage = logo.getImage();
+		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon resizedIcon = new ImageIcon(resizedImage);
+		JMenuItem item = new JMenuItem(resizedIcon);
+		item.setRolloverEnabled(false);
+		item.setForeground(new Color(3, 8, 62));
+		item.setBackground(new Color(3, 8, 62));
+		item.setIcon(resizedIcon);
+		menuBar.add(item);
 		
 		//PI
 		JMenu PI = new JMenu("P.I.");
@@ -113,6 +95,7 @@ public class ListaDeAlumnos
 
 		Alta.addActionListener(new ActionListener() { //action listener que abre alta
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Alta ventanaAlta = new Alta();
 		        ventanaAlta.setVisible(true);
 		      
@@ -129,6 +112,7 @@ public class ListaDeAlumnos
 
 		Lista.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        ListaDeAlumnos ventanaLista = new ListaDeAlumnos();
 		        ventanaLista.setVisible(true);
 				
@@ -141,6 +125,7 @@ public class ListaDeAlumnos
 		
 		Añadir.addActionListener(new ActionListener() { //action listener que abre añadir alumno
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Add_Alumno ventanaAdd_Alumno = new Add_Alumno();
 		        ventanaAdd_Alumno.setVisible(true);
 				
@@ -158,6 +143,7 @@ public class ListaDeAlumnos
 
 		Daw.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        DAW ventanaDAW = new DAW();
 		        ventanaDAW.setVisible(true);
 				
@@ -168,8 +154,9 @@ public class ListaDeAlumnos
 		JMenuItem Dam = new JMenuItem("DAM");
 		Area.add(Dam);
 		
-		Dam.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Dam.addActionListener(new ActionListener() { //action listener que abre dam
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        DAM ventanaDAM = new DAM();
 		        ventanaDAM.setVisible(true);
 				
@@ -180,8 +167,9 @@ public class ListaDeAlumnos
 		JMenuItem Asir = new JMenuItem("ASIR");
 		Area.add(Asir);
 
-		Asir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Asir.addActionListener(new ActionListener() { //action listener que abre asir
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Asir ventanaAsir = new Asir();
 		        ventanaAsir.setVisible(true);
 				
@@ -192,8 +180,9 @@ public class ListaDeAlumnos
 		JMenuItem Animacion = new JMenuItem("ANIMACIONES 3D");
 		Area.add(Animacion);
 
-		Animacion.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Animacion.addActionListener(new ActionListener() { //action listener que abre animacion 3d
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Animacion3D ventanaAnim = new Animacion3D();
 		        ventanaAnim.setVisible(true);
 				
@@ -204,8 +193,9 @@ public class ListaDeAlumnos
 		JMenuItem Juegos = new JMenuItem("VIDEOJUEGOS");
 		Area.add(Juegos);
 
-		Juegos.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
+		Juegos.addActionListener(new ActionListener() { //action listener que abre juegos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Juegos ventanaJuegos = new Juegos();
 		        ventanaJuegos.setVisible(true);
 				
@@ -297,6 +287,8 @@ public class ListaDeAlumnos
 		v.add("Modificar");
 		v.add("Dar de baja");
 		JComboBox<Object> comboBox = new JComboBox<Object>(v);
+
+		
 		table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 		

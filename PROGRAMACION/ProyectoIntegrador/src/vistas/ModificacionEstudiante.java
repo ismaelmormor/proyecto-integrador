@@ -30,24 +30,7 @@ public class ModificacionEstudiante
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(
-			String[] args) {
-		EventQueue.invokeLater(
-				new Runnable() {
-					public void run() {
-						try {
-							ModificacionEstudiante frame = new ModificacionEstudiante();
-							frame.setVisible(
-									true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -59,9 +42,6 @@ public class ModificacionEstudiante
 		setDefaultCloseOperation(
 				JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
-		ImageIcon img=new ImageIcon("D:\\DAW\\Javalearn\\Proyecto2023\\src\\logo.png");
-		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
-		ImageIcon logo1=new ImageIcon(logo);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBorder(
@@ -78,9 +58,16 @@ public class ModificacionEstudiante
 		menuBar.setBounds(0, 0, 959, 59);
 		
 		
-		JLabel ic = new JLabel("");
-		ic.setIcon(logo1);
-		menuBar.add(ic);
+		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
+		Image originalImage = logo.getImage();
+		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon resizedIcon = new ImageIcon(resizedImage);
+		JMenuItem item = new JMenuItem(resizedIcon);
+		item.setRolloverEnabled(false);
+		item.setForeground(new Color(3, 8, 62));
+		item.setBackground(new Color(3, 8, 62));
+		item.setIcon(resizedIcon);
+		menuBar.add(item);
 		
 		//PI
 		JMenu PI = new JMenu("P.I.");

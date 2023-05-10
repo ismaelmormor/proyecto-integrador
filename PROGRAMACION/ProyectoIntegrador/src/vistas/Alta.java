@@ -75,6 +75,7 @@ public class Alta  extends JFrame {
 
 		Alta.addActionListener(new ActionListener() { //action listener que abre alta
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Alta ventanaAlta = new Alta();
 		        ventanaAlta.setVisible(true);
 		      
@@ -90,6 +91,7 @@ public class Alta  extends JFrame {
 
 		Lista.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        ListaDeAlumnos ventanaLista = new ListaDeAlumnos();
 		        ventanaLista.setVisible(true);
 				
@@ -102,6 +104,7 @@ public class Alta  extends JFrame {
 		
 		Añadir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Add_Alumno ventanaAdd_Alumno = new Add_Alumno();
 		        ventanaAdd_Alumno.setVisible(true);
 				
@@ -118,6 +121,7 @@ public class Alta  extends JFrame {
 
 		Daw.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        DAW ventanaDAW = new DAW();
 		        ventanaDAW.setVisible(true);
 				
@@ -130,6 +134,7 @@ public class Alta  extends JFrame {
 		
 		Dam.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        DAM ventanaDAM = new DAM();
 		        ventanaDAM.setVisible(true);
 				
@@ -142,6 +147,7 @@ public class Alta  extends JFrame {
 
 		Asir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Asir ventanaAsir = new Asir();
 		        ventanaAsir.setVisible(true);
 				
@@ -154,6 +160,7 @@ public class Alta  extends JFrame {
 
 		Animacion.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Animacion3D ventanaAnim = new Animacion3D();
 		        ventanaAnim.setVisible(true);
 				
@@ -166,6 +173,7 @@ public class Alta  extends JFrame {
 
 		Juegos.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
 		    public void actionPerformed(ActionEvent e) {
+				dispose();
 		        Juegos ventanaJuegos = new Juegos();
 		        ventanaJuegos.setVisible(true);
 				

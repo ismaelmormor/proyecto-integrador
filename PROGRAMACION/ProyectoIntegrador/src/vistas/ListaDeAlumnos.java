@@ -283,11 +283,26 @@ public class ListaDeAlumnos
 				"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apeilldo", "ID_Proyecto", ""
 			}
 		));
-		Vector<Object> v=new Vector<Object>();
-		v.add("Modificar");
-		v.add("Dar de baja");
-		JComboBox<Object> comboBox = new JComboBox<Object>(v);
-
+		// Vector<Object> v=new Vector<Object>();
+		// v.add("Modificar");
+		// v.add("Dar de baja");
+		JComboBox<Object> comboBox = new JComboBox<Object>();
+		comboBox.addItem("modificar");
+		comboBox.addItem("dar de baja");
+		comboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String seleccion = (String) comboBox.getSelectedItem();
+                if (seleccion.equals("modificar")) {
+                    // Lógica para abrir una ventana de modificación
+                    ModificacionEstudiante vEstudiante = new ModificacionEstudiante();
+                    // Resto del código para configurar la ventana de modificación
+					dispose();
+                    vEstudiante.setVisible(true);
+                     // Cierra la ventana actual
+                }
+            }
+        });
 		
 		table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);

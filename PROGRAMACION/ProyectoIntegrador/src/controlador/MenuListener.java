@@ -2,7 +2,6 @@ package controlador;
 // Import de todo
 import vistas.*;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 /*
  * Clase del listener que hace funcionar el menú de cada ventana

@@ -10,10 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Add_Alumno
-		extends JFrame {
-
+public class Add_Alumno extends JFrame {
+	// Variables
 	private JPanel contentPane;
+	// Creación de la variable del MenuListener
 	private MenuListener menuListener = new MenuListener(this);		
 	
 	public Add_Alumno() {

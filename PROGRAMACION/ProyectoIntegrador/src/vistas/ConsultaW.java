@@ -27,6 +27,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
+
+import controlador.MenuListener;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -39,25 +42,13 @@ import javax.swing.DefaultCellEditor;
 
 public class ConsultaW
 		extends JFrame {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private MenuListener menuListener = new MenuListener(this);	
 
-	/**
-	 * Launch the application.
-	 */
+
 	
-
-	/**
-	 * Create the frame.
-	 */
-	/**
-	 * 
-	 */
 	public ConsultaW() {
 		setDefaultCloseOperation(
 				JFrame.EXIT_ON_CLOSE);
@@ -97,26 +88,12 @@ public class ConsultaW
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
 		
-		Consulta.addActionListener(new ActionListener() { //action listener que abre consulta 
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        ConsultaW ventanaConsulta = new ConsultaW();
-		        ventanaConsulta.setVisible(true);
-		      
-		    }
-		});
+		Consulta.addActionListener(menuListener);
 
 		JMenuItem Alta = new JMenuItem("Alta");
 		PI.add(Alta);
 
-		Alta.addActionListener(new ActionListener() { //action listener que abre alta
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        Alta ventanaAlta = new Alta();
-		        ventanaAlta.setVisible(true);
-		      
-		    }
-		});
+		Alta.addActionListener(menuListener);
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
@@ -126,28 +103,12 @@ public class ConsultaW
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
 		Alumnos.add(Lista);
 
-		Lista.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        ListaDeAlumnos ventanaLista = new ListaDeAlumnos();
-		        ventanaLista.setVisible(true);
-				
-		      
-		    }
-		});
+		Lista.addActionListener(menuListener);
 		
 		JMenuItem Añadir = new JMenuItem("Añadir");
 		Alumnos.add(Añadir);
 		
-		Añadir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        Add_Alumno ventanaAdd_Alumno = new Add_Alumno();
-		        ventanaAdd_Alumno.setVisible(true);
-				
-		      
-		    }
-		});
+		Añadir.addActionListener(menuListener);
 
 		//Area
 		JMenu Area = new JMenu("Área");
@@ -157,67 +118,27 @@ public class ConsultaW
 		JMenuItem Daw = new JMenuItem("DAW");
 		Area.add(Daw);
 
-		Daw.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        DAW ventanaDAW = new DAW();
-		        ventanaDAW.setVisible(true);
-				
-		      
-		    }
-		});
+		Daw.addActionListener(menuListener);
 		
 		JMenuItem Dam = new JMenuItem("DAM");
 		Area.add(Dam);
 		
-		Dam.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        DAM ventanaDAM = new DAM();
-		        ventanaDAM.setVisible(true);
-				
-		      
-		    }
-		});
+		Dam.addActionListener(menuListener);
 
 		JMenuItem Asir = new JMenuItem("ASIR");
 		Area.add(Asir);
 
-		Asir.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        Asir ventanaAsir = new Asir();
-		        ventanaAsir.setVisible(true);
-				
-		      
-		    }
-		});
+		Asir.addActionListener(menuListener);
 		
 		JMenuItem Animacion = new JMenuItem("ANIMACIONES 3D");
 		Area.add(Animacion);
 
-		Animacion.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        Animacion3D ventanaAnim = new Animacion3D();
-		        ventanaAnim.setVisible(true);
-				
-		      
-		    }
-		});
+		Animacion.addActionListener(menuListener);
 		
 		JMenuItem Juegos = new JMenuItem("VIDEOJUEGOS");
 		Area.add(Juegos);
 
-		Juegos.addActionListener(new ActionListener() { //action listener que abre lista de alumnos
-		    public void actionPerformed(ActionEvent e) {
-				dispose();
-		        Juegos ventanaJuegos = new Juegos();
-		        ventanaJuegos.setVisible(true);
-				
-		      
-		    }
-		});
+		Juegos.addActionListener(menuListener);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 86, 939, 114);

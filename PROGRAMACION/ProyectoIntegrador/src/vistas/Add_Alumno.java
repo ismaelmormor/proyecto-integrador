@@ -6,10 +6,10 @@ import javax.swing.border.EmptyBorder;
 import controlador.MenuListener;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-
+/*
+ * Clase de la ventana de añadir alumno
+ */
 public class Add_Alumno extends JFrame {
 	// Variables
 	private JPanel contentPane;
@@ -17,17 +17,22 @@ public class Add_Alumno extends JFrame {
 	private MenuListener menuListener = new MenuListener(this);		
 	
 	public Add_Alumno() {
-		setDefaultCloseOperation(
-				JFrame.EXIT_ON_CLOSE);
+		// Establecemos que cuando se cierre la pestaña se acabe el programa
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Ajustamos el tamaño de la ventana
 		setBounds(100, 100, 973, 658);
+
+		//
+		// MENÚ //
+
+		// ICONO
+
 		ImageIcon img=new ImageIcon("D:\\DAW\\Javalearn\\Proyecto2023\\src\\logo.png");
 		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
 		ImageIcon logo1=new ImageIcon(logo);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
-		contentPane.setBorder(
-				new EmptyBorder(5, 5, 5,
-						5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

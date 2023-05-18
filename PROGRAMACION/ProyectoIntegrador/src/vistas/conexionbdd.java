@@ -3,7 +3,7 @@ package vistas;
 import java.sql.*;
 public class conexionbdd {
     private String driver="com.mysql.cj.jdbc.Driver";
-	private String url="jdbc:mysql://localhost/login";
+	private String url="jdbc:mysql://localhost/login";//hay q cambio dirección de base de datos
 	private String usuario="root";
 	private String pword="root";
 	
@@ -13,7 +13,7 @@ public class conexionbdd {
 			Class.forName(driver);
 			
 			con=DriverManager.getConnection(url, usuario, pword);
-			String query="select password from usuarios where usuario=?";
+			String query="select password from usuarios where usuario=?";//tmb modifica query
 			PreparedStatement pstmt= con.prepareStatement(query);
 			pstmt.setString(1,username);
 			ResultSet rset=pstmt.executeQuery();

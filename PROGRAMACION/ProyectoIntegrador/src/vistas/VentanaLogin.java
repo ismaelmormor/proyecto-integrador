@@ -4,17 +4,15 @@ import javax.swing.*;
 import javax.swing.JFrame;
 
 import controlador.MenuListener;
+import controlador.loginButton;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class login extends JFrame {
-    private static final long serialVersionUID = 1L;
-    private MenuListener menuListener = new MenuListener(this);	
+public class VentanaLogin extends JFrame {
+
 	private JTextField textField;
 	private JPasswordField passwordField;
-	public login() {
+	public VentanaLogin() {
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("usuario");
@@ -41,32 +39,25 @@ public class login extends JFrame {
 		final JLabel informacion = new JLabel("");
 		informacion.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		informacion.setBounds(116, 290, 540, 173);
-		
-		
-		JButton btnNewButton = new JButton("Log in");
-		btnNewButton.addActionListener(new ActionListener() {
-			conexionbdd aBD1=new conexionbdd();
-			
-			public void actionPerformed(ActionEvent e) {
-				String str1=textField.getText();
-				String str2=new String(passwordField.getPassword());
-				if(aBD1.getConexion(str1,str2)) {
-					informacion.setText("Usuario "+str1+" Acceso conseguido!");
-
-					
-				}else {
-					informacion.setText("Usuario "+str1+" Acceso denegado!");
-				}
-			}
-		});
-		
 		getContentPane().add(informacion);
 		
-		
-		
+		JButton btnNewButton = new JButton("Login");
+		btnNewButton.setBounds(362, 300, 130, 29);
+		loginButton loginBtn = new loginButton(this);
+		btnNewButton.addActionListener(loginBtn);
+		getContentPane().add(btnNewButton);
+
 		setSize(800, 500);
 	}
 
+	public String getUser(){
+		String str1=textField.getText();
+		return str1;
+	}
+	public String getPassword(){
+		String str1=new String(passwordField.getPassword());
+		return str1;
+	}
     public void hacerVisible() {
 		setVisible(true);
 	}

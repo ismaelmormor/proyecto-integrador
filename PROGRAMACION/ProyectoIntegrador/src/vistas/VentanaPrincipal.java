@@ -49,7 +49,7 @@ public class VentanaPrincipal extends JFrame {
 
 		//PI
 		JMenu PI = new JMenu("P.I.");
-		PI.setForeground(Color.white);
+		PI.setForeground(Color.black);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -58,13 +58,14 @@ public class VentanaPrincipal extends JFrame {
 		Consulta.addActionListener(menuListener);
 
 		JMenuItem Alta = new JMenuItem("Alta");
+		
 		PI.add(Alta);
 
 		Alta.addActionListener(menuListener);
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
-		Alumnos.setForeground(Color.white);
+		Alumnos.setForeground(Color.black);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -79,7 +80,7 @@ public class VentanaPrincipal extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(Color.white);
+		Area.setForeground(Color.black);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");

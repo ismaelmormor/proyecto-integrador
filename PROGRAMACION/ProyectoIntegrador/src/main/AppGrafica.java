@@ -3,6 +3,7 @@ package main;
 import java.awt.*;
 
 import vistas.VentanaPrincipal;
+import vistas.login;
 /*
  * Creación de la clase main para ejecutar la aplicación
  */
@@ -13,7 +14,7 @@ public class AppGrafica {
 			public void run() {
 				try {
 					// Creamos y hacemos visible la ventana principal de la aplicación
-					VentanaPrincipal frame = new VentanaPrincipal();
+					login frame = new login();
 					frame.hacerVisible();
 				} catch (Exception e) {
 					e.printStackTrace();

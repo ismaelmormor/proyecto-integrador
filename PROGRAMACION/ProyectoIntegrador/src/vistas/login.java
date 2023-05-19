@@ -2,12 +2,16 @@ package vistas;
 
 import javax.swing.*;
 import javax.swing.JFrame;
+
+import controlador.MenuListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class login extends JFrame {
     private static final long serialVersionUID = 1L;
+    private MenuListener menuListener = new MenuListener(this);	
 	private JTextField textField;
 	private JPasswordField passwordField;
 	public login() {
@@ -48,9 +52,10 @@ public class login extends JFrame {
 				String str2=new String(passwordField.getPassword());
 				if(aBD1.getConexion(str1,str2)) {
 					informacion.setText("Usuario "+str1+" Acceso conseguido!");
+
 					
 				}else {
-					informacion.setText("Usuario "+str1+" Acceso fallo!");
+					informacion.setText("Usuario "+str1+" Acceso denegado!");
 				}
 			}
 		});
@@ -60,5 +65,9 @@ public class login extends JFrame {
 		
 		
 		setSize(800, 500);
+	}
+
+    public void hacerVisible() {
+		setVisible(true);
 	}
 }

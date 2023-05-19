@@ -220,7 +220,7 @@ public class ListaDeAlumnos
 		Vector<Object> v=new Vector<Object>();
 		v.add("Modificar");
 		v.add("Dar de baja");
-		JComboBox<Object> comboBox = new JComboBox<Object>();
+		JComboBox<Object> comboBox = new JComboBox<Object>(v);
 
 		
 		table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));

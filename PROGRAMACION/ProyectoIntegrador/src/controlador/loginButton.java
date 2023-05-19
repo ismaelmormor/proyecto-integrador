@@ -1,14 +1,12 @@
 package controlador;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.sql.*;
-
-import javax.swing.JFrame;
 
 import modelo.AccesoBD;
 import vistas.VentanaLogin;
+import vistas.VentanaPrincipal;
 
 public class loginButton implements ActionListener {
     private String usr;
@@ -43,6 +41,9 @@ public class loginButton implements ActionListener {
 					// Se cierra esta ventana y sale el dialog de Acceso conseguido
 					ventana.dispose();
 					showMessageDialog("Acceso conseguido");
+					// Abrimos la vista de admin
+					VentanaPrincipal vAdmin = new VentanaPrincipal();
+					vAdmin.setVisible(true);
 				} else {
 					showMessageDialog("Contraseña no válida");
 				}

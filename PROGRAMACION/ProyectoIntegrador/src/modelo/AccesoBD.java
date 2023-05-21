@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class AccesoBD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://localhost/UF7";
+	private String url = "jdbc:mysql://localhost/ProyectoIntegrador";
 	private String usuario = "root";
-	private String pword = "root";
+	private String pword = "SkillMoreno";
 
 	public Connection getConexion() {
 		Connection con = null;

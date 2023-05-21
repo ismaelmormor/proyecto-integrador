@@ -7,8 +7,6 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.MenuListener;
 import controlador.altaProyectoButton;
-import modelo.AccesoBD;
-import modelo.AccesoBDinsert;
 
 public class AltaProyecto  extends JFrame {
 
@@ -21,6 +19,7 @@ public class AltaProyecto  extends JFrame {
 	private TextField yearTxt;
 	private TextField linkTxt;
 	private TextField notaTxt;
+	private TextField areaTxt;
 
 	/**
 	 * Create the frame.
@@ -157,11 +156,20 @@ public class AltaProyecto  extends JFrame {
 		notaTxt.setBounds(434, 347, 153, 27);
 		panel.add(notaTxt);
 
+		areaTxt = new TextField();
+		areaTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		areaTxt.setBounds(434, 401, 153, 27);
+		panel.add(areaTxt);
+
+		Label label_area = new Label("ID_Área");
+		label_area.setBounds(341, 401, 43, 29);
+		panel.add(label_area);
+
 		JButton btnNewButton = new JButton("Añadir");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(0, 255, 255));
-		btnNewButton.setBounds(369, 413, 143, 43);
+		btnNewButton.setBounds(369, 455, 143, 43);
 
 		//btn para insertar los datos al BD.
 		altaProyectoButton altaPBtn = new altaProyectoButton(this);
@@ -205,7 +213,10 @@ public class AltaProyecto  extends JFrame {
 		String nota = notaTxt.getText();
 		return nota;
 	}
-
+	public String getIDArea(){
+		String area = areaTxt.getText();
+		return area;
+	}
 }
 
 

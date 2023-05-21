@@ -55,7 +55,7 @@ public class loginButton implements ActionListener {
 			result.close();
 
 		} catch (Exception e) {
-			System.out.println("error al establecer conexión con BD");
+			System.out.println("Error en el botón login");
 			// TODO: handle exception
 		}
     }

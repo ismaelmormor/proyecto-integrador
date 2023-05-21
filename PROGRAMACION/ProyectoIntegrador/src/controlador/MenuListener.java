@@ -32,7 +32,7 @@ public class MenuListener implements ActionListener{
             else if(ev.getActionCommand().equals("Alta")){
                 //Cerramos ventana y creamos la de Alta
                 ventana.dispose();
-                Alta ventanaNueva = new Alta();
+                AltaProyecto ventanaNueva = new AltaProyecto();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de Lista de Alumnos
@@ -46,7 +46,7 @@ public class MenuListener implements ActionListener{
             else if(ev.getActionCommand().equals("Añadir")){
                 //Cerramos ventana y creamos la de añadir Alumno
                 ventana.dispose();
-                Add_Alumno ventanaNueva = new Add_Alumno();
+                AltaAlumno ventanaNueva = new AltaAlumno();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de DAW

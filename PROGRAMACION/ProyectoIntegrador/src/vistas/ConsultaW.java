@@ -1,47 +1,18 @@
 package vistas;
 
-import java.awt.EventQueue;
-import java.awt.Image;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.sql.*;
 import java.util.Vector;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.Panel;
-import java.awt.TextField;
-import java.awt.Label;
-import java.awt.Font;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableModel;
+import java.awt.*;
 
 import controlador.MenuListener;
+import modelo.AccesoBD;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.DefaultCellEditor;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 
-public class ConsultaW
-		extends JFrame {
+public class ConsultaW extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
@@ -55,9 +26,7 @@ public class ConsultaW
 		setBounds(100, 100, 973, 658);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
-		contentPane.setBorder(
-				new EmptyBorder(5, 5, 5,
-						5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -224,29 +193,28 @@ public class ConsultaW
 		table = new JTable();
 		table.setBackground(new Color(255, 255, 255));
 		table.setForeground(new Color(0, 128, 255));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null,null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"ID_Proyecto", "Nombre", "Curso", "Grupo", "A\u00F1o", "URL", "Nota", "ID_Area", ""
-			}
-		));
+		DefaultTableModel model = new DefaultTableModel();
+		model.setColumnIdentifiers(new String[] {"ID_Proyecto", "Nombre", "Curso", "Grupo", "Año", "URL", "Nota", "ID_Area", ""});
+		// Sacamos los datos de la BD
+		AccesoBD acceso = new AccesoBD();
+		Connection con = acceso.getConexion();
+		try {
+			Statement statement = con.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Proyecto_Integrador");
+
+			while (resultSet.next()) {
+				Object[] row = new Object[model.getColumnCount()];
+				for (int i = 1; i < row.length; i++) {
+					row[i-1] = resultSet.getObject(i);
+				}
+				model.addRow(row);
+			}			
+		} catch (Exception e) {
+			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
+			// TODO: handle exception
+		}
+		
+		table.setModel(model);
 
 		Vector<Object> v=new Vector<Object>();
 		v.add("Modificar");

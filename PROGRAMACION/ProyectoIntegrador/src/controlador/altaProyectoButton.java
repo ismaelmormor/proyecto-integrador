@@ -23,7 +23,7 @@ public class altaProyectoButton implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent arg0) {
+    public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         nombre = ventana.getNombre();
         curso = ventana.getCurso();

@@ -19,7 +19,7 @@ public class loginButton implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent arg0) {
+    public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         usr = ventana.getUser();
         pword = ventana.getPassword();

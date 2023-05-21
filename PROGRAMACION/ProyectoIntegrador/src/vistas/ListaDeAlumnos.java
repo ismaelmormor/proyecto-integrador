@@ -1,36 +1,19 @@
 package vistas;
 
-import java.awt.EventQueue;
-import java.awt.Image;
+import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import java.awt.event.*;
+import java.sql.*;
 import java.util.Vector;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.DefaultCellEditor;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.Panel;
-import java.awt.TextField;
-import java.awt.Label;
-import java.awt.Font;
-import javax.swing.JTable;
+
 import javax.swing.table.DefaultTableModel;
 
 import controlador.MenuListener;
+import modelo.AccesoBD;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 
 public class ListaDeAlumnos
 		extends JFrame {
@@ -41,6 +24,7 @@ public class ListaDeAlumnos
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private DefaultTableModel model;
 	private MenuListener menuListener = new MenuListener(this);	
 
 	/**
@@ -142,49 +126,51 @@ public class ListaDeAlumnos
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		TextField textField = new TextField();
-		textField.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField.setBounds(178, 45, 153, 27);
-		panel.add(textField);
+		TextField nExpedienteTxt = new TextField();
+		nExpedienteTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nExpedienteTxt.setBounds(178, 45, 153, 27);
+		panel.add(nExpedienteTxt);
 		
 		Label label = new Label("Filtros");
 		label.setFont(new Font("Dialog", Font.PLAIN, 30));
 		label.setBounds(35, 10, 142, 62);
 		panel.add(label);
 		
-		Label label_1 = new Label("Nº Expediente");
-		label_1.setBounds(184, 10, 147, 36);
-		panel.add(label_1);
+		Label labelExpediente = new Label("Nº Expediente");
+		labelExpediente.setBounds(184, 10, 147, 36);
+		panel.add(labelExpediente);
 		
-		TextField textField_1 = new TextField();
-		textField_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1.setBounds(347, 45, 134, 27);
-		panel.add(textField_1);
+		TextField nombreTxt = new TextField();
+		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nombreTxt.setBounds(347, 45, 134, 27);
+		panel.add(nombreTxt);
 		
-		Label label_1_1 = new Label("Nombre");
-		label_1_1.setBounds(383, 10, 66, 29);
-		panel.add(label_1_1);
+		Label labelNombre = new Label("Nombre");
+		labelNombre.setBounds(383, 10, 66, 29);
+		panel.add(labelNombre);
 		
-		TextField textField_1_1 = new TextField();
-		textField_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1.setBounds(494, 45, 134, 27);
-		panel.add(textField_1_1);
+		TextField apellidoTxt = new TextField();
+		apellidoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		apellidoTxt.setBounds(494, 45, 134, 27);
+		panel.add(apellidoTxt);
 		
-		Label label_1_1_1 = new Label("Apeilldo");
-		label_1_1_1.setBounds(520, 10, 108, 29);
-		panel.add(label_1_1_1);
+		Label labelApellido = new Label("Apeilldo");
+		labelApellido.setBounds(520, 10, 108, 29);
+		panel.add(labelApellido);
 		
-		Label label_1_1_2_1 = new Label("ID_Proyecto");
-		label_1_1_2_1.setBounds(669, 10, 142, 29);
-		panel.add(label_1_1_2_1);
+		Label labelIDProyecto = new Label("ID_Proyecto");
+		labelIDProyecto.setBounds(669, 10, 142, 29);
+		panel.add(labelIDProyecto);
 		
-		TextField textField_1_1_1_1_1_1 = new TextField();
-		textField_1_1_1_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1_1_1_1.setBounds(652, 45, 142, 27);
-		panel.add(textField_1_1_1_1_1_1);
+		TextField IDProyectoTxt = new TextField();
+		IDProyectoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		IDProyectoTxt.setBounds(652, 45, 142, 27);
+		panel.add(IDProyectoTxt);
 		
 		JButton btnNewButton = new JButton("Buscar");
 		btnNewButton.setBounds(827, 49, 89, 23);
+
+		btnNewButton.addActionListener(menuListener);
 		panel.add(btnNewButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -194,29 +180,29 @@ public class ListaDeAlumnos
 		table = new JTable();
 		table.setBackground(new Color(255, 255, 255));
 		table.setForeground(new Color(0, 128, 255));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apeilldo", "ID_Proyecto", ""
-			}
-		));
+		model = new DefaultTableModel();
+		model.setColumnIdentifiers(new String[] {"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apeilldo", "ID_Proyecto", ""});
+		// Sacamos los datos de la BD
+		AccesoBD acceso = new AccesoBD();
+		Connection con = acceso.getConexion();
+		try {
+			Statement statement = con.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Alumno");
+
+			while (resultSet.next()) {
+				Object[] row = new Object[model.getColumnCount()];
+				for (int i = 1; i < row.length; i++) {
+					row[i-1] = resultSet.getObject(i);
+				}
+				model.addRow(row);
+			}			
+		} catch (Exception e) {
+			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
+			// TODO: handle exception
+		}
+		
+		table.setModel(model);
+		
 		Vector<Object> v=new Vector<Object>();
 		v.add("Modificar");
 		v.add("Dar de baja");
@@ -225,8 +211,28 @@ public class ListaDeAlumnos
 		
 		table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
+	}
+	public void actualizarTabla(String query){
+		// Sacamos los datos de la BD
+		AccesoBD acceso = new AccesoBD();
+		Connection con = acceso.getConexion();
+		try {
+			Statement statement = con.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+
+			while (resultSet.next()) {
+				Object[] row = new Object[model.getColumnCount()];
+				for (int i = 1; i < row.length; i++) {
+					row[i-1] = resultSet.getObject(i);
+				}
+				model.addRow(row);
+			}			
+		} catch (Exception e) {
+			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
+			// TODO: handle exception
+		}
 		
-		
+		table.setModel(model);
 	}
 }
 

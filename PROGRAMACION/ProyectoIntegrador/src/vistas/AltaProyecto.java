@@ -1,42 +1,33 @@
 package vistas;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Label;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.awt.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import controlador.MenuListener;
+import controlador.altaProyectoButton;
 import modelo.AccesoBD;
 import modelo.AccesoBDinsert;
 
-public class Alta  extends JFrame {
+public class AltaProyecto  extends JFrame {
 
 	private JPanel contentPane;
 	private MenuListener menuListener = new MenuListener(this);	
+
+	private TextField nombreTxt;
+	private TextField cursoTxt;
+	private TextField grupoTxt;
+	private TextField yearTxt;
+	private TextField linkTxt;
+	private TextField notaTxt;
 
 	/**
 	 * Create the frame.
 	 */
 	
-	public Alta() {
-		setDefaultCloseOperation(
-				JFrame.EXIT_ON_CLOSE);
+	public AltaProyecto() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		ImageIcon img=new ImageIcon("D:\\DAW\\Javalearn\\Proyecto2023\\src\\logo.png");
 		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
@@ -44,9 +35,7 @@ public class Alta  extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBackground(new Color(3, 8, 62));
-		contentPane.setBorder(
-				new EmptyBorder(5, 5, 5,
-						5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -126,12 +115,12 @@ public class Alta  extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		TextField nombreTxt = new TextField();
+		nombreTxt = new TextField();
 		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		nombreTxt.setBounds(434, 85, 153, 27);
 		panel.add(nombreTxt);
 		
-		TextField cursoTxt = new TextField();
+		cursoTxt = new TextField();
 		cursoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		cursoTxt.setBounds(434, 136, 153, 27);
 		panel.add(cursoTxt);
@@ -140,33 +129,33 @@ public class Alta  extends JFrame {
 		label_1_1.setBounds(318, 83, 66, 29);
 		panel.add(label_1_1);
 		
-		TextField grupo = new TextField();
-		grupo.setFont(new Font("Dialog", Font.PLAIN, 20));
-		grupo.setBounds(434, 192, 153, 27);
-		panel.add(grupo);
+		grupoTxt = new TextField();
+		grupoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		grupoTxt.setBounds(434, 192, 153, 27);
+		panel.add(grupoTxt);
 		
 		Label label_1_1_1 = new Label("Curso");
 		label_1_1_1.setBounds(335, 134, 49, 29);
 		panel.add(label_1_1_1);
 		
-		TextField year = new TextField();
-		year.setFont(new Font("Dialog", Font.PLAIN, 20));
-		year.setBounds(434, 243, 153, 27);
-		panel.add(year);
+		yearTxt = new TextField();
+		yearTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		yearTxt.setBounds(434, 243, 153, 27);
+		panel.add(yearTxt);
 		
 		Label label_1_1_1_1_1 = new Label("Año");
 		label_1_1_1_1_1.setBounds(341, 243, 43, 29);
 		panel.add(label_1_1_1_1_1);
 		
-		TextField link = new TextField();
-		link.setFont(new Font("Dialog", Font.PLAIN, 20));
-		link.setBounds(434, 293, 153, 27);
-		panel.add(link);
+		linkTxt = new TextField();
+		linkTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		linkTxt.setBounds(434, 293, 153, 27);
+		panel.add(linkTxt);
 
-		TextField nota = new TextField();
-		nota.setFont(new Font("Dialog", Font.PLAIN, 20));
-		nota.setBounds(434, 347, 153, 27);
-		panel.add(nota);
+		notaTxt = new TextField();
+		notaTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		notaTxt.setBounds(434, 347, 153, 27);
+		panel.add(notaTxt);
 
 		JButton btnNewButton = new JButton("Añadir");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -175,19 +164,8 @@ public class Alta  extends JFrame {
 		btnNewButton.setBounds(369, 413, 143, 43);
 
 		//btn para insertar los datos al BD.
-		btnNewButton.addActionListener(new ActionListener() {
-			AccesoBDinsert addDatos=new AccesoBDinsert();
-			public void actionPerformed(ActionEvent e) {
-				String name=nombreTxt.getText();
-				String course=cursoTxt.getText();
-				String group=grupo.getText();
-				String año=year.getText();
-				String url=link.getText();
-				String note=nota.getText();
-				addDatos.getConexion(name, course, group, año, url, note);
-			}
-
-		});
+		altaProyectoButton altaPBtn = new altaProyectoButton(this);
+		btnNewButton.addActionListener(altaPBtn);
 		panel.add(btnNewButton);
 		
 		Label label_1_1_1_1 = new Label("Grupo");
@@ -197,17 +175,37 @@ public class Alta  extends JFrame {
 		Label label_1_1_1_1_1_1 = new Label("URL");
 		label_1_1_1_1_1_1.setBounds(341, 293, 43, 29);
 		panel.add(label_1_1_1_1_1_1);
-		
-		
-		
+
 		Label label_1_1_1_1_1_1_1 = new Label("Nota");
 		label_1_1_1_1_1_1_1.setBounds(341, 345, 43, 29);
 		panel.add(label_1_1_1_1_1_1_1);
-		
-
-
-
 	}
+
+	public String getNombre(){
+		String nombre = nombreTxt.getText();
+		return nombre;
+	}
+	public String getCurso(){
+		String curso = cursoTxt.getText();
+		return curso;
+	}
+	public String getGrupo(){
+		String grupo = grupoTxt.getText();
+		return grupo;
+	}
+	public String getYear(){
+		String year = yearTxt.getText();
+		return year;
+	}
+	public String getUrl(){
+		String link = linkTxt.getText();
+		return link;
+	}
+	public String getNota(){
+		String nota = notaTxt.getText();
+		return nota;
+	}
+
 }
 
 

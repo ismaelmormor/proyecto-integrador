@@ -12,6 +12,7 @@ public class VentanaLogin extends JFrame {
 
 	private JTextField textField;
 	private JPasswordField passwordField;
+	
 	public VentanaLogin() {
 		getContentPane().setLayout(null);
 		

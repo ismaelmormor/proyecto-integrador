@@ -5,24 +5,33 @@ import java.awt.event.*;
 import java.sql.*;
 
 import modelo.AccesoBD;
+import vistas.AltaProyecto;
 import vistas.VentanaLogin;
 import vistas.VentanaPrincipal;
 
 public class altaProyectoButton implements ActionListener {
-    private String usr;
-    private String pword;
-    private VentanaLogin ventana;
+    private String nombre;
+    private String curso;
+    private String grupo;
+    private String year;
+    private String link;
+    private String nota;
+    private AltaProyecto ventana;
     private Connection con;
 
-    public altaProyectoButton(VentanaLogin ventana) {
+    public altaProyectoButton(AltaProyecto ventana) {
         this.ventana=ventana;
     }
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
         // Recolección de datos
-        usr = ventana.getUser();
-        pword = ventana.getPassword();
+        nombre = ventana.getNombre();
+        curso = ventana.getCurso();
+        grupo = ventana.getGrupo();
+        year = ventana.getYear();
+        link = ventana.getUrl();
+        nota = ventana.getNota();
         // Conexión con BBDD
         AccesoBD access = new AccesoBD();
         con = access.getConexion();
@@ -30,29 +39,10 @@ public class altaProyectoButton implements ActionListener {
 		try {
 			// Preparamos la consulta a la base de datos
 			Statement statement = con.createStatement();
-			String query = "select * from USUARIOS where usuario ='" + usr + "';";
-			ResultSet result = statement.executeQuery(query);
-			// Si hay resultado (ha encontrado al usuario):
-			if (result.next()) {
-				// Almacenamos la contraseña en un string para comprobarla posteriormente
-				String contraseniaAlmacenada = result.getString("PWORD");
-				// Si es igual a la que puso el usuario en el login:
-				if (pword.equals(contraseniaAlmacenada)) {
-					// Se cierra esta ventana y sale el dialog de Acceso conseguido
-					ventana.dispose();
-					showMessageDialog("Acceso conseguido");
-					// Abrimos la vista de admin
-					VentanaPrincipal vAdmin = new VentanaPrincipal();
-					vAdmin.setVisible(true);
-				} else {
-					showMessageDialog("Contraseña no válida");
-				}
-			} else {
-				showMessageDialog("Usuario no encontrado");
-			}
-
-			statement.close();
-			result.close();
+            statement.executeUpdate("Insert into Proyecto_Integrador values('"+
+                nombre+"','"+curso+"','"+grupo+"','"+year+"','"+link+"','"+nota+"')");
+            statement.close();
+			con.close();
 
 		} catch (Exception e) {
 			System.out.println("error al establecer conexión con BD");

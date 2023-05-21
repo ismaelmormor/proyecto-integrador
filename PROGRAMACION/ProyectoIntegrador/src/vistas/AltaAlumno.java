@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import controlador.MenuListener;
+import controlador.altaAlumnoButton;
 
 import java.awt.*;
 
@@ -15,7 +16,11 @@ public class AltaAlumno extends JFrame {
 	private JPanel contentPane;
 	// Creación de la variable del MenuListener
 	private MenuListener menuListener = new MenuListener(this);		
-	
+	private TextField nombreTxt;
+	private TextField apellidoTxt;
+	private TextField nExpendienteTxt;
+	private TextField idProyectoTxt;
+
 	public AltaAlumno() {
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,24 +118,24 @@ public class AltaAlumno extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		TextField textField = new TextField();
-		textField.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField.setBounds(434, 85, 153, 27);
-		panel.add(textField);
+		nombreTxt  = new TextField();
+		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nombreTxt.setBounds(434, 85, 153, 27);
+		panel.add(nombreTxt);
 		
-		TextField textField_1 = new TextField();
-		textField_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1.setBounds(434, 136, 153, 27);
-		panel.add(textField_1);
+		apellidoTxt= new TextField();
+		apellidoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		apellidoTxt.setBounds(434, 136, 153, 27);
+		panel.add(apellidoTxt);
 		
 		Label label_1_1 = new Label("Nombre");
 		label_1_1.setBounds(318, 83, 66, 29);
 		panel.add(label_1_1);
 		
-		TextField textField_1_1 = new TextField();
-		textField_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1.setBounds(434, 192, 153, 27);
-		panel.add(textField_1_1);
+		nExpendienteTxt= new TextField();
+		nExpendienteTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nExpendienteTxt.setBounds(434, 192, 153, 27);
+		panel.add(nExpendienteTxt);
 		
 		Label label_1_1_1 = new Label("Apellidos");
 		label_1_1_1.setBounds(314, 136, 66, 29);
@@ -140,10 +145,10 @@ public class AltaAlumno extends JFrame {
 		label_1_1_1_1.setBounds(261, 190, 117, 29);
 		panel.add(label_1_1_1_1);
 		
-		TextField textField_1_1_1 = new TextField();
-		textField_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1.setBounds(434, 243, 153, 27);
-		panel.add(textField_1_1_1);
+		idProyectoTxt = new TextField();
+		idProyectoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		idProyectoTxt.setBounds(434, 243, 153, 27);
+		panel.add(idProyectoTxt);
 		
 		Label label_1_1_1_1_1 = new Label("ID_Proyecto ");
 		label_1_1_1_1_1.setBounds(282, 241, 102, 29);
@@ -154,7 +159,26 @@ public class AltaAlumno extends JFrame {
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(0, 191, 255));
 		btnNewButton.setBounds(367, 363, 143, 43);
+		//-----------------------
+		altaAlumnoButton altaAbtn=new altaAlumnoButton(this);
+		btnNewButton.addActionListener(altaAbtn);
 		panel.add(btnNewButton);
+	}
+	//-----------------------
+	public String getNombre() {
+		return nombreTxt.getText();
+	}
+
+	public String getApellido() {
+		return apellidoTxt.getText();
+	}
+
+	public String getNExpendiente() {
+		return nExpendienteTxt.getText();
+	}
+
+	public String getIdProyecto() {
+		return idProyectoTxt.getText();
 	}
 }
 

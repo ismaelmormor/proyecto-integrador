@@ -15,7 +15,7 @@ public class AccesoBDinsert {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, usuario, pword);
 			Statement st=con.createStatement();
-            st.executeUpdate("insert into usuarios values('"+nombre+"','"+curso+"','"+grupo+"','"+año+"','"+link+"','"+nota+"')");
+            st.executeUpdate("insert into Proyecto_Integrador values('"+nombre+"','"+curso+"','"+grupo+"','"+año+"','"+link+"','"+nota+"')");
             st.close();
 			con.close();
 		} catch (Exception e) {

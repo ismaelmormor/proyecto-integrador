@@ -126,15 +126,15 @@ public class Alta  extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		TextField nombre = new TextField();
-		nombre.setFont(new Font("Dialog", Font.PLAIN, 20));
-		nombre.setBounds(434, 85, 153, 27);
-		panel.add(nombre);
+		TextField nombreTxt = new TextField();
+		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nombreTxt.setBounds(434, 85, 153, 27);
+		panel.add(nombreTxt);
 		
-		TextField curso = new TextField();
-		curso.setFont(new Font("Dialog", Font.PLAIN, 20));
-		curso.setBounds(434, 136, 153, 27);
-		panel.add(curso);
+		TextField cursoTxt = new TextField();
+		cursoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		cursoTxt.setBounds(434, 136, 153, 27);
+		panel.add(cursoTxt);
 		
 		Label label_1_1 = new Label("Nombre");
 		label_1_1.setBounds(318, 83, 66, 29);
@@ -173,12 +173,13 @@ public class Alta  extends JFrame {
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(0, 255, 255));
 		btnNewButton.setBounds(369, 413, 143, 43);
+
 		//btn para insertar los datos al BD.
 		btnNewButton.addActionListener(new ActionListener() {
 			AccesoBDinsert addDatos=new AccesoBDinsert();
 			public void actionPerformed(ActionEvent e) {
-				String name=nombre.getText();
-				String course=curso.getText();
+				String name=nombreTxt.getText();
+				String course=cursoTxt.getText();
 				String group=grupo.getText();
 				String año=year.getText();
 				String url=link.getText();

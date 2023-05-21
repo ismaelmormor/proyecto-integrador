@@ -10,13 +10,13 @@ import java.awt.*;
 /*
  * Clase de la ventana de añadir alumno
  */
-public class Add_Alumno extends JFrame {
+public class AltaAlumno extends JFrame {
 	// Variables
 	private JPanel contentPane;
 	// Creación de la variable del MenuListener
 	private MenuListener menuListener = new MenuListener(this);		
 	
-	public Add_Alumno() {
+	public AltaAlumno() {
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana

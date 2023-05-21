@@ -185,7 +185,7 @@ public class Alta  extends JFrame {
 				String note=nota.getText();
 				addDatos.getConexion(name, course, group, año, url, note);
 			}
-			
+
 		});
 		panel.add(btnNewButton);
 		

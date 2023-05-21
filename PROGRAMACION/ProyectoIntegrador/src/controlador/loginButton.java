@@ -61,7 +61,7 @@ public class loginButton implements ActionListener {
     }
     private void showMessageDialog(String message) {
 		// Creamos el dialog
-		final Dialog dialog = new Dialog(ventana, "Mensaje");
+		Dialog dialog = new Dialog(ventana, "Mensaje");
 		// Le damos forma con un layout
 		dialog.setLayout(new BorderLayout());
 		// Le añadimos el mensaje que traiga en el medio

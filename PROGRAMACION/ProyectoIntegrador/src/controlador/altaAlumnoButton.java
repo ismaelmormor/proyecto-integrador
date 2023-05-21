@@ -6,9 +6,6 @@ import java.sql.*;
 
 import modelo.AccesoBD;
 import vistas.AltaAlumno;
-import vistas.AltaProyecto;
-import vistas.VentanaLogin;
-import vistas.VentanaPrincipal;
 
 public class altaAlumnoButton implements ActionListener {
     private String nombre;
@@ -36,13 +33,15 @@ public class altaAlumnoButton implements ActionListener {
 		try {
 			// Preparamos la consulta a la base de datos
 			Statement statement = con.createStatement();
-            statement.executeUpdate("Insert into Proyecto_Integrador values('"+
-                nombre+"','"+nombre+"','"+apellido+"','"+nExpendiente+"','"+idProyecto+"')");
+			String query = "Insert into Alumno (Nombre, Apellidos, N_expediente, ID_Proyecto) values('"
+				+nombre+"','"+apellido+"','"+nExpendiente+"','"+idProyecto+"')";
+            statement.executeUpdate(query);
             statement.close();
 			con.close();
-
+			showMessageDialog("Se han introducido los datos correctamente");
 		} catch (Exception e) {
-			System.out.println("error al establecer conexión con BD");
+			System.out.println("Error con el botón de alta Alumno: "+e.getMessage());
+			showMessageDialog("Hubo un error al introducir los datos");
 			// TODO: handle exception
 		}
     }

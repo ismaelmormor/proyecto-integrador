@@ -30,40 +30,30 @@ public class ListaDeAlumnos
 	 * 
 	 */
 	public ListaDeAlumnos() {
-		setDefaultCloseOperation(
-				JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
-		contentPane.setBorder(
-				new EmptyBorder(5, 5, 5,
-						5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(3, 8, 62));
-		menuBar.setBackground(new Color(3, 8, 62));
-		menuBar.setBounds(0, 0, 959, 59);
-		
-		
+		setJMenuBar(menuBar);
 		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		JMenuItem item = new JMenuItem(resizedIcon);
 		item.setRolloverEnabled(false);
-		item.setForeground(new Color(3, 8, 62));
-		item.setBackground(new Color(3, 8, 62));
+		
 		item.setIcon(resizedIcon);
 		menuBar.add(item);
-		
+
 		//PI
 		JMenu PI = new JMenu("P.I.");
-		PI.setForeground(Color.white);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -78,7 +68,6 @@ public class ListaDeAlumnos
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
-		Alumnos.setForeground(Color.white);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -93,7 +82,6 @@ public class ListaDeAlumnos
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(Color.white);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -181,7 +169,7 @@ public class ListaDeAlumnos
 		table.setBackground(new Color(255, 255, 255));
 		table.setForeground(new Color(0, 128, 255));
 		model = new DefaultTableModel();
-		model.setColumnIdentifiers(new String[] {"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apellido", "ID_Proyecto", ""});
+		model.setColumnIdentifiers(new String[] {"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apellido", "ID_Proyecto"});
 		
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
@@ -192,36 +180,20 @@ public class ListaDeAlumnos
 			
 			while (resultSet.next()) {
 				Object[] row = new Object[model.getColumnCount()];
-				System.out.println(row.length);
-				for (int i = 1; i < row.length; i++) {
-					System.out.println("Caso para columna "+i+" :");
-					row[i-1] = resultSet.getObject(i);
-					System.out.println(row[i-1]);
-				}
 				
-				System.out.println("Llegamos a la última columna, la columna :"+model.getColumnCount());
-
-				JComboBox<String> comboBox = new JComboBox<String>();
-				comboBox.addItem("Opción 1");
-				comboBox.addItem("Opción 2");
-				row[model.getColumnCount()-1] = comboBox;
+				for (int i = 1; i <= row.length; i++) {
+					row[i-1] = resultSet.getObject(i);
+					
+				}
 
 				model.addRow(row);
 			}			
 		} catch (Exception e) {
 			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
-			// TODO: handle exception
 		}
 		
 		table.setModel(model);
 		
-		// Vector<Object> v=new Vector<Object>();
-		// v.add("Modificar");
-		// v.add("Dar de baja");
-		// JComboBox<Object> comboBox = new JComboBox<Object>(v);
-
-		
-		//table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 	}
 

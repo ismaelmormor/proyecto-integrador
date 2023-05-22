@@ -25,7 +25,7 @@ public class MenuListener implements ActionListener{
 			if (ev.getActionCommand().equals("Consulta")) {
                 //Cerramos ventana y creamos la de consulta
 				ventana.dispose();
-                ConsultaW ventanaNueva = new ConsultaW();
+                ListaProyectos ventanaNueva = new ListaProyectos();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de Alta de Proyecto Integrador

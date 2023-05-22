@@ -25,13 +25,25 @@ public class Animacion3D extends JFrame {
 	 * Creamos el frame
 	 */
 	public Animacion3D() {
+		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 748, 410);
+		// Ajustamos el tamaño de la ventana
+		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		contentPane.setToolTipText("");
+		contentPane.setBackground(new Color(3, 8, 62));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		//
+		// MENÚ //
+
+		// ICONO
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
+		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
@@ -71,7 +83,6 @@ public class Animacion3D extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
-
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -98,14 +109,6 @@ public class Animacion3D extends JFrame {
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
-		
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(3, 8, 62));
-		contentPane.setToolTipText("");
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		
 		 // JLabel centrado con el texto especificado

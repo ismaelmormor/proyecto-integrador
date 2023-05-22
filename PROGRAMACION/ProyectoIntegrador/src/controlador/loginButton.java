@@ -40,7 +40,6 @@ public class loginButton implements ActionListener {
 				if (pword.equals(contraseniaAlmacenada)) {
 					// Se cierra esta ventana y sale el dialog de Acceso conseguido
 					ventana.dispose();
-					showMessageDialog("Acceso conseguido");
 					// Abrimos la vista de admin
 					VentanaPrincipal vAdmin = new VentanaPrincipal();
 					vAdmin.setVisible(true);
@@ -56,6 +55,7 @@ public class loginButton implements ActionListener {
 
 		} catch (Exception e) {
 			System.out.println("Error en el botón login");
+			showMessageDialog("Hubo un error en la conexión con la base de datos");
 			// TODO: handle exception
 		}
     }

@@ -26,12 +26,22 @@ public class VentanaPrincipal extends JFrame {
 	 * sea crea el frame
 	 */
 	public VentanaPrincipal() {
+		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 748, 410);
+		// Ajustamos el tamaño de la ventana
+		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		contentPane.setToolTipText("");
+		contentPane.setBackground(new Color(3, 8, 62));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		//
+		// MENÚ //
 
+		// ICONO
 
-        //menu
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
@@ -46,7 +56,6 @@ public class VentanaPrincipal extends JFrame {
 
 		//PI
 		JMenu PI = new JMenu("P.I.");
-		PI.setForeground(Color.black);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -55,14 +64,12 @@ public class VentanaPrincipal extends JFrame {
 		Consulta.addActionListener(menuListener);
 
 		JMenuItem Alta = new JMenuItem("Alta");
-		
 		PI.add(Alta);
 
 		Alta.addActionListener(menuListener);
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
-		Alumnos.setForeground(Color.black);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -77,7 +84,6 @@ public class VentanaPrincipal extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(Color.black);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -104,14 +110,6 @@ public class VentanaPrincipal extends JFrame {
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
-		
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(3, 8, 62));
-		contentPane.setToolTipText("");
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		// JLabel "Daweishine8"
 		JLabel labelDaweishine8 = new JLabel("Daweishine8");

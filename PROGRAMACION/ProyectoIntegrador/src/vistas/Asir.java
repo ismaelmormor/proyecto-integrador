@@ -16,13 +16,25 @@ public class Asir extends JFrame {
 	 * Creamos el frame
 	 */
 	public Asir() {
+		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 748, 410);
+		// Ajustamos el tamaño de la ventana
+		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		contentPane.setToolTipText("");
+		contentPane.setBackground(new Color(3, 8, 62));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		//
+		// MENÚ //
+
+		// ICONO
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
+		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
@@ -88,14 +100,6 @@ public class Asir extends JFrame {
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
-		
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(3, 8, 62));
-		contentPane.setToolTipText("");
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		 // JLabel centrado con el texto especificado
 		 JLabel texto = new JLabel("<html>Codigo de area: 003<br></br><br></br>Descripcion:<br></br>La administración de sistemas informáticos en red implica organizar, instalar y mantener en funcionamiento los sistemas informáticos de una empresa. Esto incluye las redes de área local (LAN), las redes de área amplia (WAN), los segmentos de red, las intranets y otros</html>");

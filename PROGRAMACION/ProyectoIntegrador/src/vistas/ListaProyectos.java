@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 
-public class ConsultaW extends JFrame {
+public class ListaProyectos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
@@ -20,39 +20,36 @@ public class ConsultaW extends JFrame {
 
 
 	
-	public ConsultaW() {
-		setDefaultCloseOperation(
-				JFrame.EXIT_ON_CLOSE);
+	public ListaProyectos() {
+		// Establecemos que cuando se cierre la pestaña se acabe el programa
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Ajustamos el tamaño de la ventana
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		//
+		// MENÚ //
+
+		// ICONO
+
 		JMenuBar menuBar = new JMenuBar();
-		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(3, 8, 62));
-		menuBar.setBackground(new Color(3, 8, 62));
-		menuBar.setBounds(0, 0, 959, 59);
-		
-		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
+		setJMenuBar(menuBar);
+		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		JMenuItem item = new JMenuItem(resizedIcon);
 		item.setRolloverEnabled(false);
-		item.setForeground(new Color(3, 8, 62));
-		item.setBackground(new Color(3, 8, 62));
+		
 		item.setIcon(resizedIcon);
 		menuBar.add(item);
-		
-		
+
 		//PI
 		JMenu PI = new JMenu("P.I.");
-		PI.setForeground(Color.white);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -67,7 +64,6 @@ public class ConsultaW extends JFrame {
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
-		Alumnos.setForeground(Color.white);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -82,7 +78,6 @@ public class ConsultaW extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(Color.white);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");

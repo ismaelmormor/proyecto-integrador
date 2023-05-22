@@ -9,7 +9,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.TextField;
 import java.awt.Label;
@@ -28,36 +27,35 @@ public class Modificación
 	 * 
 	 */
 	public Modificación() {
-		setDefaultCloseOperation(
-				JFrame.EXIT_ON_CLOSE);
+		// Establecemos que cuando se cierre la pestaña se acabe el programa
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Ajustamos el tamaño de la ventana
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
-		ImageIcon img=new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
-		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
-		ImageIcon logo1=new ImageIcon(logo);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
-		contentPane.setBorder(
-				new EmptyBorder(5, 5, 5,
-						5));
-
+		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		//
+		// MENÚ //
+
+		// ICONO
+
 		JMenuBar menuBar = new JMenuBar();
-		contentPane.add(menuBar);
-		menuBar.setForeground(new Color(142, 124, 195));
-		menuBar.setBackground(new Color(142, 124, 195));
-		menuBar.setBounds(0, 0, 959, 59);
+		setJMenuBar(menuBar);
+		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
+		Image originalImage = logo.getImage();
+		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon resizedIcon = new ImageIcon(resizedImage);
+		JMenuItem item = new JMenuItem(resizedIcon);
+		item.setRolloverEnabled(false);
 		
-		
-		JLabel ic = new JLabel("");
-		ic.setIcon(logo1);
-		menuBar.add(ic);
-		
+		item.setIcon(resizedIcon);
+		menuBar.add(item);
+
 		//PI
 		JMenu PI = new JMenu("P.I.");
-		PI.setForeground(Color.white);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -72,7 +70,6 @@ public class Modificación
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
-		Alumnos.setForeground(Color.white);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -87,7 +84,6 @@ public class Modificación
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(Color.white);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");

@@ -2,10 +2,6 @@ package controlador;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
-
-import modelo.AccesoBD;
-import vistas.AltaAlumno;
 import vistas.ListaDeAlumnos;
 
 public class filtroAlumnoListener implements ActionListener {
@@ -14,7 +10,6 @@ public class filtroAlumnoListener implements ActionListener {
     private String nExpendiente;
     private String idProyecto;
     private ListaDeAlumnos ventana;
-    private Connection con;
 
     public filtroAlumnoListener(ListaDeAlumnos ventana) {
         this.ventana=ventana;
@@ -27,9 +22,6 @@ public class filtroAlumnoListener implements ActionListener {
         apellido = ventana.getApellidos();
         nExpendiente = ventana.getNExpediente();
         idProyecto = ventana.getIDProyecto();
-        // Conexión con BBDD
-        AccesoBD access = new AccesoBD();
-        con = access.getConexion();
         Boolean primeraCond = true;
 		try {
 			// Preparamos la consulta a la base de datos

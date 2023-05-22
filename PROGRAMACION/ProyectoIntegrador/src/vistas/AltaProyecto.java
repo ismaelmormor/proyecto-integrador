@@ -28,6 +28,7 @@ public class AltaProyecto  extends JFrame {
 	public AltaProyecto() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
+		setLocationRelativeTo(null);
 		ImageIcon img=new ImageIcon("D:\\DAW\\Javalearn\\Proyecto2023\\src\\logo.png");
 		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
 		ImageIcon logo1=new ImageIcon(logo);
@@ -51,7 +52,7 @@ public class AltaProyecto  extends JFrame {
 		
 		//PI
 		JMenu PI = new JMenu("P.I.");
-		PI.setForeground(Color.white);
+		PI.setForeground(Color.black);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -66,7 +67,7 @@ public class AltaProyecto  extends JFrame {
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
-		Alumnos.setForeground(Color.white);
+		Alumnos.setForeground(Color.black);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -81,7 +82,7 @@ public class AltaProyecto  extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(Color.white);
+		Area.setForeground(Color.black);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");

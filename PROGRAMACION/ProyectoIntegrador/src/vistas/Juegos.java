@@ -31,6 +31,7 @@ public class Juegos extends JFrame {
 	public Juegos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 748, 410);
+		setLocationRelativeTo(null);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -46,7 +47,6 @@ public class Juegos extends JFrame {
 
 		//PI
 		JMenu PI = new JMenu("P.I.");
-		PI.setForeground(Color.white);
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -61,7 +61,6 @@ public class Juegos extends JFrame {
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
-		Alumnos.setForeground(Color.white);
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -76,7 +75,6 @@ public class Juegos extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(Color.white);
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");

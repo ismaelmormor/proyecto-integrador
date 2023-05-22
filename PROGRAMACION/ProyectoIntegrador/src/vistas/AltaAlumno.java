@@ -26,6 +26,7 @@ public class AltaAlumno extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana
 		setBounds(100, 100, 973, 658);
+		setLocationRelativeTo(null);
 
 		//
 		// MENÚ //

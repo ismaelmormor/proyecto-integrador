@@ -15,6 +15,7 @@ public class VentanaLogin extends JFrame {
 	
 	public VentanaLogin() {
 		getContentPane().setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblNewLabel = new JLabel("usuario");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -49,6 +50,7 @@ public class VentanaLogin extends JFrame {
 		getContentPane().add(btnNewButton);
 
 		setSize(800, 500);
+		setLocationRelativeTo(null);
 	}
 
 	public String getUser(){

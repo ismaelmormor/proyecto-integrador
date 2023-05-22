@@ -24,6 +24,7 @@ public class ConsultaW extends JFrame {
 		setDefaultCloseOperation(
 				JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));

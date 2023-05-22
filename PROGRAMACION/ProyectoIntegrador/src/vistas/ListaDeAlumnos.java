@@ -142,7 +142,7 @@ public class ListaDeAlumnos
 		apellidoTxt.setBounds(494, 45, 134, 27);
 		panel.add(apellidoTxt);
 		
-		Label labelApellido = new Label("Apellido");
+		Label labelApellido = new Label("Apellidos");
 		labelApellido.setBounds(520, 10, 108, 29);
 		panel.add(labelApellido);
 		
@@ -169,7 +169,7 @@ public class ListaDeAlumnos
 		table.setBackground(new Color(255, 255, 255));
 		table.setForeground(new Color(0, 128, 255));
 		model = new DefaultTableModel();
-		model.setColumnIdentifiers(new String[] {"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apellido", "ID_Proyecto"});
+		model.setColumnIdentifiers(new String[] {"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apellidos", "ID_Proyecto"});
 		
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
@@ -226,7 +226,7 @@ public class ListaDeAlumnos
 
 			while (resultSet.next()) {
 				Object[] row = new Object[model.getColumnCount()];
-				for (int i = 1; i < row.length; i++) {
+				for (int i = 1; i <= row.length; i++) {
 					row[i-1] = resultSet.getObject(i);
 				}
 				model.addRow(row);

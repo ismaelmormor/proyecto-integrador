@@ -12,6 +12,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 import controlador.MenuListener;
+import controlador.filtroAlumnoListener;
 import modelo.AccesoBD;
 
 
@@ -27,6 +28,7 @@ public class ListaDeAlumnos
 	private DefaultTableModel model;
 	private MenuListener menuListener = new MenuListener(this);	
 
+	private TextField nExpedienteTxt, nombreTxt, apellidoTxt, IDProyectoTxt;
 	/**
 	 * 
 	 */
@@ -126,7 +128,7 @@ public class ListaDeAlumnos
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		TextField nExpedienteTxt = new TextField();
+		nExpedienteTxt = new TextField();
 		nExpedienteTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		nExpedienteTxt.setBounds(178, 45, 153, 27);
 		panel.add(nExpedienteTxt);
@@ -140,7 +142,7 @@ public class ListaDeAlumnos
 		labelExpediente.setBounds(184, 10, 147, 36);
 		panel.add(labelExpediente);
 		
-		TextField nombreTxt = new TextField();
+		nombreTxt = new TextField();
 		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		nombreTxt.setBounds(347, 45, 134, 27);
 		panel.add(nombreTxt);
@@ -149,7 +151,7 @@ public class ListaDeAlumnos
 		labelNombre.setBounds(383, 10, 66, 29);
 		panel.add(labelNombre);
 		
-		TextField apellidoTxt = new TextField();
+		apellidoTxt = new TextField();
 		apellidoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		apellidoTxt.setBounds(494, 45, 134, 27);
 		panel.add(apellidoTxt);
@@ -162,16 +164,16 @@ public class ListaDeAlumnos
 		labelIDProyecto.setBounds(669, 10, 142, 29);
 		panel.add(labelIDProyecto);
 		
-		TextField IDProyectoTxt = new TextField();
+	 	IDProyectoTxt = new TextField();
 		IDProyectoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		IDProyectoTxt.setBounds(652, 45, 142, 27);
 		panel.add(IDProyectoTxt);
 		
-		JButton btnNewButton = new JButton("Buscar");
-		btnNewButton.setBounds(827, 49, 89, 23);
-
-		btnNewButton.addActionListener(menuListener);
-		panel.add(btnNewButton);
+		JButton filtroBtn = new JButton("Buscar");
+		filtroBtn.setBounds(827, 49, 89, 23);
+		filtroAlumnoListener filtroListener = new filtroAlumnoListener(this);
+		filtroBtn.addActionListener(filtroListener);
+		panel.add(filtroBtn);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 233, 939, 340);
@@ -212,7 +214,27 @@ public class ListaDeAlumnos
 		table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 	}
+
+	public String getNombre(){
+		String nombre = nombreTxt.getText();
+		return nombre;
+	}
+	public String getApellidos(){
+		String apellidos = apellidoTxt.getText();
+		return apellidos;
+	}
+	public String getNExpediente(){
+		String expediente = nExpedienteTxt.getText();
+		return expediente;
+	}
+	public String getIDProyecto(){
+		String id = IDProyectoTxt.getText();
+		return id;
+	}
+
 	public void actualizarTabla(String query){
+		// Vaciamos la tabla
+		model.setRowCount(0);
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
 		Connection con = acceso.getConexion();

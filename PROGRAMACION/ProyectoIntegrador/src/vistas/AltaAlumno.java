@@ -33,7 +33,7 @@ public class AltaAlumno extends JFrame {
 
 		// ICONO
 
-		ImageIcon img=new ImageIcon("D:\\DAW\\Javalearn\\Proyecto2023\\src\\logo.png");
+		ImageIcon img=new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image logo=img.getImage().getScaledInstance(40, 40, DO_NOTHING_ON_CLOSE);
 		ImageIcon logo1=new ImageIcon(logo);
 		contentPane = new JPanel();

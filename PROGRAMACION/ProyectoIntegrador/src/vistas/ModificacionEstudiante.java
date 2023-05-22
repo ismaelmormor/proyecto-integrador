@@ -59,7 +59,7 @@ public class ModificacionEstudiante
 		menuBar.setBounds(0, 0, 959, 59);
 		
 		
-		ImageIcon logo = new ImageIcon("C:\\Users\\santi\\Downloads\\logo.png");
+		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);

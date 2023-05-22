@@ -6,7 +6,7 @@ public class AccesoBD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/ProyectoIntegrador";
 	private String usuario = "root";
-	private String pword = "SkillMoreno";
+	private String pword = "root";
 
 	public Connection getConexion() {
 		Connection con = null;

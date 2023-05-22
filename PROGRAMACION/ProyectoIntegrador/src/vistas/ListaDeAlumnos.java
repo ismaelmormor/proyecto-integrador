@@ -184,18 +184,30 @@ public class ListaDeAlumnos
 		table.setForeground(new Color(0, 128, 255));
 		model = new DefaultTableModel();
 		model.setColumnIdentifiers(new String[] {"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apeilldo", "ID_Proyecto", ""});
+		
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
 		Connection con = acceso.getConexion();
 		try {
 			Statement statement = con.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Alumno");
-
+			
 			while (resultSet.next()) {
 				Object[] row = new Object[model.getColumnCount()];
+				System.out.println(row.length);
 				for (int i = 1; i < row.length; i++) {
+					System.out.println("Caso para columna "+i+" :");
 					row[i-1] = resultSet.getObject(i);
+					System.out.println(row[i-1]);
 				}
+				
+				System.out.println("Llegamos a la última columna, la columna :"+model.getColumnCount());
+
+				JComboBox<String> comboBox = new JComboBox<String>();
+				comboBox.addItem("Opción 1");
+				comboBox.addItem("Opción 2");
+				row[model.getColumnCount()-1] = comboBox;
+
 				model.addRow(row);
 			}			
 		} catch (Exception e) {
@@ -205,13 +217,13 @@ public class ListaDeAlumnos
 		
 		table.setModel(model);
 		
-		Vector<Object> v=new Vector<Object>();
-		v.add("Modificar");
-		v.add("Dar de baja");
-		JComboBox<Object> comboBox = new JComboBox<Object>(v);
+		// Vector<Object> v=new Vector<Object>();
+		// v.add("Modificar");
+		// v.add("Dar de baja");
+		// JComboBox<Object> comboBox = new JComboBox<Object>(v);
 
 		
-		table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
+		//table.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 	}
 

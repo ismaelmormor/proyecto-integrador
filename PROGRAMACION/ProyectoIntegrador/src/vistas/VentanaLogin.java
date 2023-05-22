@@ -3,7 +3,6 @@ package vistas;
 import javax.swing.*;
 import javax.swing.JFrame;
 
-import controlador.MenuListener;
 import controlador.loginButton;
 
 import java.awt.*;

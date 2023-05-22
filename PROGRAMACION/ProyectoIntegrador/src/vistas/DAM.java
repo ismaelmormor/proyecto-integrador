@@ -1,6 +1,5 @@
 package vistas;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 
@@ -15,9 +14,6 @@ import controlador.MenuListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class DAM extends JFrame {

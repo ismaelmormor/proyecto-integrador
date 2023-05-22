@@ -5,10 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import java.awt.event.*;
 import java.sql.*;
-import java.util.Vector;
-
 import javax.swing.table.DefaultTableModel;
 
 import controlador.MenuListener;
@@ -157,7 +154,7 @@ public class ListaDeAlumnos
 		apellidoTxt.setBounds(494, 45, 134, 27);
 		panel.add(apellidoTxt);
 		
-		Label labelApellido = new Label("Apeilldo");
+		Label labelApellido = new Label("Apellido");
 		labelApellido.setBounds(520, 10, 108, 29);
 		panel.add(labelApellido);
 		
@@ -184,7 +181,7 @@ public class ListaDeAlumnos
 		table.setBackground(new Color(255, 255, 255));
 		table.setForeground(new Color(0, 128, 255));
 		model = new DefaultTableModel();
-		model.setColumnIdentifiers(new String[] {"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apeilldo", "ID_Proyecto", ""});
+		model.setColumnIdentifiers(new String[] {"ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apellido", "ID_Proyecto", ""});
 		
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();

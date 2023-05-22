@@ -38,7 +38,7 @@ public class VentanaPrincipal extends JFrame {
         //menu
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		ImageIcon logo = new ImageIcon("../../IMG/logo.png");
+		ImageIcon logo = new ImageIcon("IMG/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);

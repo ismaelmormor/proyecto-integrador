@@ -47,7 +47,7 @@ public class filtroAlumnoListener implements ActionListener {
                     query += "N_Expediente = "+nExpendiente+"";
                     primeraCond=false;
                 }else{
-                    query += "AND N_Expediente = "+nExpendiente+"";
+                    query += " AND N_Expediente = "+nExpendiente+"";
                 }
             }
             if (!idProyecto.isEmpty()){
@@ -55,7 +55,7 @@ public class filtroAlumnoListener implements ActionListener {
                     query += "ID_Proyecto = "+idProyecto;
                     primeraCond=false;
                 }else{
-                    query += "AND ID_Proyecto = "+idProyecto;
+                    query += " AND ID_Proyecto = "+idProyecto;
                 }
             }
             if (idProyecto.isEmpty() && nExpendiente.isEmpty() && apellido.isEmpty() && nombre.isEmpty()){

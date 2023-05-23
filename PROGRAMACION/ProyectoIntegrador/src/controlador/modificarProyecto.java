@@ -7,19 +7,23 @@ import java.sql.*;
 import modelo.AccesoBD;
 import vistas.ListaDeAlumnos;
 import vistas.ModificacionEstudiante;
+import vistas.ModificacionProyecto;
 
-public class modificarAlumno implements ActionListener {
+public class modificarProyecto implements ActionListener {
     private String nombre;
-    private String apellido;
-    private String nExpendiente;
-    private String idProyecto;
-    private int idAlumno;
-    private ModificacionEstudiante ventana;
+    private String curso;
+    private String grupo;
+    private String year;
+    private String link;
+    private String nota;
+    private String id_area;
+    private ModificacionProyecto ventana;
+    private int idProyecto;
     private Connection con;
 
-    public modificarAlumno(ModificacionEstudiante ventana, int id) {
+    public modificarProyecto(ModificacionProyecto ventana, int id) {
         this.ventana=ventana;
-        this.idAlumno=id;
+        this.idProyecto=id;
     }
 
     @Override

@@ -21,6 +21,8 @@ public class Asir extends JFrame {
 		// Ajustamos el tamaño de la ventana
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
+		setResizable(false);
+		
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBackground(new Color(3, 8, 62));

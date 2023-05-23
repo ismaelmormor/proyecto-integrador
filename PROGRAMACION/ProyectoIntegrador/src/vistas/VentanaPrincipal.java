@@ -31,6 +31,8 @@ public class VentanaPrincipal extends JFrame {
 		// Ajustamos el tamaño de la ventana
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
+		setResizable(false);
+		
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBackground(new Color(3, 8, 62));
@@ -113,18 +115,18 @@ public class VentanaPrincipal extends JFrame {
 
 		// JLabel "Daweishine8"
 		JLabel labelDaweishine8 = new JLabel("Daweishine8");
-		labelDaweishine8.setFont(new Font("Arial", Font.BOLD, 40));
+		labelDaweishine8.setFont(new Font("Arial", Font.BOLD, 47));
 		labelDaweishine8.setForeground(Color.WHITE);
 		labelDaweishine8.setHorizontalAlignment(JLabel.CENTER);
-		labelDaweishine8.setBounds(-122, 43, 650, 30);
+		labelDaweishine8.setBounds(-90, 96, 709, 109);
 		contentPane.add(labelDaweishine8);
 
 		// JLabel en el centro
 		JLabel label = new JLabel("<html>INTRODUCCION<br><br>P.I. Para usar el programa<br><br>- Alta: Para dar de alta a un alumno en el programa<br>- Consulta: para ver los datos y tener la posibilidad de modificarlos o borrarlos</html>");
-		label.setFont(new Font("Arial", Font.PLAIN, 16));
+		label.setFont(new Font("Arial", Font.PLAIN, 20));
 		label.setForeground(Color.WHITE);
 		label.setHorizontalAlignment(JLabel.CENTER);
-		label.setBounds(50, 100, 650, 150);
+		label.setBounds(125, 236, 720, 209);
 		contentPane.add(label);	
 		
 		
@@ -132,7 +134,7 @@ public class VentanaPrincipal extends JFrame {
 		Image resizedImage2 = originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon2 = new ImageIcon(resizedImage2);
 		JLabel labelImagen = new JLabel(resizedIcon2);
-		labelImagen.setBounds(506, 25, 100, 100);
+		labelImagen.setBounds(629, 96, 125, 130);
 		contentPane.add(labelImagen);
 }
 

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import modelo.AccesoBD;
+
 class AccesoBDTest {
 
 	@BeforeAll
@@ -27,8 +29,10 @@ class AccesoBDTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testGetConexion() {
+		AccesoBD access = new AccesoBD();
+		// Verificamos que no sea null la conexión
+		assertNotNull(access.getConexion());
 	}
 
 }

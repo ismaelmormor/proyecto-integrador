@@ -4,6 +4,7 @@ import java.sql.*;
 import java.awt.*;
 
 import controlador.MenuListener;
+import controlador.eliminarProyecto;
 import controlador.filtroProyectoListener;
 import controlador.modProyectoBtn;
 import modelo.AccesoBD;
@@ -224,12 +225,18 @@ public class ListaProyectos extends JFrame {
 		
 		table.setModel(model);
 		scrollPane.setViewportView(table);
-
+		// SE AÑADEN BOTONES EXTRA
 		modProyectoBtn btnModificar = new modProyectoBtn(this);
 		JButton modButton = new JButton("Modificar");
 		modButton.setBounds(350, 532, 89, 23);
 		contentPane.add(modButton);
 		modButton.addActionListener(btnModificar);
+
+		eliminarProyecto btnEliminar = new eliminarProyecto(this);
+		JButton delButton = new JButton("Eliminar");
+		delButton.setBounds(500, 532, 89, 23);
+		contentPane.add(delButton);
+		delButton.addActionListener(btnEliminar);
 	}
 	public void actualizarTabla(String query){
 		// Vaciamos la tabla

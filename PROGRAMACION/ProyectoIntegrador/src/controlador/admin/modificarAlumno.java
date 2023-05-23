@@ -7,8 +7,11 @@ import java.sql.*;
 import modelo.AccesoBD;
 import vistas.admin.ListaDeAlumnos;
 import vistas.admin.ModificacionEstudiante;
-
+/**
+ * Clase para modificar los datos de un alumno en la base de datos
+ */
 public class modificarAlumno implements ActionListener {
+    // Variables
     private String nombre;
     private String apellido;
     private String nExpendiente;
@@ -16,12 +19,18 @@ public class modificarAlumno implements ActionListener {
     private int idAlumno;
     private ModificacionEstudiante ventana;
     private Connection con;
-
+    /**
+     * Método constructor de la clase
+     * @param ventana - ventana desde donde se llama
+     * @param id - la id del alumno que queremos editar
+     */
     public modificarAlumno(ModificacionEstudiante ventana, int id) {
         this.ventana=ventana;
         this.idAlumno=id;
     }
-
+    /**
+     * Método cuando se pulsa el botón
+     */
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
@@ -47,12 +56,16 @@ public class modificarAlumno implements ActionListener {
             ventanaNueva.setVisible(true);
 
 		} catch (SQLException e) {
-            if (e.getErrorCode() == 1452) {
-                showMessageDialog("ID_Proyecto tiene que existir");
-            }
-            else if (e.getErrorCode() == 1406) {
+            // Cuando da error de las foreign keys
+			if (e.getErrorCode() == 1452) {
+				showMessageDialog("ID_Proyecto tiene que existir");
+			}
+			// Cuando se intentan introducir valores más largos de lo permitido
+			else if (e.getErrorCode() == 1406) {
 				showMessageDialog("Acuérdate del límite de caracteres");
-            }else if (e.getErrorCode() == 1366) {
+            }
+			// Cuando se mete por ejemplo un string en un int
+			else if (e.getErrorCode() == 1366) {
 				showMessageDialog("Error en tipo de carácter");
 			} else {
                 System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
@@ -62,6 +75,10 @@ public class modificarAlumno implements ActionListener {
             System.out.println("Ocurrió un error inesperado");
         }
     }
+    /**
+	 * Método para crear y mostrar el dialog de la notificación
+	 * @param message - el mensaje que queramos que salga
+	 */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		final Dialog dialog = new Dialog(ventana, "Mensaje");

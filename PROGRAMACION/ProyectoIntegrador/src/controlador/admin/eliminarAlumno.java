@@ -3,24 +3,33 @@ package controlador.admin;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-
 import modelo.AccesoBD;
 import vistas.admin.ListaDeAlumnos;
 
+/**
+ * Clase para cuando queremos eliminar un alumno
+ */
 public class eliminarAlumno implements ActionListener {
+	// Variables
     private int id;
     private ListaDeAlumnos ventana;
     private Connection con;
 
+	/**
+	 * Método constructor
+	 * @param ventana - ventana desde donde se llama
+	 */
     public eliminarAlumno(ListaDeAlumnos ventana) {
         this.ventana=ventana;
     }
-
+	/**
+	 * Método para cuando se pulsa el botón
+	 */
     @Override
     public void actionPerformed(ActionEvent ev) {
-        System.out.println("Pulsado el botón eliminar");
         // Recolección de datos
         id = ventana.seleccionTabla();
+		// Si la id que recopilamos no es -1 significa que hemos cogido la seleccionada
         if (id != -1){
             AccesoBD access = new AccesoBD();
             con = access.getConexion();
@@ -48,6 +57,10 @@ public class eliminarAlumno implements ActionListener {
             showMessageDialog("Selecciona una fila de la tabla");
         }
     }
+	/**
+	 * Método de creación del dialog para las notificaciones
+	 * @param message
+	 */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		Dialog dialog = new Dialog(ventana, "Mensaje");

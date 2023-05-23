@@ -7,8 +7,11 @@ import java.sql.*;
 import modelo.AccesoBD;
 import vistas.admin.ListaProyectos;
 import vistas.admin.ModificacionProyecto;
-
+/**
+ * Clase para modificar los datos de un alumno en la base de datos
+ */
 public class modificarProyecto implements ActionListener {
+	// Variables
     private String nombre;
     private String curso;
     private String grupo;
@@ -19,12 +22,18 @@ public class modificarProyecto implements ActionListener {
     private ModificacionProyecto ventana;
     private int idProyecto;
     private Connection con;
-
+	/**
+     * Método constructor de la clase
+     * @param ventana - ventana desde donde se llama
+     * @param id - la id del proyecto que queremos editar
+     */
     public modificarProyecto(ModificacionProyecto ventana, int id) {
         this.ventana=ventana;
         this.idProyecto=id;
     }
-
+	/**
+     * Método cuando se pulsa el botón
+     */
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
@@ -53,14 +62,18 @@ public class modificarProyecto implements ActionListener {
             ventanaNueva.setVisible(true);
 
 		} catch (SQLException e) {
-            if (e.getErrorCode() == 1452) {
-                showMessageDialog("ID_Area tiene que existir");
+            // Cuando da error de las foreign keys
+			if (e.getErrorCode() == 1452) {
+				showMessageDialog("ID_Proyecto tiene que existir");
 			}
+			// Cuando se intentan introducir valores más largos de lo permitido
 			else if (e.getErrorCode() == 1406) {
 				showMessageDialog("Acuérdate del límite de caracteres");
-            }else if (e.getErrorCode() == 1366) {
+            }
+			// Cuando se mete por ejemplo un string en un int
+			else if (e.getErrorCode() == 1366) {
 				showMessageDialog("Error en tipo de carácter");
-			} else {
+			}else {
                 System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
 			    showMessageDialog("Hubo un error al cambiar los datos");
             }
@@ -68,6 +81,10 @@ public class modificarProyecto implements ActionListener {
             System.out.println("Ocurrió un error inesperado");
         }
     }
+	/**
+	 * Método para crear y mostrar el dialog de la notificación
+	 * @param message - el mensaje que queramos que salga
+	 */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		final Dialog dialog = new Dialog(ventana, "Mensaje");

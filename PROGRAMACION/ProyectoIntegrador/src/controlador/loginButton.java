@@ -7,17 +7,25 @@ import java.sql.*;
 import modelo.AccesoBD;
 import vistas.admin.VentanaLogin;
 import vistas.admin.VentanaPrincipal;
-
+/**
+ * Clase para el login del admin que comprueba los datos introducidos con la base de datos
+ */
 public class loginButton implements ActionListener {
+	// Variables
     private String usr;
     private String pword;
     private VentanaLogin ventana;
     private Connection con;
-
+	/**
+	 * Método construcotr
+	 * @param ventana - ventana desde donde se llama
+	 */
     public loginButton(VentanaLogin ventana) {
         this.ventana=ventana;
     }
-
+	/**
+	 * Método cuando se pulsa el botón
+	 */
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
@@ -58,6 +66,10 @@ public class loginButton implements ActionListener {
 			showMessageDialog("Hubo un error en la conexión con la base de datos");
 		}
     }
+	/**
+	 * Método para crear y mostrar el dialog de la notificación
+	 * @param message - el mensaje que queramos que salga
+	 */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		Dialog dialog = new Dialog(ventana, "Mensaje");

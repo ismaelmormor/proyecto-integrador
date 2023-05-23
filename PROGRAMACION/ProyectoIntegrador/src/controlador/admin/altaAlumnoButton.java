@@ -1,12 +1,13 @@
 package controlador.admin;
-
+// Imports
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-
 import modelo.AccesoBD;
 import vistas.admin.AltaAlumno;
-
+/**
+ * Clase del botón para dar alta a un alumno nuevo
+ */
 public class altaAlumnoButton implements ActionListener {
     private String nombre;
     private String apellido;
@@ -14,12 +15,20 @@ public class altaAlumnoButton implements ActionListener {
     private String idProyecto;
     private AltaAlumno ventana;
     private Connection con;
-
+	/**
+	 * Método constructor
+	 * @param ventana - la ventana desde donde se llama
+	 */
     public altaAlumnoButton(AltaAlumno ventana) {
         this.ventana=ventana;
     }
 
-    @Override
+    
+	/** 
+	 * Método cuando se pulsa el botón
+	 * @param ev
+	 */
+	@Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         nombre = ventana.getNombre();
@@ -40,13 +49,19 @@ public class altaAlumnoButton implements ActionListener {
 			con.close();
 			showMessageDialog("Se han introducido los datos correctamente");
 		} catch (SQLException e) {
+			// Cuando da error de las foreign keys
 			if (e.getErrorCode() == 1452) {
 				showMessageDialog("ID_Proyecto tiene que existir");
-			}else if (e.getErrorCode() == 1406) {
+			}
+			// Cuando se intentan introducir valores más largos de lo permitido
+			else if (e.getErrorCode() == 1406) {
 				showMessageDialog("Acuérdate del límite de caracteres");
-            }else if (e.getErrorCode() == 1366) {
+            }
+			// Cuando se mete por ejemplo un string en un int
+			else if (e.getErrorCode() == 1366) {
 				showMessageDialog("Error en tipo de carácter");
 			}
+			// Otro tipo de errores
 			else{
 				System.out.println("Error con el botón de alta Alumno: "+e.getMessage());
 				showMessageDialog("Hubo un error al introducir los datos");
@@ -56,6 +71,10 @@ public class altaAlumnoButton implements ActionListener {
 			System.out.println("Hubo un error inesperado: "+e.getMessage());
 		}
     }
+	/**
+	 * Método para mostrar un dialog
+	 * @param message
+	 */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		final Dialog dialog = new Dialog(ventana, "Mensaje");

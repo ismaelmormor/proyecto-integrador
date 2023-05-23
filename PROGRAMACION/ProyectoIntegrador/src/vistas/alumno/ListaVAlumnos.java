@@ -258,6 +258,11 @@ public class ListaVAlumnos
 		return id;
 
 	}
+
+    public JTable getTable() {
+        return table;
+    }
+	
 }
 
 

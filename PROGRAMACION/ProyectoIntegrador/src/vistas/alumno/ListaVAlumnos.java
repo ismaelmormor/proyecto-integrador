@@ -12,12 +12,15 @@ import controlador.alumno.filtroVAlumnoListener;
 import modelo.AccesoBD;
 
 /**
- * ListaVAlumnos
- * Crea el frame de la ventana y configura sus propiedades.
- */
+ 	* ListaVAlumnos
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 public class ListaVAlumnos
 		extends JFrame {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
@@ -243,7 +246,6 @@ public class ListaVAlumnos
 
 	/**
 	 * Actualiza la tabla de alumnos con los datos obtenidos de la consulta.
-	 * 
 	 * @param query La consulta SQL para obtener los datos.
 	 */
 	public void actualizarTabla(String query) {

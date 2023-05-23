@@ -2,10 +2,8 @@ package vistas.admin;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import controlador.admin.MenuListener;
 import controlador.admin.altaAlumnoButton;
-
 import java.awt.*;
 
 /**
@@ -127,43 +125,43 @@ public class AltaAlumno extends JFrame {
 		panel.setBounds(10, 52, 939, 524);
 		contentPane.add(panel);
 		panel.setLayout(null);
-
-		nombreTxt = new TextField();
+		
+		nombreTxt  = new TextField();
 		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		nombreTxt.setBounds(434, 85, 153, 27);
 		panel.add(nombreTxt);
-
-		apellidoTxt = new TextField();
+		
+		apellidoTxt= new TextField();
 		apellidoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		apellidoTxt.setBounds(434, 136, 153, 27);
 		panel.add(apellidoTxt);
-
+		
 		Label label_1_1 = new Label("Nombre");
 		label_1_1.setBounds(318, 83, 66, 29);
 		panel.add(label_1_1);
-
-		nExpedienteTxt = new TextField();
+		
+		nExpedienteTxt= new TextField();
 		nExpedienteTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		nExpedienteTxt.setBounds(434, 192, 153, 27);
 		panel.add(nExpedienteTxt);
-
+		
 		Label label_1_1_1 = new Label("Apellidos");
 		label_1_1_1.setBounds(314, 136, 66, 29);
 		panel.add(label_1_1_1);
-
+		
 		Label label_1_1_1_1 = new Label("Nº Expendiente");
 		label_1_1_1_1.setBounds(261, 190, 117, 29);
 		panel.add(label_1_1_1_1);
-
+		
 		idProyectoTxt = new TextField();
 		idProyectoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		idProyectoTxt.setBounds(434, 243, 153, 27);
 		panel.add(idProyectoTxt);
-
+		
 		Label label_1_1_1_1_1 = new Label("ID_Proyecto ");
 		label_1_1_1_1_1.setBounds(282, 241, 102, 29);
 		panel.add(label_1_1_1_1_1);
-
+		
 		JButton btnNewButton = new JButton("Añadir");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.setForeground(new Color(255, 255, 255));

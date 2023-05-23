@@ -123,7 +123,6 @@ public class Animacion3DA extends JFrame {
 			con.close();
 		} catch (Exception e) {
 			System.out.println("Hubo un error: "+e.getMessage());
-			// TODO: handle exception
 		}
 
 		 // JLabel centrado con el texto especificado

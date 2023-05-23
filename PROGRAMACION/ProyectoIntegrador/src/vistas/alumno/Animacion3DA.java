@@ -1,24 +1,19 @@
 package vistas.alumno;
 
-import java.awt.Font;
-import java.awt.Image;
+import java.awt.*;
+import java.sql.*;
 
 import javax.swing.*;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.alumno.MenuListenerA;
-
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.Color;
+import modelo.AccesoBD;
 
 public class Animacion3DA extends JFrame {
 
 	private JPanel contentPane;
+	private String descripcion, nombre;
+	private Connection con;
 	private MenuListenerA menuListener = new MenuListenerA(this);	
 	
 	/**
@@ -103,7 +98,7 @@ public class Animacion3DA extends JFrame {
 		Juegos.addActionListener(menuListener);
 
 		//Login
-		JMenu Login = new JMenu("Lógin");
+		JMenu Login = new JMenu("Login");
 		menuBar.add(Login);
 
 		JMenuItem admin = new JMenuItem("Admin");
@@ -111,8 +106,28 @@ public class Animacion3DA extends JFrame {
 
 		admin.addActionListener(menuListener);
 		
+		AccesoBD access = new AccesoBD();
+		con = access.getConexion();
+
+		try {
+			// Preparamos la consulta a la base de datos
+			Statement statement = con.createStatement();
+			String query = "select * from AREAS where ID_AREA=5";
+			ResultSet result = statement.executeQuery(query);
+			
+			if (result.next()) {
+				nombre = result.getString("Nombre");
+				descripcion = result.getString("Descripcion");
+			}
+			statement.close();
+			con.close();
+		} catch (Exception e) {
+			System.out.println("Hubo un error: "+e.getMessage());
+			// TODO: handle exception
+		}
+
 		 // JLabel centrado con el texto especificado
-		 JLabel texto = new JLabel("<html>Codigo de area: 005<br></br><br></br>Descripcion:<br></br>La animación 3D usa gráficos por computadora para que parezca que los objetos se mueven en un espacio tridimensional. Los artistas usan software de modelado 3D para crear los objetos. Después viene la manipulación, una representación virtual de un objeto o el esqueleto de un personaje.</html>");
+		 JLabel texto = new JLabel("<html>Codigo de area: 005<br></br><br></br>Descripcion:<br></br>"+descripcion+"</html>");
 		 texto.setFont(new Font("Arial", Font.PLAIN, 20));
 		 texto.setHorizontalAlignment(JLabel.CENTER);
 		 texto.setForeground(Color.white);
@@ -120,7 +135,7 @@ public class Animacion3DA extends JFrame {
 		 contentPane.add(texto);
 
 		 //label ANIMACION
-		 JLabel label3D = new JLabel("ANIMACION 3D");
+		 JLabel label3D = new JLabel(nombre);
 		 label3D.setFont(new Font("Arial", Font.BOLD, 35));
 		 label3D.setHorizontalAlignment(JLabel.CENTER);
 	     label3D.setForeground(Color.WHITE);

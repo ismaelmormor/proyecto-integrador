@@ -1,24 +1,19 @@
 package vistas.alumno;
 
-import java.awt.Font;
-import java.awt.Image;
+import java.awt.*;
+import java.sql.*;
 
 import javax.swing.*;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.alumno.MenuListenerA;
-
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.Color;
+import modelo.AccesoBD;
 
 public class DAWA extends JFrame {
 
 	private JPanel contentPane;
+	private String descripcion, nombre;
+	private Connection con;
 	private MenuListenerA menuListener = new MenuListenerA(this);
 
 	/**
@@ -89,7 +84,7 @@ public class DAWA extends JFrame {
 
 		Juegos.addActionListener(menuListener);
 		//Login
-		JMenu Login = new JMenu("Lógin");
+		JMenu Login = new JMenu("Login");
 		menuBar.add(Login);
 
 		JMenuItem admin = new JMenuItem("Admin");
@@ -104,22 +99,40 @@ public class DAWA extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		AccesoBD access = new AccesoBD();
+		con = access.getConexion();
 
-		  // JLabel centrado con el texto especificado
-		  JLabel texto = new JLabel("<html>Codigo de area: 001<br></br><br></br>Descripcion:<br></br>El Desarrollo de Aplicaciones Web es aquel que permite crear herramientas a las que los usuarios pueden acceder a través de Internet. En la web podremos obtener información o interactuar con elementos que nos permitan la comunicación entre nosotros, los usuarios y la web</html>");
-		  texto.setFont(new Font("Arial", Font.PLAIN, 20));
-		  texto.setHorizontalAlignment(JLabel.CENTER);
-		  texto.setForeground(Color.white);
-		  texto.setBounds(163, 228, 650, 250);
-		  contentPane.add(texto);
+		try {
+			// Preparamos la consulta a la base de datos
+			Statement statement = con.createStatement();
+			String query = "select * from AREAS where ID_AREA=1";
+			ResultSet result = statement.executeQuery(query);
+			if (result.next()) {
+				nombre = result.getString("Nombre");
+				descripcion = result.getString("Descripcion");
+			}
+			statement.close();
+			con.close();
+		} catch (Exception e) {
+			System.out.println("Hubo un error: "+e.getMessage());
+			// TODO: handle exception
+		}
 
-		  //label dam
-		  JLabel labelDAW = new JLabel("DAW");
-		  labelDAW.setFont(new Font("Arial", Font.BOLD, 35));
-		  labelDAW.setHorizontalAlignment(JLabel.CENTER);
-	      labelDAW.setForeground(Color.WHITE);
-		  labelDAW.setBounds(138, 111, 650, 30);
-		  contentPane.add(labelDAW);
+		 // JLabel centrado con el texto especificado
+		 JLabel texto = new JLabel("<html>Codigo de area: 001<br></br><br></br>Descripcion:<br></br>"+descripcion+"</html>");
+		 texto.setFont(new Font("Arial", Font.PLAIN, 20));
+		 texto.setHorizontalAlignment(JLabel.CENTER);
+		 texto.setForeground(Color.white);
+		 texto.setBounds(163, 228, 650, 250);
+		 contentPane.add(texto);
+
+		 //label ANIMACION
+		 JLabel label3D = new JLabel(nombre);
+		 label3D.setFont(new Font("Arial", Font.BOLD, 35));
+		 label3D.setHorizontalAlignment(JLabel.CENTER);
+	     label3D.setForeground(Color.WHITE);
+		 label3D.setBounds(138, 111, 650, 30);
+		 contentPane.add(label3D);
 	}
 
 }

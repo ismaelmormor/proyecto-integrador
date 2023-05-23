@@ -48,10 +48,17 @@ public class altaProyectoButton implements ActionListener {
 
             showMessageDialog("Datos introducidos correctamente");
 
-		} catch (Exception e) {
-			System.out.println("Error en el botón altaProyecto"+e.getMessage());
-            showMessageDialog("Hubo un error, inténtelo más tarde");
-			// TODO: handle exception
+		} catch (SQLException e) {
+			if (e.getErrorCode() == 1452) {
+				showMessageDialog("ID_Area tiene que existir");
+			}
+			else{
+				System.out.println("Error con el botón de alta Proyecto: "+e.getMessage());
+				showMessageDialog("Hubo un error al introducir los datos");
+			}
+			
+		} catch(Exception e){
+			System.out.println("Hubo un error inesperado: "+e.getMessage());
 		}
     }
     private void showMessageDialog(String message) {

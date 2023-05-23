@@ -46,11 +46,18 @@ public class modificarAlumno implements ActionListener {
             ListaDeAlumnos ventanaNueva = new ListaDeAlumnos();
             ventanaNueva.setVisible(true);
 
-		} catch (Exception e) {
-			System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
-			showMessageDialog("Hubo un error al cambiar los datos");
+		} catch (SQLException e) {
+            if (e.getErrorCode() == 1452) {
+                showMessageDialog("ID_Proyecto tiene que existir");
+            } else {
+                System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
+			    showMessageDialog("Hubo un error al cambiar los datos");
+            }
+			
 			// TODO: handle exception
-		}
+		} catch (Exception e){
+            System.out.println("Ocurrió un error inesperado");
+        }
     }
     private void showMessageDialog(String message) {
 		// Creamos el dialog

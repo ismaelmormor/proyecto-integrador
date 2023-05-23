@@ -39,10 +39,17 @@ public class altaAlumnoButton implements ActionListener {
             statement.close();
 			con.close();
 			showMessageDialog("Se han introducido los datos correctamente");
-		} catch (Exception e) {
-			System.out.println("Error con el botón de alta Alumno: "+e.getMessage());
-			showMessageDialog("Hubo un error al introducir los datos");
-			// TODO: handle exception
+		} catch (SQLException e) {
+			if (e.getErrorCode() == 1452) {
+				showMessageDialog("ID_Proyecto tiene que existir");
+			}
+			else{
+				System.out.println("Error con el botón de alta Alumno: "+e.getMessage());
+				showMessageDialog("Hubo un error al introducir los datos");
+			}
+			
+		} catch(Exception e){
+			System.out.println("Hubo un error inesperado: "+e.getMessage());
 		}
     }
     private void showMessageDialog(String message) {

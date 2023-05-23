@@ -27,7 +27,7 @@ public class eliminarProyecto implements ActionListener {
 		    try {
 		    	// Preparamos la consulta a la base de datos
 		    	Statement statement = con.createStatement();
-		    	String query = "DELETE FROM PROYECTO_INTEGRADOR WHERE ID_ALUMNO = "+id;
+		    	String query = "DELETE FROM PROYECTO_INTEGRADOR WHERE ID_Proyecto = "+id;
                 statement.executeUpdate(query);
                 statement.close();
 		    	con.close();

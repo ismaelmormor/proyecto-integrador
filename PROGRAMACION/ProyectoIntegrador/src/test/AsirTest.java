@@ -2,7 +2,8 @@ package test;
 
 import org.junit.jupiter.api.Test;
 
-import vistas.Asir;
+
+import vistas.alumno.AsirA;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,7 +16,7 @@ class AsirTest {
     @Test
     void testMenuItems() {
         // Creamos una instancia de la clase Asir
-        Asir asir = new Asir();
+        AsirA asir = new AsirA();
 
         // Obtenemos la barra de menú de la instancia de Asir
         JMenuBar menuBar = asir.getJMenuBar();

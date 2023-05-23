@@ -2,7 +2,7 @@ package test;
 
 import org.junit.jupiter.api.Test;
 
-import vistas.DAM;
+import vistas.alumno.DAMA;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,7 +15,7 @@ class DAMTest {
     @Test
     void testMenuItems() {
         // Creamos una instancia de la clase DAM
-        DAM dam = new DAM();
+        DAMA dam = new DAMA();
 
         // Obtenemos la barra de menú de la instancia de DAM
         JMenuBar menuBar = dam.getJMenuBar();

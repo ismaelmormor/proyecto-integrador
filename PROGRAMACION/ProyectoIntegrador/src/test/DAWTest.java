@@ -2,7 +2,7 @@ package test;
 
 import org.junit.jupiter.api.Test;
 
-import vistas.DAW;
+import vistas.alumno.DAWA;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,7 +15,7 @@ class DAWTest {
     @Test
     void testMenuItems() {
         // Creamos una instancia de la clase DAW
-        DAW daw = new DAW();
+        DAWA daw = new DAWA();
 
         // Obtenemos la barra de menú de la instancia de DAW
         JMenuBar menuBar = daw.getJMenuBar();

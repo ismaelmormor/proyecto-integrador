@@ -2,7 +2,7 @@ package test;
 
 import org.junit.jupiter.api.Test;
 
-import vistas.Animacion3D;
+import vistas.alumno.Animacion3DA;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,7 +15,7 @@ class Animacion3DTest {
     @Test
     void testMenuItems() {
         // Creamos una instancia de la clase Animacion3D
-        Animacion3D animacion3D = new Animacion3D();
+        Animacion3DA animacion3D = new Animacion3DA();
 
         // Obtenemos la barra de menú de la instancia de Animacion3D
         JMenuBar menuBar = animacion3D.getJMenuBar();

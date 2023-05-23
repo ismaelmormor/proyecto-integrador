@@ -13,11 +13,12 @@ import java.awt.TextField;
 import java.awt.Label;
 import java.awt.Font;
 import controlador.MenuListener;
+import controlador.modificarAlumno;
 
 import javax.swing.JButton;
 
 public class ModificacionEstudiante extends JFrame {
-	private String idAlumno;
+	private int idAlumno;
 	private JPanel contentPane;
 	private TextField nombreTxt, apellidosTxt, expedienteTxt, proyectoTxt;
 	private MenuListener menuListener = new MenuListener(this);	
@@ -26,7 +27,7 @@ public class ModificacionEstudiante extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ModificacionEstudiante(String id){
+	public ModificacionEstudiante(int id){
 		this.idAlumno=id;
 
 		
@@ -167,8 +168,23 @@ public class ModificacionEstudiante extends JFrame {
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(0, 191, 255));
 		btnNewButton.setBounds(367, 363, 143, 43);
+
+		modificarAlumno modificarBtn = new modificarAlumno(this, idAlumno);
+		btnNewButton.addActionListener(modificarBtn);
 		panel.add(btnNewButton);
 
+	}
+	public String getNombre() {
+		return nombreTxt.getText();
+	}
+	public String getApellidos() {
+		return apellidosTxt.getText();
+	}
+	public String getExpediente() {
+		return expedienteTxt.getText();
+	}
+	public String getIdProyecto() {
+		return proyectoTxt.getText();
 	}
 }
 

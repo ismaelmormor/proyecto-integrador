@@ -2,17 +2,13 @@ package controlador;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 
-import modelo.AccesoBD;
-import vistas.AltaProyecto;
 import vistas.ListaDeAlumnos;
 import vistas.ModificacionEstudiante;
 
 public class modAlumnoBtn implements ActionListener {
-    private String id;
+    private int id;
     private ListaDeAlumnos ventana;
-    private Connection con;
 
     public modAlumnoBtn(ListaDeAlumnos ventana) {
         this.ventana=ventana;
@@ -22,7 +18,7 @@ public class modAlumnoBtn implements ActionListener {
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         id = ventana.seleccionTabla();
-        if (id != null){
+        if (id != -1){
             ModificacionEstudiante ventanaNueva = new ModificacionEstudiante(id);
             ventana.dispose();
             ventanaNueva.setVisible(true);

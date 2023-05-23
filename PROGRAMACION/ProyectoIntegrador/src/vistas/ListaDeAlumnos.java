@@ -168,12 +168,7 @@ public class ListaDeAlumnos
 		filtroAlumnoListener filtroListener = new filtroAlumnoListener(this);
 		filtroBtn.addActionListener(filtroListener);
 		panel.add(filtroBtn);
-
-		JButton modButton = new JButton("Modificar");
-		modButton.setBounds(500, 600, 89, 23);
 		modAlumnoBtn btnModificar = new modAlumnoBtn(this);
-		modButton.addActionListener(btnModificar);
-		panel.add(modButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 143, 939, 340);
@@ -209,6 +204,11 @@ public class ListaDeAlumnos
 		table.setModel(model);
 		
 		scrollPane.setViewportView(table);
+		
+		JButton modButton = new JButton("Modificar");
+		modButton.setBounds(350, 532, 89, 23);
+		contentPane.add(modButton);
+		modButton.addActionListener(btnModificar);
 	}
 
 	public String getNombre(){
@@ -253,9 +253,9 @@ public class ListaDeAlumnos
 		table.setModel(model);
 	}
 
-	public String seleccionTabla(){
+	public int seleccionTabla(){
 		int selectedRow = table.getSelectedRow();
-		String id = null;
+		int id = -1;
 		if (selectedRow != -1) {
 		    // Obtener los datos de la fila seleccionada
 		    Object[] rowData = new Object[table.getColumnCount()];
@@ -265,7 +265,7 @@ public class ListaDeAlumnos
 		
 		    // Hacer algo con los datos de la fila seleccionada
 		    // Por ejemplo, imprimir los valores
-		    id = (String) rowData[1];
+		    id = (Integer) rowData[0];
 			return id;
 		}
 		return id;

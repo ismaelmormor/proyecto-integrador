@@ -5,26 +5,28 @@ import java.awt.event.*;
 import java.sql.*;
 
 import modelo.AccesoBD;
-import vistas.AltaAlumno;
+import vistas.ModificacionEstudiante;
 
-public class altaAlumnoButton implements ActionListener {
+public class modificarAlumno implements ActionListener {
     private String nombre;
     private String apellido;
     private String nExpendiente;
     private String idProyecto;
-    private AltaAlumno ventana;
+    private int idAlumno;
+    private ModificacionEstudiante ventana;
     private Connection con;
 
-    public altaAlumnoButton(AltaAlumno ventana) {
+    public modificarAlumno(ModificacionEstudiante ventana, int id) {
         this.ventana=ventana;
+        this.idAlumno=id;
     }
 
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         nombre = ventana.getNombre();
-        apellido = ventana.getApellido();
-        nExpendiente = ventana.getNExpediente();
+        apellido = ventana.getApellidos();
+        nExpendiente = ventana.getExpediente();
         idProyecto = ventana.getIdProyecto();
         // Conexión con BBDD
         AccesoBD access = new AccesoBD();
@@ -33,15 +35,15 @@ public class altaAlumnoButton implements ActionListener {
 		try {
 			// Preparamos la consulta a la base de datos
 			Statement statement = con.createStatement();
-			String query = "Insert into Alumno (Nombre, Apellidos, N_expediente, ID_Proyecto) values('"
-				+nombre+"','"+apellido+"','"+nExpendiente+"','"+idProyecto+"')";
+			String query = "UPDATE ALUMNO SET Nombre = '"
+            +nombre+"', Apellidos='"+apellido+"', N_Expediente="+nExpendiente+", ID_Proyecto="+idProyecto+" where ID_Alumno="+idAlumno;
             statement.executeUpdate(query);
             statement.close();
 			con.close();
 			showMessageDialog("Se han introducido los datos correctamente");
 		} catch (Exception e) {
-			System.out.println("Error con el botón de alta Alumno: "+e.getMessage());
-			showMessageDialog("Hubo un error al introducir los datos");
+			System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
+			showMessageDialog("Hubo un error al cambiar los datos");
 			// TODO: handle exception
 		}
     }

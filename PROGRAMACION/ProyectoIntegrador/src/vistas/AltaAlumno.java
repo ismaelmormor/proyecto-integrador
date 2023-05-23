@@ -18,7 +18,7 @@ public class AltaAlumno extends JFrame {
 	private MenuListener menuListener = new MenuListener(this);		
 	private TextField nombreTxt;
 	private TextField apellidoTxt;
-	private TextField nExpendienteTxt;
+	private TextField nExpedienteTxt;
 	private TextField idProyectoTxt;
 
 	public AltaAlumno() {
@@ -133,10 +133,10 @@ public class AltaAlumno extends JFrame {
 		label_1_1.setBounds(318, 83, 66, 29);
 		panel.add(label_1_1);
 		
-		nExpendienteTxt= new TextField();
-		nExpendienteTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
-		nExpendienteTxt.setBounds(434, 192, 153, 27);
-		panel.add(nExpendienteTxt);
+		nExpedienteTxt= new TextField();
+		nExpedienteTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nExpedienteTxt.setBounds(434, 192, 153, 27);
+		panel.add(nExpedienteTxt);
 		
 		Label label_1_1_1 = new Label("Apellidos");
 		label_1_1_1.setBounds(314, 136, 66, 29);
@@ -174,8 +174,8 @@ public class AltaAlumno extends JFrame {
 		return apellidoTxt.getText();
 	}
 
-	public String getNExpendiente() {
-		return nExpendienteTxt.getText();
+	public String getNExpediente() {
+		return nExpedienteTxt.getText();
 	}
 
 	public String getIdProyecto() {

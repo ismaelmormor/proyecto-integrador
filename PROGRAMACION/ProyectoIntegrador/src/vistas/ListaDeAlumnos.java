@@ -9,6 +9,7 @@ import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
 import controlador.MenuListener;
+import controlador.eliminarAlumno;
 import controlador.filtroAlumnoListener;
 import controlador.modAlumnoBtn;
 import modelo.AccesoBD;
@@ -205,11 +206,19 @@ public class ListaDeAlumnos
 		
 		scrollPane.setViewportView(table);
 		
+		// BOTONES EXTRA
+
 		modAlumnoBtn btnModificar = new modAlumnoBtn(this);
 		JButton modButton = new JButton("Modificar");
 		modButton.setBounds(350, 532, 89, 23);
 		contentPane.add(modButton);
 		modButton.addActionListener(btnModificar);
+
+		eliminarAlumno btnEliminar = new eliminarAlumno(this);
+		JButton delButton = new JButton("Eliminar");
+		delButton.setBounds(500, 532, 89, 23);
+		contentPane.add(delButton);
+		delButton.addActionListener(btnEliminar);
 	}
 
 	public String getNombre(){

@@ -27,7 +27,7 @@ public class filtroProyectoListener implements ActionListener {
         grupo = ventana.getGrupo();
 		year = ventana.getYear();
 		nota = ventana.getNota();
-		id_area = ventana.getNota();
+		id_area = ventana.getArea();
 
         Boolean primeraCond = true;
 		try {
@@ -83,10 +83,10 @@ public class filtroProyectoListener implements ActionListener {
             }
             if (!id_area.isEmpty()){
                 if(primeraCond){
-                    query += "ID_Area = "+id_area;
+                    query += "id_area = "+id_area;
                     primeraCond=false;
                 }else{
-                    query += " AND ID_Area = "+id_area;
+                    query += " AND id_area = "+id_area;
                 }
             }
             if (idProyecto.isEmpty() && nombre.isEmpty() && curso.isEmpty() && grupo.isEmpty() && year.isEmpty() && nota.isEmpty() && id_area.isEmpty()){

@@ -34,7 +34,7 @@ public class modificarProyecto implements ActionListener {
 		year = ventana.getYear();
 		link = ventana.getUrl();
 		nota = ventana.getNota();
-		id_area = ventana.getNota();
+		id_area = ventana.getArea();
         // Conexión con BBDD
         AccesoBD access = new AccesoBD();
         con = access.getConexion();
@@ -43,7 +43,7 @@ public class modificarProyecto implements ActionListener {
 			// Preparamos la consulta a la base de datos
 			Statement statement = con.createStatement();
 			String query = "UPDATE PROYECTO_INTEGRADOR SET Nombre = '"
-            +nombre+"', Curso='"+curso+"', Grupo='"+grupo+"', Año='"+year+"', url='"+link+"', Nota="+nota+", ID_Area="+id_area+" where ID_Proyecto="+idProyecto;
+            +nombre+"', Curso='"+curso+"', Grupo='"+grupo+"', Año='"+year+"', url='"+link+"', Nota="+nota+", id_area="+id_area+" where ID_Proyecto="+idProyecto;
             statement.executeUpdate(query);
             statement.close();
 			con.close();

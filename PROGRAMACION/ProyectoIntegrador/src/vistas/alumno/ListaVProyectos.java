@@ -283,5 +283,8 @@ public class ListaVProyectos extends JFrame {
 		public String getArea() {
 			return areaTxt.getText();
 		}
+		public Object getTable() {
+			return table;
+		}
 	}
 

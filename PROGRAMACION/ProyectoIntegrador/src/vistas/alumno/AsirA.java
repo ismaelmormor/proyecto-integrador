@@ -113,8 +113,12 @@ public class AsirA extends JFrame {
 			Statement statement = con.createStatement();
 			String query = "select * from AREAS where ID_AREA=3";
 			ResultSet result = statement.executeQuery(query);
-			nombre = result.getString("Nombre");
-			descripcion = result.getString("Descripcion");
+			if (result.next()) {
+				nombre = result.getString("Nombre");
+				descripcion = result.getString("Descripcion");
+			}
+			statement.close();
+			con.close();
 		} catch (Exception e) {
 			System.out.println("Hubo un error: "+e.getMessage());
 			// TODO: handle exception

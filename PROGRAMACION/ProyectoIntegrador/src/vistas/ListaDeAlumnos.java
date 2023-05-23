@@ -168,7 +168,7 @@ public class ListaDeAlumnos
 		filtroAlumnoListener filtroListener = new filtroAlumnoListener(this);
 		filtroBtn.addActionListener(filtroListener);
 		panel.add(filtroBtn);
-		modAlumnoBtn btnModificar = new modAlumnoBtn(this);
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 143, 939, 340);
@@ -205,6 +205,7 @@ public class ListaDeAlumnos
 		
 		scrollPane.setViewportView(table);
 		
+		modAlumnoBtn btnModificar = new modAlumnoBtn(this);
 		JButton modButton = new JButton("Modificar");
 		modButton.setBounds(350, 532, 89, 23);
 		contentPane.add(modButton);

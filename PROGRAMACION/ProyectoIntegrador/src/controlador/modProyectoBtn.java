@@ -2,22 +2,13 @@ package controlador;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 
-import modelo.AccesoBD;
-import vistas.AltaProyecto;
 import vistas.ListaProyectos;
+import vistas.ModificacionProyecto;
 
 public class modProyectoBtn implements ActionListener {
-    private String nombre;
-    private String curso;
-    private String grupo;
-    private String year;
-    private String link;
-    private String nota;
-    private String id_area;
+    private int id;
     private ListaProyectos ventana;
-    private Connection con;
 
     public modProyectoBtn(ListaProyectos ventana) {
         this.ventana=ventana;
@@ -27,28 +18,14 @@ public class modProyectoBtn implements ActionListener {
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         id = ventana.seleccionTabla();
-        // Conexión con BBDD
-        AccesoBD access = new AccesoBD();
-        con = access.getConexion();
-
-		try {
-			// Preparamos la consulta a la base de datos
-			Statement statement = con.createStatement();
-            
-            String query = "Insert into Proyecto_Integrador (Nombre, Curso, Grupo, Año, url, nota, id_area) values ('"+
-            nombre+"','"+curso+"','"+grupo+"','"+year+"','"+link+"',"+nota+","+ id_area +")";
-
-            statement.executeUpdate(query);
-            statement.close();
-			con.close();
-
-            showMessageDialog("Datos introducidos correctamente");
-
-		} catch (Exception e) {
-			System.out.println("Error en el botón altaProyecto"+e.getMessage());
-            showMessageDialog("Hubo un error, inténtelo más tarde");
-			// TODO: handle exception
-		}
+		if (id != -1){
+            ModificacionProyecto ventanaNueva = new ModificacionProyecto(id);
+            ventana.dispose();
+            ventanaNueva.setVisible(true);
+        }
+        else{
+            showMessageDialog("Selecciona una fila de la tabla");
+        }
     }
     private void showMessageDialog(String message) {
 		// Creamos el dialog

@@ -1,10 +1,10 @@
 package vistas;
 
 import java.sql.*;
-import java.util.Vector;
 import java.awt.*;
 
 import controlador.MenuListener;
+import controlador.modProyectoBtn;
 import modelo.AccesoBD;
 
 import javax.swing.*;
@@ -197,7 +197,7 @@ public class ListaProyectos extends JFrame {
 		table.setBackground(new Color(255, 255, 255));
 		table.setForeground(new Color(0, 128, 255));
 		DefaultTableModel model = new DefaultTableModel();
-		model.setColumnIdentifiers(new String[] {"ID_Proyecto", "Nombre", "Curso", "Grupo", "Año", "URL", "Nota", "ID_Area", ""});
+		model.setColumnIdentifiers(new String[] {"ID_Proyecto", "Nombre", "Curso", "Grupo", "Año", "URL", "Nota", "ID_Area"});
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
 		Connection con = acceso.getConexion();
@@ -207,27 +207,41 @@ public class ListaProyectos extends JFrame {
 
 			while (resultSet.next()) {
 				Object[] row = new Object[model.getColumnCount()];
-				for (int i = 1; i < row.length; i++) {
+				for (int i = 1; i <= row.length; i++) {
 					row[i-1] = resultSet.getObject(i);
 				}
 				model.addRow(row);
 			}			
 		} catch (Exception e) {
 			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
-			// TODO: handle exception
 		}
 		
 		table.setModel(model);
-
-		Vector<Object> v=new Vector<Object>();
-		v.add("Modificar");
-		v.add("Dar de baja");
-		JComboBox<Object> comboBox = new JComboBox<Object>(v);
-		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
 
-		
-		
+		modProyectoBtn btnModificar = new modProyectoBtn(this);
+		JButton modButton = new JButton("Modificar");
+		modButton.setBounds(350, 532, 89, 23);
+		contentPane.add(modButton);
+		modButton.addActionListener(btnModificar);
 	}
+		public int seleccionTabla(){
+			int selectedRow = table.getSelectedRow();
+			int id = -1;
+			if (selectedRow != -1) {
+				// Obtener los datos de la fila seleccionada
+				Object[] rowData = new Object[table.getColumnCount()];
+				for (int i = 0; i < table.getColumnCount(); i++) {
+					rowData[i] = table.getValueAt(selectedRow, i);
+				}
+			
+				// Hacer algo con los datos de la fila seleccionada
+				// Por ejemplo, imprimir los valores
+				id = (Integer) rowData[0];
+				return id;
+			}
+			return id;
+	
+		}
 }
 

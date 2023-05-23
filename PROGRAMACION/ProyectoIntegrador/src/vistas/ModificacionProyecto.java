@@ -2,31 +2,23 @@ package vistas;
 
 import java.awt.Image;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.Color;
-import javax.swing.ImageIcon;
-import java.awt.TextField;
-import java.awt.Label;
-import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
 import controlador.MenuListener;
 
 import javax.swing.JButton;
 
-public class ModificacionProyecto
-		extends JFrame {
-
+public class ModificacionProyecto extends JFrame {
+	private int idProyecto;
 	private JPanel contentPane;
 	private MenuListener menuListener = new MenuListener(this);	
 	
 	/**
 	 * 
 	 */
-	public ModificacionProyecto() {
+	public ModificacionProyecto(int id){
+		this.idProyecto=id;
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana
@@ -118,28 +110,33 @@ public class ModificacionProyecto
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		// Text fields y labels
+
+		Label label_1_1 = new Label("Nombre");
+		label_1_1.setBounds(116, 85, 66, 29);
+		panel.add(label_1_1);
+
 		TextField textField = new TextField();
 		textField.setFont(new Font("Dialog", Font.PLAIN, 20));
 		textField.setBounds(213, 87, 153, 27);
 		panel.add(textField);
-		
+
+		Label label_1_1_1 = new Label("Curso");
+		label_1_1_1.setBounds(133, 136, 49, 29);
+		panel.add(label_1_1_1);
+
 		TextField textField_1 = new TextField();
 		textField_1.setFont(new Font("Dialog", Font.PLAIN, 20));
 		textField_1.setBounds(213, 138, 153, 27);
 		panel.add(textField_1);
 		
-		Label label_1_1 = new Label("Nombre");
-		label_1_1.setBounds(116, 85, 66, 29);
-		panel.add(label_1_1);
 		
 		TextField textField_1_1 = new TextField();
 		textField_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
 		textField_1_1.setBounds(213, 190, 153, 27);
 		panel.add(textField_1_1);
 		
-		Label label_1_1_1 = new Label("Curso");
-		label_1_1_1.setBounds(133, 136, 49, 29);
-		panel.add(label_1_1_1);
+		
 		
 		Label label_1_1_1_1 = new Label("Grupo");
 		label_1_1_1_1.setBounds(122, 190, 60, 29);
@@ -187,6 +184,9 @@ public class ModificacionProyecto
 		Label label_1_1_1_1_1_1 = new Label("URL");
 		label_1_1_1_1_1_1.setBounds(132, 295, 35, 21);
 		panel.add(label_1_1_1_1_1_1);
+		
 	}
+
+
 }
 

@@ -16,14 +16,20 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
 
+/**
+ * Esta clase representa la ventana de la vista del alumno en el programa.
+ * Extiende la clase JFrame y muestra un menú con diferentes opciones.
+ * Proporciona funcionalidad para interactuar con el menú y mostrar la información correspondiente.
+ */
 public class VentanaVistaAlumno extends JFrame {
 
 	private JPanel contentPane;
 	private MenuListenerA menuListener = new MenuListenerA(this);	
 
 	/**
-	 * sea crea el frame
-	 */
+ 	* Constructor de la clase VentanaVistaAlumno.
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 	public VentanaVistaAlumno() {
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,7 +142,9 @@ public class VentanaVistaAlumno extends JFrame {
 }
 
 	
-
+    /**
+     * Hace visible la ventana del alumno.
+     */
     public void hacerVisible() {
 		setVisible(true);
 	}

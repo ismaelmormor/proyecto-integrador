@@ -4,18 +4,26 @@ import java.awt.*;
 import java.awt.event.*;
 
 import vistas.alumno.ListaVAlumnos;
-
+/**
+ * Clase para el filtro de la lista de alumnos en la vista para alumnos
+ */
 public class filtroVAlumnoListener implements ActionListener {
+    // Variables
     private String nombre;
     private String apellido;
     private String nExpendiente;
     private String idProyecto;
     private ListaVAlumnos ventana;
-
+    /**
+     * Método constructor
+     * @param ventana - la ventana desde donde se llama
+     */
     public filtroVAlumnoListener(ListaVAlumnos ventana) {
         this.ventana=ventana;
     }
-
+    /**
+     * Método que se llama al pulsar el botón
+     */
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
@@ -69,6 +77,10 @@ public class filtroVAlumnoListener implements ActionListener {
 			showMessageDialog("Hubo un error al introducir los datos");
 		}
     }
+    /**
+     * Método para la creación y muestra del dialog de las notificaciones
+     * @param message
+     */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		final Dialog dialog = new Dialog(ventana, "Mensaje");

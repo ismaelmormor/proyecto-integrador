@@ -11,21 +11,23 @@ import vistas.alumno.ListaVProyectos;
 
 import javax.swing.*;
 import java.awt.event.*;
-/*
- * Clase del listener que hace funcionar el menú de cada ventana
+/**
+ * Clase del listener que hace funcionar el menú de cada ventana vista alumno
  */
 public class MenuListenerA implements ActionListener{
     // Variables
     private JFrame ventana;
 
-    /* 
+    /**
      * Método constructor
      * @param ventana - JFrame de la ventana desde donde se acciona el Listener
      */
 	public MenuListenerA(JFrame ventana){
         this.ventana=ventana;
 	}
-
+    /**
+     * Método al pulsar el botón
+     */
     @Override
 	public void actionPerformed(ActionEvent ev) {
 		if (ev.getSource() instanceof JMenuItem) {

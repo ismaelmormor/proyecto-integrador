@@ -4,7 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 import vistas.alumno.ListaVProyectos;
-
+/**
+ * Clase para el filtro de la tabla de lista proyectos en la vista alumno
+ */
 public class filtroVProyectoListener implements ActionListener {
     private String nombre;
     private String curso;
@@ -14,11 +16,16 @@ public class filtroVProyectoListener implements ActionListener {
     private String id_area;
     private String idProyecto;
     private ListaVProyectos ventana;
-
+    /**
+     * Método constructor
+     * @param ventana - ventana desde donde se llama
+     */
     public filtroVProyectoListener(ListaVProyectos ventana) {
         this.ventana=ventana;
     }
-
+    /**
+     * Método que se acciona al pulsar el botón
+     */
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
@@ -100,6 +107,10 @@ public class filtroVProyectoListener implements ActionListener {
 			showMessageDialog("Hubo un error al introducir los datos");
 		}
     }
+    /**
+     * Método para la creación y muestra del dialog de las notificaciones
+     * @param message
+     */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		final Dialog dialog = new Dialog(ventana, "Mensaje");

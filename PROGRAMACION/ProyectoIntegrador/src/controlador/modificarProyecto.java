@@ -5,8 +5,7 @@ import java.awt.event.*;
 import java.sql.*;
 
 import modelo.AccesoBD;
-import vistas.ListaDeAlumnos;
-import vistas.ModificacionEstudiante;
+import vistas.ListaProyectos;
 import vistas.ModificacionProyecto;
 
 public class modificarProyecto implements ActionListener {
@@ -30,9 +29,12 @@ public class modificarProyecto implements ActionListener {
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         nombre = ventana.getNombre();
-        apellido = ventana.getApellidos();
-        nExpendiente = ventana.getExpediente();
-        idProyecto = ventana.getIdProyecto();
+        curso = ventana.getCurso();
+        grupo = ventana.getGrupo();
+		year = ventana.getYear();
+		link = ventana.getUrl();
+		nota = ventana.getNota();
+		id_area = ventana.getNota();
         // Conexión con BBDD
         AccesoBD access = new AccesoBD();
         con = access.getConexion();
@@ -40,21 +42,33 @@ public class modificarProyecto implements ActionListener {
 		try {
 			// Preparamos la consulta a la base de datos
 			Statement statement = con.createStatement();
-			String query = "UPDATE ALUMNO SET Nombre = '"
-            +nombre+"', Apellidos='"+apellido+"', N_Expediente="+nExpendiente+", ID_Proyecto="+idProyecto+" where ID_Alumno="+idAlumno;
+			String query = "UPDATE PROYECTO_INTEGRADOR SET Nombre = '"
+            +nombre+"', Curso='"+curso+"', Grupo='"+grupo+"', Año='"+year+"', url='"+link+"', Nota="+nota+", ID_Area="+id_area+" where ID_Proyecto="+idProyecto;
             statement.executeUpdate(query);
             statement.close();
 			con.close();
 			showMessageDialog("Se han introducido los datos correctamente");
             ventana.dispose();
-            ListaDeAlumnos ventanaNueva = new ListaDeAlumnos();
+            ListaProyectos ventanaNueva = new ListaProyectos();
             ventanaNueva.setVisible(true);
 
-		} catch (Exception e) {
-			System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
-			showMessageDialog("Hubo un error al cambiar los datos");
+		} catch (SQLException e) {
+            if (e.getErrorCode() == 1452) {
+                showMessageDialog("ID_Area tiene que existir");
+			}
+			else if (e.getErrorCode() == 1406) {
+				showMessageDialog("Acuérdate del límite de caracteres");
+            }else if (e.getErrorCode() == 1366) {
+				showMessageDialog("Error en tipo de carácter");
+			} else {
+                System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
+			    showMessageDialog("Hubo un error al cambiar los datos");
+            }
+			
 			// TODO: handle exception
-		}
+		} catch (Exception e){
+            System.out.println("Ocurrió un error inesperado");
+        }
     }
     private void showMessageDialog(String message) {
 		// Creamos el dialog

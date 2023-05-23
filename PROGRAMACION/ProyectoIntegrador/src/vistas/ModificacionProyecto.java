@@ -11,6 +11,7 @@ import javax.swing.JButton;
 
 public class ModificacionProyecto extends JFrame {
 	private int idProyecto;
+	private TextField nombreTxt, cursoTxt, grupoTxt, yearTxt, urlTxt, notaTxt, areaTxt;
 	private JPanel contentPane;
 	private MenuListener menuListener = new MenuListener(this);	
 	
@@ -105,6 +106,7 @@ public class ModificacionProyecto extends JFrame {
 
 		Juegos.addActionListener(menuListener);
 		
+		// Creamos el content pane
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 86, 939, 524);
 		contentPane.add(panel);
@@ -112,67 +114,68 @@ public class ModificacionProyecto extends JFrame {
 		
 		// Text fields y labels
 
-		Label label_1_1 = new Label("Nombre");
-		label_1_1.setBounds(116, 85, 66, 29);
-		panel.add(label_1_1);
+		Label labelNombre = new Label("Nombre");
+		labelNombre.setBounds(116, 85, 66, 29);
+		panel.add(labelNombre);
 
-		TextField textField = new TextField();
-		textField.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField.setBounds(213, 87, 153, 27);
-		panel.add(textField);
+		nombreTxt = new TextField();
+		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nombreTxt.setBounds(213, 87, 153, 27);
+		panel.add(nombreTxt);
 
-		Label label_1_1_1 = new Label("Curso");
-		label_1_1_1.setBounds(133, 136, 49, 29);
-		panel.add(label_1_1_1);
+		Label labelCurso = new Label("Curso");
+		labelCurso.setBounds(133, 136, 49, 29);
+		panel.add(labelCurso);
 
-		TextField textField_1 = new TextField();
-		textField_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1.setBounds(213, 138, 153, 27);
-		panel.add(textField_1);
+		cursoTxt = new TextField();
+		cursoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		cursoTxt.setBounds(213, 138, 153, 27);
+		panel.add(cursoTxt);
 		
+		Label labelGrupo = new Label("Grupo");
+		labelGrupo.setBounds(122, 190, 60, 29);
+		panel.add(labelGrupo);
+
+		grupoTxt = new TextField();
+		grupoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		grupoTxt.setBounds(213, 190, 153, 27);
+		panel.add(grupoTxt);
 		
-		TextField textField_1_1 = new TextField();
-		textField_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1.setBounds(213, 190, 153, 27);
-		panel.add(textField_1_1);
+		Label labelYear = new Label("Año");
+		labelYear.setBounds(133, 249, 49, 21);
+		panel.add(labelYear);
 		
+		yearTxt = new TextField();
+		yearTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		yearTxt.setBounds(213, 243, 153, 27);
+		panel.add(yearTxt);
 		
+		Label labelUrl = new Label("URL");
+		labelUrl.setBounds(132, 295, 35, 21);
+		panel.add(labelUrl);
+
+		urlTxt = new TextField();
+		urlTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		urlTxt.setBounds(213, 289, 153, 27);
+		panel.add(urlTxt);
 		
-		Label label_1_1_1_1 = new Label("Grupo");
-		label_1_1_1_1.setBounds(122, 190, 60, 29);
-		panel.add(label_1_1_1_1);
+		Label labelNota = new Label("Nota");
+		labelNota.setBounds(492, 85, 43, 29);
+		panel.add(labelNota);
 		
-		TextField textField_1_1_1 = new TextField();
-		textField_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1.setBounds(213, 243, 153, 27);
-		panel.add(textField_1_1_1);
+		notaTxt = new TextField();
+		notaTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		notaTxt.setBounds(560, 87, 153, 27);
+		panel.add(notaTxt);
 		
-		TextField textField_1_1_1_1 = new TextField();
-		textField_1_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1_1.setBounds(213, 289, 153, 27);
-		panel.add(textField_1_1_1_1);
+		Label labelArea = new Label("ID_Area");
+		labelArea.setBounds(492, 136, 66, 29);
+		panel.add(labelArea);
 		
-		Label label_1_1_1_1_1 = new Label("Año");
-		label_1_1_1_1_1.setBounds(133, 249, 49, 21);
-		panel.add(label_1_1_1_1_1);
-		
-		Label label_1_1_2 = new Label("Nota");
-		label_1_1_2.setBounds(492, 85, 43, 29);
-		panel.add(label_1_1_2);
-		
-		TextField textField_1_1_1_1_1 = new TextField();
-		textField_1_1_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1_1_1.setBounds(560, 87, 153, 27);
-		panel.add(textField_1_1_1_1_1);
-		
-		Label label_1_1_2_1 = new Label("ID_Area");
-		label_1_1_2_1.setBounds(492, 136, 66, 29);
-		panel.add(label_1_1_2_1);
-		
-		TextField textField_1_1_1_1_1_1 = new TextField();
-		textField_1_1_1_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1_1_1_1.setBounds(560, 138, 153, 27);
-		panel.add(textField_1_1_1_1_1_1);
+		areaTxt = new TextField();
+		areaTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		areaTxt.setBounds(560, 138, 153, 27);
+		panel.add(areaTxt);
 		
 		JButton btnNewButton = new JButton("Cambiar");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -180,13 +183,30 @@ public class ModificacionProyecto extends JFrame {
 		btnNewButton.setBackground(new Color(0, 191, 255));
 		btnNewButton.setBounds(541, 227, 143, 43);
 		panel.add(btnNewButton);
-		
-		Label label_1_1_1_1_1_1 = new Label("URL");
-		label_1_1_1_1_1_1.setBounds(132, 295, 35, 21);
-		panel.add(label_1_1_1_1_1_1);
-		
+			
 	}
 
+	public String getNombre() {
+		return nombreTxt.getText();
+	}
+	public String getCurso() {
+		return cursoTxt.getText();
+	}
+	public String getGrupo() {
+		return grupoTxt.getText();
+	}
+	public String getYear() {
+		return yearTxt.getText();
+	}
+	public String getUrl() {
+		return urlTxt.getText();
+	}
+	public String getNota() {
+		return notaTxt.getText();
+	}
+	public String getArea() {
+		return areaTxt.getText();
+	}
 
 }
 

@@ -42,6 +42,10 @@ public class altaAlumnoButton implements ActionListener {
 		} catch (SQLException e) {
 			if (e.getErrorCode() == 1452) {
 				showMessageDialog("ID_Proyecto tiene que existir");
+			}else if (e.getErrorCode() == 1406) {
+				showMessageDialog("Acuérdate del límite de caracteres");
+            }else if (e.getErrorCode() == 1366) {
+				showMessageDialog("Error en tipo de carácter");
 			}
 			else{
 				System.out.println("Error con el botón de alta Alumno: "+e.getMessage());

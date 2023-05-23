@@ -5,20 +5,31 @@ import java.awt.event.*;
 
 import vistas.admin.ListaDeAlumnos;
 import vistas.admin.ModificacionEstudiante;
-
+/**
+ * Clase intermedia entre la llamada para modificar desde la tabla, 
+ * que une con la ventana de modificar
+ */
 public class modAlumnoBtn implements ActionListener {
+	// Variables
     private int id;
     private ListaDeAlumnos ventana;
-
+	/**
+	 * Método constructor
+	 * @param ventana - la ventana desde la que se llama
+	 */
     public modAlumnoBtn(ListaDeAlumnos ventana) {
         this.ventana=ventana;
     }
-
+	/**
+	 * Método cuando se pulsa
+	 */
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         id = ventana.seleccionTabla();
+		// Si la id que recopilamos no es -1 significa que hemos cogido la seleccionada
         if (id != -1){
+			// Mnadamos al usuario a la ventana modificar
             ModificacionEstudiante ventanaNueva = new ModificacionEstudiante(id);
             ventana.dispose();
             ventanaNueva.setVisible(true);
@@ -27,6 +38,10 @@ public class modAlumnoBtn implements ActionListener {
             showMessageDialog("Selecciona una fila de la tabla");
         }
     }
+	/**
+	 * Método para crear y mostrar el dialog de la notificación
+	 * @param message - el mensaje que queramos que salga
+	 */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		Dialog dialog = new Dialog(ventana, "Mensaje");

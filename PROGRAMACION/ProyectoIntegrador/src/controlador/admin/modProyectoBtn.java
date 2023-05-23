@@ -5,19 +5,29 @@ import java.awt.event.*;
 
 import vistas.admin.ListaProyectos;
 import vistas.admin.ModificacionProyecto;
-
+/**
+ * Clase intermedia entre la llamada para modificar desde la tabla, 
+ * que une con la ventana de modificar
+ */
 public class modProyectoBtn implements ActionListener {
+	// Variables
     private int id;
     private ListaProyectos ventana;
-
+	/**
+	 * Método constructor
+	 * @param ventana - ventana desde donde se llama
+	 */
     public modProyectoBtn(ListaProyectos ventana) {
         this.ventana=ventana;
     }
-
+	/**
+	 * Método cuando se pulsa el botón
+	 */
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
         id = ventana.seleccionTabla();
+		// Si la id que recopilamos no es -1 significa que hemos cogido la seleccionada
 		if (id != -1){
             ModificacionProyecto ventanaNueva = new ModificacionProyecto(id);
             ventana.dispose();
@@ -27,6 +37,10 @@ public class modProyectoBtn implements ActionListener {
             showMessageDialog("Selecciona una fila de la tabla");
         }
     }
+	/**
+	 * Método para crear y mostrar el dialog de la notificación
+	 * @param message - el mensaje que queramos que salga
+	 */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		Dialog dialog = new Dialog(ventana, "Mensaje");

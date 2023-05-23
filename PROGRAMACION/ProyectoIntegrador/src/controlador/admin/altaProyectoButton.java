@@ -3,11 +3,14 @@ package controlador.admin;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-
 import modelo.AccesoBD;
 import vistas.admin.AltaProyecto;
 
+/**
+ * Clase del botón para dar alta un proyecto nuevo
+ */
 public class altaProyectoButton implements ActionListener {
+	// Variables
     private String nombre;
     private String curso;
     private String grupo;
@@ -17,11 +20,17 @@ public class altaProyectoButton implements ActionListener {
     private String id_area;
     private AltaProyecto ventana;
     private Connection con;
-
+	/**
+	 * Método constructor
+	 * @param ventana - la ventana desde la que se llama
+	 */
     public altaProyectoButton(AltaProyecto ventana) {
         this.ventana=ventana;
     }
-
+	/** 
+	 * Método cuando se pulsa el botón
+	 * @param ev
+	 */
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
@@ -49,11 +58,16 @@ public class altaProyectoButton implements ActionListener {
             showMessageDialog("Datos introducidos correctamente");
 
 		} catch (SQLException e) {
+			// Cuando da error de las foreign keys
 			if (e.getErrorCode() == 1452) {
-				showMessageDialog("ID_Area tiene que existir");
-			}else if (e.getErrorCode() == 1406) {
+				showMessageDialog("ID_Proyecto tiene que existir");
+			}
+			// Cuando se intentan introducir valores más largos de lo permitido
+			else if (e.getErrorCode() == 1406) {
 				showMessageDialog("Acuérdate del límite de caracteres");
-            }else if (e.getErrorCode() == 1366) {
+            }
+			// Cuando se mete por ejemplo un string en un int
+			else if (e.getErrorCode() == 1366) {
 				showMessageDialog("Error en tipo de carácter");
 			}
 			else{

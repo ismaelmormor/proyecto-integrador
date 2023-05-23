@@ -4,8 +4,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 import vistas.admin.ListaProyectos;
-
+/**
+ * Clase para el filtro de la lista de proyectos
+ */
 public class filtroProyectoListener implements ActionListener {
+    // Variables
     private String nombre;
     private String curso;
     private String grupo;
@@ -14,7 +17,10 @@ public class filtroProyectoListener implements ActionListener {
     private String id_area;
     private String idProyecto;
     private ListaProyectos ventana;
-
+    /**
+     * Método constructor
+     * @param ventana - la ventana desde donde se llama
+     */
     public filtroProyectoListener(ListaProyectos ventana) {
         this.ventana=ventana;
     }
@@ -29,11 +35,12 @@ public class filtroProyectoListener implements ActionListener {
 		year = ventana.getYear();
 		nota = ventana.getNota();
 		id_area = ventana.getArea();
-
+        // Boolean para saber si ya se puso una sentencia, y así aplicar el AND
         Boolean primeraCond = true;
 		try {
 			// Preparamos la consulta a la base de datos
             String query = "SELECT * FROM PROYECTO_INTEGRADOR Where ";
+            // Comprobamos cuales fueron los filtros usados
             if (!nombre.isEmpty()){
                 if(primeraCond){
                     query += "Nombre = '"+nombre+"'";
@@ -93,6 +100,7 @@ public class filtroProyectoListener implements ActionListener {
             if (idProyecto.isEmpty() && nombre.isEmpty() && curso.isEmpty() && grupo.isEmpty() && year.isEmpty() && nota.isEmpty() && id_area.isEmpty()){
                 query="Select * from PROYECTO_INTEGRADOR";
             }
+            // Le mandamos a la tabla el filtro
             ventana.actualizarTabla(query);
 			
 		} catch (Exception e) {
@@ -100,6 +108,10 @@ public class filtroProyectoListener implements ActionListener {
 			showMessageDialog("Hubo un error al introducir los datos");
 		}
     }
+    /**
+     * Métodod para crear y mostrar el dialog de la notificacion
+     * @param message
+     */
     private void showMessageDialog(String message) {
 		// Creamos el dialog
 		final Dialog dialog = new Dialog(ventana, "Mensaje");

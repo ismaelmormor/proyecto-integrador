@@ -15,14 +15,18 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
-
+/**
+ * Constructor de la clase Dam.
+ * Crea el frame de la ventana y configura sus propiedades.
+ */
 public class DAM extends JFrame {
 
 	private JPanel contentPane;
 	private MenuListener menuListener = new MenuListener(this);	
 
 	/**
-	 * Creamos el frame
+	 * Constructor de la clase Dam.
+	 * Crea el frame de la ventana y configura sus propiedades.
 	 */
 	public DAM() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

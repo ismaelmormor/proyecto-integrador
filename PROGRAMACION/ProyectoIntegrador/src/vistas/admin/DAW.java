@@ -16,13 +16,18 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
 
+/**
+ * Constructor de la clase Daw.
+ * Crea el frame de la ventana y configura sus propiedades.
+ */
 public class DAW extends JFrame {
 
 	private JPanel contentPane;
-	private MenuListener menuListener = new MenuListener(this);	
+	private MenuListener menuListener = new MenuListener(this);
 
 	/**
-	 * Creamos el frame
+	 * Constructor de la clase Daw.
+	 * Crea el frame de la ventana y configura sus propiedades.
 	 */
 	public DAW() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,17 +43,17 @@ public class DAW extends JFrame {
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		JMenuItem item = new JMenuItem(resizedIcon);
 		item.setRolloverEnabled(false);
-		
+
 		item.setIcon(resizedIcon);
 		menuBar.add(item);
 
-		//PI
+		// PI
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
-		
+
 		Consulta.addActionListener(menuListener);
 
 		JMenuItem Alta = new JMenuItem("Alta");
@@ -56,49 +61,49 @@ public class DAW extends JFrame {
 
 		Alta.addActionListener(menuListener);
 
-		//Alumnos
+		// Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
-		
+
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
 		Alumnos.add(Lista);
 
 		Lista.addActionListener(menuListener);
-		
+
 		JMenuItem Añadir = new JMenuItem("Añadir");
 		Alumnos.add(Añadir);
-		
+
 		Añadir.addActionListener(menuListener);
 
-		//Area
+		// Area
 		JMenu Area = new JMenu("Área");
 		menuBar.add(Area);
-		
+
 		JMenuItem Daw = new JMenuItem("DAW");
 		Area.add(Daw);
 
 		Daw.addActionListener(menuListener);
-		
+
 		JMenuItem Dam = new JMenuItem("DAM");
 		Area.add(Dam);
-		
+
 		Dam.addActionListener(menuListener);
 
 		JMenuItem Asir = new JMenuItem("ASIR");
 		Area.add(Asir);
 
 		Asir.addActionListener(menuListener);
-		
+
 		JMenuItem Animacion = new JMenuItem("ANIMACIONES 3D");
 		Area.add(Animacion);
 
 		Animacion.addActionListener(menuListener);
-		
+
 		JMenuItem Juegos = new JMenuItem("VIDEOJUEGOS");
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
-		
+
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(3, 8, 62));
 		contentPane.setToolTipText("");
@@ -107,21 +112,22 @@ public class DAW extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		  // JLabel centrado con el texto especificado
-		  JLabel texto = new JLabel("<html>Codigo de area: 001<br></br><br></br>Descripcion:<br></br>El Desarrollo de Aplicaciones Web es aquel que permite crear herramientas a las que los usuarios pueden acceder a través de Internet. En la web podremos obtener información o interactuar con elementos que nos permitan la comunicación entre nosotros, los usuarios y la web</html>");
-		  texto.setFont(new Font("Arial", Font.PLAIN, 20));
-		  texto.setHorizontalAlignment(JLabel.CENTER);
-		  texto.setForeground(Color.white);
-		  texto.setBounds(163, 228, 650, 250);
-		  contentPane.add(texto);
+		// JLabel centrado con el texto especificado
+		JLabel texto = new JLabel(
+				"<html>Codigo de area: 001<br></br><br></br>Descripcion:<br></br>El Desarrollo de Aplicaciones Web es aquel que permite crear herramientas a las que los usuarios pueden acceder a través de Internet. En la web podremos obtener información o interactuar con elementos que nos permitan la comunicación entre nosotros, los usuarios y la web</html>");
+		texto.setFont(new Font("Arial", Font.PLAIN, 20));
+		texto.setHorizontalAlignment(JLabel.CENTER);
+		texto.setForeground(Color.white);
+		texto.setBounds(163, 228, 650, 250);
+		contentPane.add(texto);
 
-		  //label dam
-		  JLabel labelDAW = new JLabel("DAW");
-		  labelDAW.setFont(new Font("Arial", Font.BOLD, 35));
-		  labelDAW.setHorizontalAlignment(JLabel.CENTER);
-	      labelDAW.setForeground(Color.WHITE);
-		  labelDAW.setBounds(138, 111, 650, 30);
-		  contentPane.add(labelDAW);
+		// label dam
+		JLabel labelDAW = new JLabel("DAW");
+		labelDAW.setFont(new Font("Arial", Font.BOLD, 35));
+		labelDAW.setHorizontalAlignment(JLabel.CENTER);
+		labelDAW.setForeground(Color.WHITE);
+		labelDAW.setBounds(138, 111, 650, 30);
+		contentPane.add(labelDAW);
 	}
 
 }

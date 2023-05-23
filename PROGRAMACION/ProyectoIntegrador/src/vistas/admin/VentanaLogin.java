@@ -6,12 +6,19 @@ import javax.swing.JFrame;
 import controlador.loginButton;
 
 import java.awt.*;
-
+/**
+ * La clase VentanaLogin representa la ventana de inicio de sesión.
+ * Permite al usuario ingresar su nombre de usuario y contraseña para acceder al sistema.
+ */
 public class VentanaLogin extends JFrame {
 
 	public JTextField textField;
 	public JPasswordField passwordField;
 	
+	/**
+	 * Crea una instancia de la clase VentanaLogin.
+	 * Configura la apariencia y los componentes de la ventana de inicio de sesión.
+	 */
 	public VentanaLogin() {
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
@@ -65,14 +72,29 @@ public class VentanaLogin extends JFrame {
 		setLocationRelativeTo(null);
 	}
 
+	/**
+	 * Obtiene el nombre de usuario ingresado en el campo de texto.
+	 * 
+	 * @return el nombre de usuario ingresado.
+	 */
 	public String getUser(){
 		String str1=textField.getText();
 		return str1;
 	}
+
+	/**
+	 * Obtiene la contraseña ingresada en el campo de texto.
+	 * 
+	 * @return la contraseña ingresada.
+	 */
 	public String getPassword(){
 		String str1=new String(passwordField.getPassword());
 		return str1;
 	}
+	
+	/**
+	 * Hace visible la ventana de inicio de sesión.
+	 */
     public void hacerVisible() {
 		setVisible(true);
 	}

@@ -10,9 +10,9 @@ import controlador.alumno.MenuListenerA;
 import modelo.AccesoBD;
 
 /**
- 	* Constructor de la clase DamA.
-    * Crea el frame de la ventana y configura sus propiedades.
- 	*/
+ * Constructor de la clase DamA.
+ * Crea el frame de la ventana y configura sus propiedades.
+ */
 public class DAMA extends JFrame {
 
 	private JPanel contentPane;
@@ -21,9 +21,9 @@ public class DAMA extends JFrame {
 	private MenuListenerA menuListener = new MenuListenerA(this);
 
 	/**
- 	* Constructor de la clase DamA.
-    * Crea el frame de la ventana y configura sus propiedades.
- 	*/
+	 * Constructor de la clase DamA.
+	 * Crea el frame de la ventana y configura sus propiedades.
+	 */
 	public DAMA() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
@@ -38,57 +38,57 @@ public class DAMA extends JFrame {
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		JMenuItem item = new JMenuItem(resizedIcon);
 		item.setRolloverEnabled(false);
-		
+
 		item.setIcon(resizedIcon);
 		menuBar.add(item);
 
-		//PI
+		// PI
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
-		
+
 		Consulta.addActionListener(menuListener);
 
-		//Alumnos
+		// Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
-		
+
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
 		Alumnos.add(Lista);
 
 		Lista.addActionListener(menuListener);
 
-		//Area
+		// Area
 		JMenu Area = new JMenu("Área");
 		menuBar.add(Area);
-		
+
 		JMenuItem Daw = new JMenuItem("DAW");
 		Area.add(Daw);
 
 		Daw.addActionListener(menuListener);
-		
+
 		JMenuItem Dam = new JMenuItem("DAM");
 		Area.add(Dam);
-		
+
 		Dam.addActionListener(menuListener);
 
 		JMenuItem Asir = new JMenuItem("ASIR");
 		Area.add(Asir);
 
 		Asir.addActionListener(menuListener);
-		
+
 		JMenuItem Animacion = new JMenuItem("ANIMACIONES 3D");
 		Area.add(Animacion);
 
 		Animacion.addActionListener(menuListener);
-		
+
 		JMenuItem Juegos = new JMenuItem("VIDEOJUEGOS");
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
-		//Login
+		// Login
 		JMenu Login = new JMenu("Login");
 		menuBar.add(Login);
 
@@ -96,7 +96,7 @@ public class DAMA extends JFrame {
 		Login.add(admin);
 
 		admin.addActionListener(menuListener);
-		
+
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(3, 8, 62));
 		contentPane.setToolTipText("");
@@ -105,7 +105,7 @@ public class DAMA extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-        AccesoBD access = new AccesoBD();
+		AccesoBD access = new AccesoBD();
 		con = access.getConexion();
 
 		try {
@@ -120,25 +120,26 @@ public class DAMA extends JFrame {
 			statement.close();
 			con.close();
 		} catch (Exception e) {
-			System.out.println("Hubo un error: "+e.getMessage());
+			System.out.println("Hubo un error: " + e.getMessage());
 			// TODO: handle exception
 		}
 
-		 // JLabel centrado con el texto especificado
-		 JLabel texto = new JLabel("<html>Codigo de area: 002<br></br><br></br>Descripcion:<br></br>"+descripcion+"</html>");
-		 texto.setFont(new Font("Arial", Font.PLAIN, 20));
-		 texto.setHorizontalAlignment(JLabel.CENTER);
-		 texto.setForeground(Color.white);
-		 texto.setBounds(163, 228, 650, 250);
-		 contentPane.add(texto);
+		// JLabel centrado con el texto especificado
+		JLabel texto = new JLabel(
+				"<html>Codigo de area: 002<br></br><br></br>Descripcion:<br></br>" + descripcion + "</html>");
+		texto.setFont(new Font("Arial", Font.PLAIN, 20));
+		texto.setHorizontalAlignment(JLabel.CENTER);
+		texto.setForeground(Color.white);
+		texto.setBounds(163, 228, 650, 250);
+		contentPane.add(texto);
 
-		 //label ANIMACION
-		 JLabel label3D = new JLabel(nombre);
-		 label3D.setFont(new Font("Arial", Font.BOLD, 35));
-		 label3D.setHorizontalAlignment(JLabel.CENTER);
-	     label3D.setForeground(Color.WHITE);
-		 label3D.setBounds(138, 111, 650, 30);
-		 contentPane.add(label3D);
+		// label ANIMACION
+		JLabel label3D = new JLabel(nombre);
+		label3D.setFont(new Font("Arial", Font.BOLD, 35));
+		label3D.setHorizontalAlignment(JLabel.CENTER);
+		label3D.setForeground(Color.WHITE);
+		label3D.setBounds(138, 111, 650, 30);
+		contentPane.add(label3D);
 	}
 
 }

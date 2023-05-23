@@ -1,4 +1,4 @@
-package vistas;
+package vistas.admin;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controlador.MenuListener;
+import controlador.admin.MenuListener;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;

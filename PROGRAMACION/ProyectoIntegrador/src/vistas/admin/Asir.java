@@ -1,10 +1,10 @@
-package vistas;
+package vistas.admin;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import controlador.MenuListener;
+import controlador.admin.MenuListener;
 
 
 public class Asir extends JFrame {

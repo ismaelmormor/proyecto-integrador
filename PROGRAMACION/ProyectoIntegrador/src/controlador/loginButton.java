@@ -5,8 +5,8 @@ import java.awt.event.*;
 import java.sql.*;
 
 import modelo.AccesoBD;
-import vistas.VentanaLogin;
-import vistas.VentanaPrincipal;
+import vistas.admin.VentanaLogin;
+import vistas.admin.VentanaPrincipal;
 
 public class loginButton implements ActionListener {
     private String usr;
@@ -56,7 +56,6 @@ public class loginButton implements ActionListener {
 		} catch (Exception e) {
 			System.out.println("Error en el botón login");
 			showMessageDialog("Hubo un error en la conexión con la base de datos");
-			// TODO: handle exception
 		}
     }
     private void showMessageDialog(String message) {

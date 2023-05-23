@@ -3,8 +3,8 @@ package vistas.alumno;
 import java.sql.*;
 import java.awt.*;
 
-import controlador.MenuListener;
-import controlador.filtroVProyectoListener;
+import controlador.alumno.MenuListenerA;
+import controlador.alumno.filtroVProyectoListener;
 import modelo.AccesoBD;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ public class ListaVProyectos extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel model = new DefaultTableModel();
-	private MenuListener menuListener = new MenuListener(this);	
+	private MenuListenerA menuListener = new MenuListenerA(this);
 
 
 	
@@ -57,36 +57,23 @@ public class ListaVProyectos extends JFrame {
 		//PI
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
-		PI.setForeground(new Color(255, 255, 255));
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
 		
 		Consulta.addActionListener(menuListener);
 
-		JMenuItem Alta = new JMenuItem("Alta");
-		PI.add(Alta);
-
-		Alta.addActionListener(menuListener);
-
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
-		Alumnos.setForeground(new Color(255, 255, 255));
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
 		Alumnos.add(Lista);
 
 		Lista.addActionListener(menuListener);
-		
-		JMenuItem Añadir = new JMenuItem("Añadir");
-		Alumnos.add(Añadir);
-		
-		Añadir.addActionListener(menuListener);
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(new Color(255, 255, 255));
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -113,6 +100,14 @@ public class ListaVProyectos extends JFrame {
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
+		//Login
+		JMenu Login = new JMenu("Lógin");
+		menuBar.add(Login);
+
+		JMenuItem admin = new JMenuItem("Admin");
+		Login.add(admin);
+
+		admin.addActionListener(menuListener);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 20, 939, 114);
@@ -243,7 +238,6 @@ public class ListaVProyectos extends JFrame {
 			}			
 		} catch (Exception e) {
 			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
-			// TODO: handle exception
 		}
 		
 		table.setModel(model);

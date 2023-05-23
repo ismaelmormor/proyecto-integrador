@@ -1,12 +1,12 @@
-package vistas;
+package vistas.admin;
 
 import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import controlador.MenuListener;
-import controlador.altaProyectoButton;
+import controlador.admin.MenuListener;
+import controlador.admin.altaProyectoButton;
 
 public class AltaProyecto  extends JFrame {
 

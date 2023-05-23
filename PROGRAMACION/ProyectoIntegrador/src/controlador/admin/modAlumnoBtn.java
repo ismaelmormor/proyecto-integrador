@@ -1,10 +1,10 @@
-package controlador;
+package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
 
-import vistas.ListaDeAlumnos;
-import vistas.ModificacionEstudiante;
+import vistas.admin.ListaDeAlumnos;
+import vistas.admin.ModificacionEstudiante;
 
 public class modAlumnoBtn implements ActionListener {
     private int id;

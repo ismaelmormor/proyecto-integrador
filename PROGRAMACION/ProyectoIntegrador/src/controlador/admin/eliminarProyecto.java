@@ -1,11 +1,11 @@
-package controlador;
+package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
 import modelo.AccesoBD;
-import vistas.ListaProyectos;
+import vistas.admin.ListaProyectos;
 
 public class eliminarProyecto implements ActionListener {
     private int id;

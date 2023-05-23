@@ -1,4 +1,4 @@
-package vistas;
+package vistas.admin;
 
 import java.awt.Image;
 import javax.swing.JFrame;
@@ -12,8 +12,9 @@ import javax.swing.ImageIcon;
 import java.awt.TextField;
 import java.awt.Label;
 import java.awt.Font;
-import controlador.MenuListener;
-import controlador.modificarAlumno;
+
+import controlador.admin.MenuListener;
+import controlador.admin.modificarAlumno;
 
 import javax.swing.JButton;
 

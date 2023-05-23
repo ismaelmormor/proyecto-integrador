@@ -1,4 +1,4 @@
-package vistas;
+package vistas.admin;
 
 import java.awt.*;
 
@@ -8,10 +8,10 @@ import javax.swing.border.EmptyBorder;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
-import controlador.MenuListener;
-import controlador.eliminarAlumno;
-import controlador.filtroAlumnoListener;
-import controlador.modAlumnoBtn;
+import controlador.admin.MenuListener;
+import controlador.admin.eliminarAlumno;
+import controlador.admin.filtroAlumnoListener;
+import controlador.admin.modAlumnoBtn;
 import modelo.AccesoBD;
 
 
@@ -257,7 +257,6 @@ public class ListaDeAlumnos
 			}			
 		} catch (Exception e) {
 			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
-			// TODO: handle exception
 		}
 		
 		table.setModel(model);

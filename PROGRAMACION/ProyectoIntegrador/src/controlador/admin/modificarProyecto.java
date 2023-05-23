@@ -1,13 +1,14 @@
-package controlador;
+package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
 import modelo.AccesoBD;
-import vistas.AltaProyecto;
+import vistas.admin.ListaProyectos;
+import vistas.admin.ModificacionProyecto;
 
-public class altaProyectoButton implements ActionListener {
+public class modificarProyecto implements ActionListener {
     private String nombre;
     private String curso;
     private String grupo;
@@ -15,11 +16,13 @@ public class altaProyectoButton implements ActionListener {
     private String link;
     private String nota;
     private String id_area;
-    private AltaProyecto ventana;
+    private ModificacionProyecto ventana;
+    private int idProyecto;
     private Connection con;
 
-    public altaProyectoButton(AltaProyecto ventana) {
+    public modificarProyecto(ModificacionProyecto ventana, int id) {
         this.ventana=ventana;
+        this.idProyecto=id;
     }
 
     @Override
@@ -28,9 +31,10 @@ public class altaProyectoButton implements ActionListener {
         nombre = ventana.getNombre();
         curso = ventana.getCurso();
         grupo = ventana.getGrupo();
-        year = ventana.getYear();
-        link = ventana.getUrl();
-        nota = ventana.getNota();
+		year = ventana.getYear();
+		link = ventana.getUrl();
+		nota = ventana.getNota();
+		id_area = ventana.getArea();
         // Conexión con BBDD
         AccesoBD access = new AccesoBD();
         con = access.getConexion();
@@ -38,36 +42,35 @@ public class altaProyectoButton implements ActionListener {
 		try {
 			// Preparamos la consulta a la base de datos
 			Statement statement = con.createStatement();
-            
-            String query = "Insert into Proyecto_Integrador (Nombre, Curso, Grupo, Año, url, nota, id_area) values ('"+
-            nombre+"','"+curso+"','"+grupo+"','"+year+"','"+link+"',"+nota+","+ id_area +")";
-
+			String query = "UPDATE PROYECTO_INTEGRADOR SET Nombre = '"
+            +nombre+"', Curso='"+curso+"', Grupo='"+grupo+"', Año='"+year+"', url='"+link+"', Nota="+nota+", id_area="+id_area+" where ID_Proyecto="+idProyecto;
             statement.executeUpdate(query);
             statement.close();
 			con.close();
-
-            showMessageDialog("Datos introducidos correctamente");
+			showMessageDialog("Se han introducido los datos correctamente");
+            ventana.dispose();
+            ListaProyectos ventanaNueva = new ListaProyectos();
+            ventanaNueva.setVisible(true);
 
 		} catch (SQLException e) {
-			if (e.getErrorCode() == 1452) {
-				showMessageDialog("ID_Area tiene que existir");
-			}else if (e.getErrorCode() == 1406) {
+            if (e.getErrorCode() == 1452) {
+                showMessageDialog("ID_Area tiene que existir");
+			}
+			else if (e.getErrorCode() == 1406) {
 				showMessageDialog("Acuérdate del límite de caracteres");
             }else if (e.getErrorCode() == 1366) {
 				showMessageDialog("Error en tipo de carácter");
-			}
-			else{
-				System.out.println("Error con el botón de alta Proyecto: "+e.getMessage());
-				showMessageDialog("Hubo un error al introducir los datos");
-			}
-			
-		} catch(Exception e){
-			System.out.println("Hubo un error inesperado: "+e.getMessage());
-		}
+			} else {
+                System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
+			    showMessageDialog("Hubo un error al cambiar los datos");
+            }
+		} catch (Exception e){
+            System.out.println("Ocurrió un error inesperado");
+        }
     }
     private void showMessageDialog(String message) {
 		// Creamos el dialog
-		Dialog dialog = new Dialog(ventana, "Mensaje");
+		final Dialog dialog = new Dialog(ventana, "Mensaje");
 		// Le damos forma con un layout
 		dialog.setLayout(new BorderLayout());
 		// Le añadimos el mensaje que traiga en el medio

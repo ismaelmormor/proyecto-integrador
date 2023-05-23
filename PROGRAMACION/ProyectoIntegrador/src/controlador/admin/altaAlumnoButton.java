@@ -1,11 +1,11 @@
-package controlador;
+package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
 import modelo.AccesoBD;
-import vistas.AltaAlumno;
+import vistas.admin.AltaAlumno;
 
 public class altaAlumnoButton implements ActionListener {
     private String nombre;

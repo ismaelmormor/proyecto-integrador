@@ -2,7 +2,7 @@ package main;
 
 import java.awt.*;
 
-import vistas.VentanaLogin;
+import vistas.admin.VentanaLogin;
 /*
  * Creación de la clase main para ejecutar la aplicación
  */

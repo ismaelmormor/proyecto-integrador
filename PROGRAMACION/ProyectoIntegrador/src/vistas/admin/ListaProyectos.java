@@ -1,12 +1,12 @@
-package vistas;
+package vistas.admin;
 
 import java.sql.*;
 import java.awt.*;
 
-import controlador.MenuListener;
-import controlador.eliminarProyecto;
-import controlador.filtroProyectoListener;
-import controlador.modProyectoBtn;
+import controlador.admin.MenuListener;
+import controlador.admin.eliminarProyecto;
+import controlador.admin.filtroProyectoListener;
+import controlador.admin.modProyectoBtn;
 import modelo.AccesoBD;
 
 import javax.swing.*;
@@ -257,7 +257,6 @@ public class ListaProyectos extends JFrame {
 			}			
 		} catch (Exception e) {
 			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
-			// TODO: handle exception
 		}
 		
 		table.setModel(model);

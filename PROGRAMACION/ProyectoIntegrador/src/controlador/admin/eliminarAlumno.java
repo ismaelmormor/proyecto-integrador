@@ -1,11 +1,11 @@
-package controlador;
+package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
 import modelo.AccesoBD;
-import vistas.ListaDeAlumnos;
+import vistas.admin.ListaDeAlumnos;
 
 public class eliminarAlumno implements ActionListener {
     private int id;

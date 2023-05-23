@@ -1,4 +1,4 @@
-package vistas;
+package vistas.alumno;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -9,22 +9,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controlador.MenuListener;
+import controlador.alumno.MenuListenerA;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
 
-public class DAW extends JFrame {
+public class DAWA extends JFrame {
 
 	private JPanel contentPane;
-	private MenuListener menuListener = new MenuListener(this);	
+	private MenuListenerA menuListener = new MenuListenerA(this);
 
 	/**
 	 * Creamos el frame
 	 */
-	public DAW() {
+	public DAWA() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
@@ -51,11 +51,6 @@ public class DAW extends JFrame {
 		
 		Consulta.addActionListener(menuListener);
 
-		JMenuItem Alta = new JMenuItem("Alta");
-		PI.add(Alta);
-
-		Alta.addActionListener(menuListener);
-
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
@@ -64,11 +59,6 @@ public class DAW extends JFrame {
 		Alumnos.add(Lista);
 
 		Lista.addActionListener(menuListener);
-		
-		JMenuItem Añadir = new JMenuItem("Añadir");
-		Alumnos.add(Añadir);
-		
-		Añadir.addActionListener(menuListener);
 
 		//Area
 		JMenu Area = new JMenu("Área");
@@ -98,6 +88,14 @@ public class DAW extends JFrame {
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
+		//Login
+		JMenu Login = new JMenu("Lógin");
+		menuBar.add(Login);
+
+		JMenuItem admin = new JMenuItem("Admin");
+		Login.add(admin);
+
+		admin.addActionListener(menuListener);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(3, 8, 62));

@@ -1,12 +1,20 @@
-package controlador;
+package controlador.alumno;
 // Import de todo
-import vistas.*;
+import vistas.admin.VentanaLogin;
+import vistas.alumno.Animacion3DA;
+import vistas.alumno.AsirA;
+import vistas.alumno.DAMA;
+import vistas.alumno.DAWA;
+import vistas.alumno.JuegosA;
+import vistas.alumno.ListaVAlumnos;
+import vistas.alumno.ListaVProyectos;
+
 import javax.swing.*;
 import java.awt.event.*;
 /*
  * Clase del listener que hace funcionar el menú de cada ventana
  */
-public class MenuListener implements ActionListener{
+public class MenuListenerA implements ActionListener{
     // Variables
     private JFrame ventana;
 
@@ -14,7 +22,7 @@ public class MenuListener implements ActionListener{
      * Método constructor
      * @param ventana - JFrame de la ventana desde donde se acciona el Listener
      */
-	public MenuListener(JFrame ventana){
+	public MenuListenerA(JFrame ventana){
         this.ventana=ventana;
 	}
 
@@ -25,63 +33,56 @@ public class MenuListener implements ActionListener{
 			if (ev.getActionCommand().equals("Consulta")) {
                 //Cerramos ventana y creamos la de consulta
 				ventana.dispose();
-                ListaProyectos ventanaNueva = new ListaProyectos();
-		        ventanaNueva.setVisible(true);
-            }
-            // ActionListener para el apartado de Alta de Proyecto Integrador
-            else if(ev.getActionCommand().equals("Alta")){
-                //Cerramos ventana y creamos la de Alta
-                ventana.dispose();
-                AltaProyecto ventanaNueva = new AltaProyecto();
+                ListaVProyectos ventanaNueva = new ListaVProyectos();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de Lista de Alumnos
             else if(ev.getActionCommand().equals("Lista de Alumnos")){
                 //Cerramos ventana y creamos la de Lista de ALumno
                 ventana.dispose();
-                ListaDeAlumnos ventanaNueva = new ListaDeAlumnos();
-		        ventanaNueva.setVisible(true);
-            }
-            // ActionListener para el apartado de Añadir Alumnos
-            else if(ev.getActionCommand().equals("Añadir")){
-                //Cerramos ventana y creamos la de añadir Alumno
-                ventana.dispose();
-                AltaAlumno ventanaNueva = new AltaAlumno();
+                ListaVAlumnos ventanaNueva = new ListaVAlumnos();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de DAW
             else if(ev.getActionCommand().equals("DAW")){
                 //Cerramos ventana y creamos la de DAW
                 ventana.dispose();
-                DAW ventanaNueva = new DAW();
+                DAWA ventanaNueva = new DAWA();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de DAM
             else if(ev.getActionCommand().equals("DAM")){
                 //Cerramos ventana y creamos la de DAM
                 ventana.dispose();
-                DAM ventanaNueva = new DAM();
+                DAMA ventanaNueva = new DAMA();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de Asir
             else if(ev.getActionCommand().equals("ASIR")){
                 //Cerramos ventana y creamos la de Asir
                 ventana.dispose();
-                Asir ventanaNueva = new Asir();
+                AsirA ventanaNueva = new AsirA();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de Animaciones 3D
             else if(ev.getActionCommand().equals("ANIMACIONES 3D")){
                 //Cerramos ventana y creamos la de Animaciones 3D
                 ventana.dispose();
-                Animacion3D ventanaNueva = new Animacion3D();
+                Animacion3DA ventanaNueva = new Animacion3DA();
 		        ventanaNueva.setVisible(true);
             }
             // ActionListener para el apartado de Videjuegos
             else if(ev.getActionCommand().equals("VIDEOJUEGOS")){
                 //Cerramos ventana y creamos la de videojuegos
                 ventana.dispose();
-                Juegos ventanaNueva = new Juegos();
+                JuegosA ventanaNueva = new JuegosA();
+		        ventanaNueva.setVisible(true);
+            }
+            // ActionListener para el apartado de Login
+            else if(ev.getActionCommand().equals("Admin")){
+                //Cerramos ventana y creamos la de videojuegos
+                ventana.dispose();
+                VentanaLogin ventanaNueva = new VentanaLogin();
 		        ventanaNueva.setVisible(true);
             }
 		}

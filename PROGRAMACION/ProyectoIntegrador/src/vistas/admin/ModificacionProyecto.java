@@ -1,12 +1,13 @@
-package vistas;
+package vistas.admin;
 
 import java.awt.Image;
 
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 import java.awt.*;
-import controlador.MenuListener;
-import controlador.modificarProyecto;
+
+import controlador.admin.MenuListener;
+import controlador.admin.modificarProyecto;
 
 import javax.swing.JButton;
 

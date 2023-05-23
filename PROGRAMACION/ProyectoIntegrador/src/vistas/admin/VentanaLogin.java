@@ -1,4 +1,4 @@
-package vistas;
+package vistas.admin;
 
 import javax.swing.*;
 import javax.swing.JFrame;

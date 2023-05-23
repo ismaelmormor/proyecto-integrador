@@ -1,11 +1,11 @@
-package controlador;
+package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
 
-import vistas.alumno.ListaVProyectos;
+import vistas.admin.ListaProyectos;
 
-public class filtroVProyectoListener implements ActionListener {
+public class filtroProyectoListener implements ActionListener {
     private String nombre;
     private String curso;
     private String grupo;
@@ -13,9 +13,9 @@ public class filtroVProyectoListener implements ActionListener {
     private String nota;
     private String id_area;
     private String idProyecto;
-    private ListaVProyectos ventana;
+    private ListaProyectos ventana;
 
-    public filtroVProyectoListener(ListaVProyectos ventana) {
+    public filtroProyectoListener(ListaProyectos ventana) {
         this.ventana=ventana;
     }
 
@@ -98,7 +98,6 @@ public class filtroVProyectoListener implements ActionListener {
 		} catch (Exception e) {
 			System.out.println("Error con el botón de alta Alumno: "+e.getMessage());
 			showMessageDialog("Hubo un error al introducir los datos");
-			// TODO: handle exception
 		}
     }
     private void showMessageDialog(String message) {

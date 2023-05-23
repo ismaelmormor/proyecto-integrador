@@ -18,7 +18,6 @@ public class AccesoBD {
 
 		} catch (Exception e) {
 			System.out.println("error al establecer conexión con BD" + e.getMessage());
-			// TODO: handle exception
 		}
 		return con;
 	}

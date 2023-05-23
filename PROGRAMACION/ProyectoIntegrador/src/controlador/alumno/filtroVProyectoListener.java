@@ -1,31 +1,39 @@
-package controlador;
+package controlador.alumno;
 
 import java.awt.*;
 import java.awt.event.*;
-import vistas.ListaDeAlumnos;
 
-public class filtroAlumnoListener implements ActionListener {
+import vistas.alumno.ListaVProyectos;
+
+public class filtroVProyectoListener implements ActionListener {
     private String nombre;
-    private String apellido;
-    private String nExpendiente;
+    private String curso;
+    private String grupo;
+    private String year;
+    private String nota;
+    private String id_area;
     private String idProyecto;
-    private ListaDeAlumnos ventana;
+    private ListaVProyectos ventana;
 
-    public filtroAlumnoListener(ListaDeAlumnos ventana) {
+    public filtroVProyectoListener(ListaVProyectos ventana) {
         this.ventana=ventana;
     }
 
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
+        idProyecto = ventana.getProyecto();
         nombre = ventana.getNombre();
-        apellido = ventana.getApellidos();
-        nExpendiente = ventana.getNExpediente();
-        idProyecto = ventana.getIDProyecto();
+        curso = ventana.getCurso();
+        grupo = ventana.getGrupo();
+		year = ventana.getYear();
+		nota = ventana.getNota();
+		id_area = ventana.getArea();
+
         Boolean primeraCond = true;
 		try {
 			// Preparamos la consulta a la base de datos
-            String query = "SELECT * FROM Alumno Where ";
+            String query = "SELECT * FROM PROYECTO_INTEGRADOR Where ";
             if (!nombre.isEmpty()){
                 if(primeraCond){
                     query += "Nombre = '"+nombre+"'";
@@ -34,20 +42,36 @@ public class filtroAlumnoListener implements ActionListener {
                     query += "AND Nombre = '"+nombre+"'";
                 }
             }
-            if (!apellido.isEmpty()){
+            if (!curso.isEmpty()){
                 if(primeraCond){
-                    query += "Apellidos = '"+apellido+"'";
+                    query += "Curso = '"+curso+"'";
                     primeraCond=false;
                 }else{
-                    query += "AND Apellidos = '"+apellido+"'";
+                    query += "AND Curso = '"+curso+"'";
                 }
             }
-            if (!nExpendiente.isEmpty()){
+            if (!grupo.isEmpty()){
                 if(primeraCond){
-                    query += "N_Expediente = "+nExpendiente+"";
+                    query += "Grupo = '"+grupo+"'";
                     primeraCond=false;
                 }else{
-                    query += " AND N_Expediente = "+nExpendiente+"";
+                    query += "AND Grupo = '"+grupo+"'";
+                }
+            }
+            if (!year.isEmpty()){
+                if(primeraCond){
+                    query += "Año = '"+year+"'";
+                    primeraCond=false;
+                }else{
+                    query += "AND Año = '"+year+"'";
+                }
+            }
+            if (!nota.isEmpty()){
+                if(primeraCond){
+                    query += "Nota = "+nota;
+                    primeraCond=false;
+                }else{
+                    query += " AND Nota = "+nota;
                 }
             }
             if (!idProyecto.isEmpty()){
@@ -58,15 +82,22 @@ public class filtroAlumnoListener implements ActionListener {
                     query += " AND ID_Proyecto = "+idProyecto;
                 }
             }
-            if (idProyecto.isEmpty() && nExpendiente.isEmpty() && apellido.isEmpty() && nombre.isEmpty()){
-                query="Select * from Alumno";
+            if (!id_area.isEmpty()){
+                if(primeraCond){
+                    query += "id_area = "+id_area;
+                    primeraCond=false;
+                }else{
+                    query += " AND id_area = "+id_area;
+                }
+            }
+            if (idProyecto.isEmpty() && nombre.isEmpty() && curso.isEmpty() && grupo.isEmpty() && year.isEmpty() && nota.isEmpty() && id_area.isEmpty()){
+                query="Select * from PROYECTO_INTEGRADOR";
             }
             ventana.actualizarTabla(query);
 			
 		} catch (Exception e) {
 			System.out.println("Error con el botón de alta Alumno: "+e.getMessage());
 			showMessageDialog("Hubo un error al introducir los datos");
-			// TODO: handle exception
 		}
     }
     private void showMessageDialog(String message) {

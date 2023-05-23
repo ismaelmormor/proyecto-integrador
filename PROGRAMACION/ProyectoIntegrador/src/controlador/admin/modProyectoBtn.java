@@ -1,10 +1,10 @@
-package controlador;
+package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
 
-import vistas.ListaProyectos;
-import vistas.ModificacionProyecto;
+import vistas.admin.ListaProyectos;
+import vistas.admin.ModificacionProyecto;
 
 public class modProyectoBtn implements ActionListener {
     private int id;

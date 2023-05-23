@@ -7,12 +7,12 @@ import javax.swing.border.EmptyBorder;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
-import controlador.MenuListener;
-import controlador.filtroVAlumnoListener;
+import controlador.alumno.MenuListenerA;
+import controlador.alumno.filtroVAlumnoListener;
 import modelo.AccesoBD;
 
 
-public class ListaAlumnos_VAlumnos
+public class ListaVAlumnos
 		extends JFrame {
 
 	/**
@@ -22,13 +22,13 @@ public class ListaAlumnos_VAlumnos
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel model;
-	private MenuListener menuListener = new MenuListener(this);	
+	private MenuListenerA menuListener = new MenuListenerA(this);
 
 	private TextField nExpedienteTxt, nombreTxt, apellidoTxt, IDProyectoTxt;
 	/**
 	 * 
 	 */
-	public ListaAlumnos_VAlumnos() {
+	public ListaVAlumnos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
@@ -58,36 +58,23 @@ public class ListaAlumnos_VAlumnos
 		//PI
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
-		PI.setForeground(new Color(255, 255, 255));
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
 		
 		Consulta.addActionListener(menuListener);
 
-		JMenuItem Alta = new JMenuItem("Alta");
-		PI.add(Alta);
-
-		Alta.addActionListener(menuListener);
-
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
-		Alumnos.setForeground(new Color(255, 255, 255));
-
+		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
 		Alumnos.add(Lista);
 
 		Lista.addActionListener(menuListener);
-		
-		JMenuItem Añadir = new JMenuItem("Añadir");
-		Alumnos.add(Añadir);
-		
-		Añadir.addActionListener(menuListener);
 
 		//Area
 		JMenu Area = new JMenu("Área");
-		Area.setForeground(new Color(255, 255, 255));
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -114,7 +101,15 @@ public class ListaAlumnos_VAlumnos
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
-		
+		//Login
+		JMenu Login = new JMenu("Lógin");
+		menuBar.add(Login);
+
+		JMenuItem admin = new JMenuItem("Admin");
+		Login.add(admin);
+
+		admin.addActionListener(menuListener);
+
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 10, 939, 114);
 		contentPane.add(panel);
@@ -240,7 +235,6 @@ public class ListaAlumnos_VAlumnos
 			}			
 		} catch (Exception e) {
 			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
-			// TODO: handle exception
 		}
 		
 		table.setModel(model);

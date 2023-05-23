@@ -2,7 +2,7 @@ package test;
 
 import org.junit.jupiter.api.Test;
 
-import vistas.VentanaLogin;
+import vistas.admin.VentanaLogin;
 
 import static org.junit.jupiter.api.Assertions.*;
 

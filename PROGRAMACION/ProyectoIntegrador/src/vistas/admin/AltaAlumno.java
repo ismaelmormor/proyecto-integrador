@@ -1,10 +1,10 @@
-package vistas;
+package vistas.admin;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import controlador.MenuListener;
-import controlador.altaAlumnoButton;
+import controlador.admin.MenuListener;
+import controlador.admin.altaAlumnoButton;
 
 import java.awt.*;
 

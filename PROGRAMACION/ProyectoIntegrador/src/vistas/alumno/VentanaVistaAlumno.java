@@ -1,4 +1,4 @@
-package vistas;
+package vistas.alumno;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -9,8 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controlador.MenuListener;
-
+import controlador.alumno.MenuListenerA;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -20,7 +19,7 @@ import java.awt.Color;
 public class VentanaVistaAlumno extends JFrame {
 
 	private JPanel contentPane;
-	private MenuListener menuListener = new MenuListener(this);	
+	private MenuListenerA menuListener = new MenuListenerA(this);	
 
 	/**
 	 * sea crea el frame
@@ -65,11 +64,6 @@ public class VentanaVistaAlumno extends JFrame {
 		
 		Consulta.addActionListener(menuListener);
 
-		JMenuItem Alta = new JMenuItem("Alta");
-		PI.add(Alta);
-
-		Alta.addActionListener(menuListener);
-
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
@@ -78,11 +72,6 @@ public class VentanaVistaAlumno extends JFrame {
 		Alumnos.add(Lista);
 
 		Lista.addActionListener(menuListener);
-		
-		JMenuItem Añadir = new JMenuItem("Añadir");
-		Alumnos.add(Añadir);
-		
-		Añadir.addActionListener(menuListener);
 
 		//Area
 		JMenu Area = new JMenu("Área");
@@ -112,6 +101,14 @@ public class VentanaVistaAlumno extends JFrame {
 		Area.add(Juegos);
 
 		Juegos.addActionListener(menuListener);
+		//Login
+		JMenu Login = new JMenu("Lógin");
+		menuBar.add(Login);
+
+		JMenuItem admin = new JMenuItem("Admin");
+		Login.add(admin);
+
+		admin.addActionListener(menuListener);
 
 		// JLabel "Daweishine8"
 		JLabel labelDaweishine8 = new JLabel("Daweishine8");

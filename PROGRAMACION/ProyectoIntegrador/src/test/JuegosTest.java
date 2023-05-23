@@ -11,7 +11,7 @@ import javax.swing.JMenuItem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Animacion3DTest {
+class JuegosTest {
 
     @Test
     void testMenuItems() {

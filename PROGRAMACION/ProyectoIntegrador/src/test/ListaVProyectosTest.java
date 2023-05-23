@@ -10,7 +10,7 @@ import vistas.alumno.ListaVProyectos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ListaVAlumnosTest {
+class ListaVProyectosTest {
 
     @Test
     void testActualizarTabla() {

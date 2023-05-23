@@ -125,7 +125,9 @@ public class VentanaVistaAlumno extends JFrame {
 		contentPane.add(labelDaweishine8);
 
 		// JLabel en el centro
-		JLabel label = new JLabel("<html>INTRODUCCION<br><br>P.I. Para usar el programa<br><br>- Alta: Para dar de alta a un alumno en el programa<br>- Consulta: para ver los datos y tener la posibilidad de modificarlos o borrarlos</html>");
+		JLabel label = new JLabel("<html>VISTA ALUMNO<br><br>Bienvenido a la vista de alumno! Aquí podras:<br><br>"+
+		"- Consulta: para ver los datos y tener la posibilidad de modificarlos o borrarlos<br>"+
+		"<br>- Login Admin: para acceder a la vista de administrador y poder modificar datos.<br>Recuerda que puedes echarle un ojo al manual de usuario si necesitas más ayuda</html>");
 		label.setFont(new Font("Arial", Font.PLAIN, 20));
 		label.setForeground(Color.WHITE);
 		label.setHorizontalAlignment(JLabel.CENTER);

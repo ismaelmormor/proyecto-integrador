@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS ALUMNO;
 DROP TABLE IF EXISTS PROYECTO_INTEGRADOR;
 DROP TABLE IF EXISTS AREAS;
+DROP TABLE IF EXISTS USUARIOS;
 
 CREATE TABLE AREAS(
 	ID_AREA INT(3) AUTO_INCREMENT,
@@ -31,6 +32,18 @@ CREATE TABLE ALUMNO(
     CONSTRAINT alumno_pk PRIMARY KEY (ID_Alumno),
     CONSTRAINT proyecto_alumno_fk FOREIGN KEY (ID_Proyecto) REFERENCES PROYECTO_INTEGRADOR(ID_Proyecto)
 );
+
+CREATE TABLE USUARIOS(
+	USUARIO VARCHAR(50),
+	PWORD VARCHAR(50)
+);
+
+INSERT INTO USUARIOS (USUARIO, PWORD) VALUES
+  ('root', 'root'),
+  ('Ismael', 'root'),
+  ('Wei', 'root'),
+  ('Gabi', 'root'),
+  ('Daza', 'root');
 
 INSERT INTO AREAS (Nombre, Descripcion) VALUES ('DAM', 'El desarrollo de aplicaciones multiplataforma
  es una estrategia que utiliza software para crear aplicaciones para las plataformas iOS y Android simultáneamente. 

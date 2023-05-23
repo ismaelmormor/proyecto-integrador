@@ -128,7 +128,8 @@ public class VentanaPrincipal extends JFrame {
 
 		// JLabel en el centro
 		JLabel label = new JLabel(
-				"<html>INTRODUCCION<br><br>P.I. Para usar el programa<br><br>- Alta: Para dar de alta a un alumno en el programa<br>- Consulta: para ver los datos y tener la posibilidad de modificarlos o borrarlos</html>");
+				"<html>VISTA ADMIN<br><br>Bienvenido a la vista de administrador! Aquí podras:<br><br>- Dar Alta: Para dar de alta a un alumno o proyecto en el programa<br>"+
+				"- Consulta: para ver los datos y tener la posibilidad de modificarlos o borrarlos<br>Recuerda que puedes echarle un ojo al manual de usuario si necesitas más ayuda</html>");
 		label.setFont(new Font("Arial", Font.PLAIN, 20));
 		label.setForeground(Color.WHITE);
 		label.setHorizontalAlignment(JLabel.CENTER);

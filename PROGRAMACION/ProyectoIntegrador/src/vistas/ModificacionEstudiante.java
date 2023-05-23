@@ -16,17 +16,20 @@ import controlador.MenuListener;
 
 import javax.swing.JButton;
 
-public class ModificacionEstudiante
-		extends JFrame {
-
+public class ModificacionEstudiante extends JFrame {
+	private String idAlumno;
 	private JPanel contentPane;
+	private TextField nombreTxt, apellidosTxt, expedienteTxt, proyectoTxt;
 	private MenuListener menuListener = new MenuListener(this);	
 
 
 	/**
 	 * Create the frame.
 	 */
-	public ModificacionEstudiante() {
+	public ModificacionEstudiante(String id){
+		this.idAlumno=id;
+
+		
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana
@@ -118,41 +121,46 @@ public class ModificacionEstudiante
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		TextField textField = new TextField();
-		textField.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField.setBounds(434, 85, 153, 27);
-		panel.add(textField);
+		// Labels y textFields
+		//Nombre
+		Label labelNombre = new Label("Nombre");
+		labelNombre.setBounds(318, 83, 66, 29);
+		panel.add(labelNombre);
+
+		nombreTxt = new TextField();
+		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nombreTxt.setBounds(434, 85, 153, 27);
+		panel.add(nombreTxt);
+		// Apellidos
+		Label labelApellidos = new Label("Apellidos");
+		labelApellidos.setBounds(314, 136, 66, 29);
+		panel.add(labelApellidos);
 		
-		TextField textField_1 = new TextField();
-		textField_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1.setBounds(434, 136, 153, 27);
-		panel.add(textField_1);
+		apellidosTxt = new TextField();
+		apellidosTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		apellidosTxt.setBounds(434, 136, 153, 27);
+		panel.add(apellidosTxt);
+		// Nº Expediente
+		Label labelExpediente = new Label("Nº Expendiente");
+		labelExpediente.setBounds(261, 190, 117, 29);
+		panel.add(labelExpediente);
 		
-		Label label_1_1 = new Label("Nombre");
-		label_1_1.setBounds(318, 83, 66, 29);
-		panel.add(label_1_1);
+		expedienteTxt = new TextField();
+		expedienteTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		expedienteTxt.setBounds(434, 192, 153, 27);
+		panel.add(expedienteTxt);
 		
-		TextField textField_1_1 = new TextField();
-		textField_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1.setBounds(434, 192, 153, 27);
-		panel.add(textField_1_1);
+		// Id proyecto
+		Label labelProyecto = new Label("ID_Proyecto");
+		labelProyecto.setBounds(261, 242, 117, 29);
+		panel.add(labelProyecto);
 		
-		Label label_1_1_1 = new Label("Apeilldos");
-		label_1_1_1.setBounds(314, 136, 66, 29);
-		panel.add(label_1_1_1);
+		proyectoTxt = new TextField();
+		proyectoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		proyectoTxt.setBounds(434, 244, 153, 27);
+		panel.add(proyectoTxt);
 		
-		Label label_1_1_1_1 = new Label("Nº Expendiente");
-		label_1_1_1_1.setBounds(261, 190, 117, 29);
-		panel.add(label_1_1_1_1);
-		
-		TextField textField_1_1_1 = new TextField();
-		textField_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1.setBounds(434, 243, 153, 27);
-		panel.add(textField_1_1_1);
-		
-		Label label_1_1_1_1_1 = new Label("ID_Proyecto ");
-		label_1_1_1_1_1.setBounds(282, 241, 102, 29);
-		panel.add(label_1_1_1_1_1);
+		// Botón para modificar
 		
 		JButton btnNewButton = new JButton("Cambiar");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -160,6 +168,7 @@ public class ModificacionEstudiante
 		btnNewButton.setBackground(new Color(0, 191, 255));
 		btnNewButton.setBounds(367, 363, 143, 43);
 		panel.add(btnNewButton);
+
 	}
 }
 

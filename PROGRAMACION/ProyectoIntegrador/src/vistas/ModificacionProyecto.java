@@ -17,7 +17,7 @@ import controlador.MenuListener;
 
 import javax.swing.JButton;
 
-public class Modificación
+public class ModificacionProyecto
 		extends JFrame {
 
 	private JPanel contentPane;
@@ -26,7 +26,7 @@ public class Modificación
 	/**
 	 * 
 	 */
-	public Modificación() {
+	public ModificacionProyecto() {
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana

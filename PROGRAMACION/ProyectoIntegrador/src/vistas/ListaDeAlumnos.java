@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controlador.MenuListener;
 import controlador.filtroAlumnoListener;
+import controlador.modAlumnoBtn;
 import modelo.AccesoBD;
 
 
@@ -167,6 +168,12 @@ public class ListaDeAlumnos
 		filtroAlumnoListener filtroListener = new filtroAlumnoListener(this);
 		filtroBtn.addActionListener(filtroListener);
 		panel.add(filtroBtn);
+
+		JButton modButton = new JButton("Modificar");
+		modButton.setBounds(500, 600, 89, 23);
+		modAlumnoBtn btnModificar = new modAlumnoBtn(this);
+		modButton.addActionListener(btnModificar);
+		panel.add(modButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 143, 939, 340);
@@ -244,6 +251,25 @@ public class ListaDeAlumnos
 		}
 		
 		table.setModel(model);
+	}
+
+	public String seleccionTabla(){
+		int selectedRow = table.getSelectedRow();
+		String id = null;
+		if (selectedRow != -1) {
+		    // Obtener los datos de la fila seleccionada
+		    Object[] rowData = new Object[table.getColumnCount()];
+		    for (int i = 0; i < table.getColumnCount(); i++) {
+		        rowData[i] = table.getValueAt(selectedRow, i);
+		    }
+		
+		    // Hacer algo con los datos de la fila seleccionada
+		    // Por ejemplo, imprimir los valores
+		    id = (String) rowData[1];
+			return id;
+		}
+		return id;
+
 	}
 }
 

@@ -15,13 +15,11 @@ import modelo.AccesoBD;
  	* ListaVAlumnos
     * Crea el frame de la ventana y configura sus propiedades.
  	*/
-public class ListaVAlumnos
-		extends JFrame {
+public class ListaVAlumnos extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel model;
@@ -240,7 +238,7 @@ public class ListaVAlumnos
 	}
 
 	/**
-	 * Actualiza la tabla de alumnos con los datos obtenidos de la consulta.
+	 * Actualiza la tabla de alumnos con los datos obtenidos del filtro.
 	 * @param query La consulta SQL para obtener los datos.
 	 */
 	public void actualizarTabla(String query){

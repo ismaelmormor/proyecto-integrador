@@ -41,18 +41,22 @@ public class AltaAlumno extends JFrame {
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		menuBar.setBackground(new Color(3, 8, 62));
+
 		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		JMenuItem item = new JMenuItem(resizedIcon);
 		item.setRolloverEnabled(false);
+		item.setBackground(new Color(3, 8, 62));
 		
 		item.setIcon(resizedIcon);
 		menuBar.add(item);
 
 		//PI
 		JMenu PI = new JMenu("P.I.");
+		PI.setForeground(new Color(255, 255, 255));
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -67,6 +71,7 @@ public class AltaAlumno extends JFrame {
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
+		Alumnos.setForeground(new Color(255, 255, 255));
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -81,6 +86,7 @@ public class AltaAlumno extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
+		Area.setForeground(new Color(255, 255, 255));
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -109,7 +115,7 @@ public class AltaAlumno extends JFrame {
 		Juegos.addActionListener(menuListener);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 86, 939, 524);
+		panel.setBounds(10, 52, 939, 524);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -151,8 +157,8 @@ public class AltaAlumno extends JFrame {
 		
 		JButton btnNewButton = new JButton("Añadir");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setForeground(new Color(0, 0, 0));
-		btnNewButton.setBackground(new Color(0, 191, 255));
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(3, 8, 62));
 		btnNewButton.setBounds(367, 363, 143, 43);
 		//-----------------------
 		altaAlumnoButton altaAbtn=new altaAlumnoButton(this);

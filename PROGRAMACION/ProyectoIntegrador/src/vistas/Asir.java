@@ -22,7 +22,7 @@ public class Asir extends JFrame {
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		
+
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBackground(new Color(3, 8, 62));
@@ -105,18 +105,18 @@ public class Asir extends JFrame {
 
 		 // JLabel centrado con el texto especificado
 		 JLabel texto = new JLabel("<html>Codigo de area: 003<br></br><br></br>Descripcion:<br></br>La administración de sistemas informáticos en red implica organizar, instalar y mantener en funcionamiento los sistemas informáticos de una empresa. Esto incluye las redes de área local (LAN), las redes de área amplia (WAN), los segmentos de red, las intranets y otros</html>");
-		 texto.setFont(new Font("Arial", Font.PLAIN, 16));
+		 texto.setFont(new Font("Arial", Font.PLAIN, 20));
 		 texto.setHorizontalAlignment(JLabel.CENTER);
 		 texto.setForeground(Color.white);
-		 texto.setBounds(50, 50, 650, 250);
+		 texto.setBounds(163, 228, 650, 250);
 		 contentPane.add(texto);
 
 		 //label asir
 		 JLabel labelASIR = new JLabel("ASIR");
-		 labelASIR.setFont(new Font("Arial", Font.BOLD, 30));
+	 	 labelASIR.setFont(new Font("Arial", Font.BOLD, 35));
 		 labelASIR.setHorizontalAlignment(JLabel.CENTER);
-		 labelASIR.setForeground(Color.WHITE);
-		 labelASIR.setBounds(50, 50, 650, 30);
+	     labelASIR.setForeground(Color.WHITE);
+		 labelASIR.setBounds(138, 111, 650, 30);
 		 contentPane.add(labelASIR);
 	}
 

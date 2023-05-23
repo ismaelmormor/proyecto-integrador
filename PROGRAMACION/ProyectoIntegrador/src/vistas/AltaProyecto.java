@@ -44,19 +44,24 @@ public class AltaProyecto  extends JFrame {
 		// ICONO
 
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(new Color(3, 8, 62));
 		setJMenuBar(menuBar);
+		
 		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		JMenuItem item = new JMenuItem(resizedIcon);
+		item.setForeground(new Color(3, 8, 62));
 		item.setRolloverEnabled(false);
+		item.setBackground(new Color(3, 8, 62));
 		
 		item.setIcon(resizedIcon);
 		menuBar.add(item);
 
 		//PI
 		JMenu PI = new JMenu("P.I.");
+		PI.setForeground(new Color(255, 255, 255));
 		menuBar.add(PI);
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
@@ -71,6 +76,7 @@ public class AltaProyecto  extends JFrame {
 
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
+		Alumnos.setForeground(new Color(255, 255, 255));
 		menuBar.add(Alumnos);
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
@@ -85,6 +91,7 @@ public class AltaProyecto  extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
+		Area.setForeground(new Color(255, 255, 255));
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -113,7 +120,8 @@ public class AltaProyecto  extends JFrame {
 		Juegos.addActionListener(menuListener);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 86, 939, 524);
+		panel.setForeground(new Color(0, 0, 0));
+		panel.setBounds(10, 10, 939, 524);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -128,7 +136,8 @@ public class AltaProyecto  extends JFrame {
 		panel.add(cursoTxt);
 		
 		Label label_1_1 = new Label("Nombre");
-		label_1_1.setBounds(318, 83, 66, 29);
+		label_1_1.setFont(new Font("HP Simplified", Font.PLAIN, 12));
+		label_1_1.setBounds(318, 85, 66, 29);
 		panel.add(label_1_1);
 		
 		grupoTxt = new TextField();
@@ -137,6 +146,7 @@ public class AltaProyecto  extends JFrame {
 		panel.add(grupoTxt);
 		
 		Label label_1_1_1 = new Label("Curso");
+		label_1_1_1.setFont(new Font("HP Simplified", Font.PLAIN, 12));
 		label_1_1_1.setBounds(335, 134, 49, 29);
 		panel.add(label_1_1_1);
 		
@@ -146,6 +156,7 @@ public class AltaProyecto  extends JFrame {
 		panel.add(yearTxt);
 		
 		Label label_1_1_1_1_1 = new Label("Año");
+		label_1_1_1_1_1.setFont(new Font("HP Simplified", Font.PLAIN, 12));
 		label_1_1_1_1_1.setBounds(341, 243, 43, 29);
 		panel.add(label_1_1_1_1_1);
 		
@@ -165,14 +176,15 @@ public class AltaProyecto  extends JFrame {
 		panel.add(areaTxt);
 
 		Label label_area = new Label("ID_Área");
+		label_area.setFont(new Font("HP Simplified", Font.PLAIN, 12));
 		label_area.setBounds(341, 401, 43, 29);
 		panel.add(label_area);
 
 		JButton btnNewButton = new JButton("Añadir");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setForeground(new Color(0, 0, 0));
-		btnNewButton.setBackground(new Color(0, 255, 255));
-		btnNewButton.setBounds(369, 455, 143, 43);
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(3, 8, 62));
+		btnNewButton.setBounds(386, 456, 143, 43);
 
 		//btn para insertar los datos al BD.
 		altaProyectoButton altaPBtn = new altaProyectoButton(this);
@@ -180,14 +192,17 @@ public class AltaProyecto  extends JFrame {
 		panel.add(btnNewButton);
 		
 		Label label_1_1_1_1 = new Label("Grupo");
+		label_1_1_1_1.setFont(new Font("HP Simplified", Font.PLAIN, 12));
 		label_1_1_1_1.setBounds(335, 190, 49, 29);
 		panel.add(label_1_1_1_1);
 		
 		Label label_1_1_1_1_1_1 = new Label("URL");
+		label_1_1_1_1_1_1.setFont(new Font("HP Simplified", Font.PLAIN, 12));
 		label_1_1_1_1_1_1.setBounds(341, 293, 43, 29);
 		panel.add(label_1_1_1_1_1_1);
 
 		Label label_1_1_1_1_1_1_1 = new Label("Nota");
+		label_1_1_1_1_1_1_1.setFont(new Font("HP Simplified", Font.PLAIN, 12));
 		label_1_1_1_1_1_1_1.setBounds(341, 345, 43, 29);
 		panel.add(label_1_1_1_1_1_1_1);
 	}

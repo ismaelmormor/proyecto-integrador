@@ -40,11 +40,13 @@ public class ListaProyectos extends JFrame {
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		menuBar.setBackground(new Color(3, 8, 62));
 		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		JMenuItem item = new JMenuItem(resizedIcon);
+		item.setBackground(new Color(3, 8, 62));
 		item.setRolloverEnabled(false);
 		
 		item.setIcon(resizedIcon);
@@ -53,6 +55,7 @@ public class ListaProyectos extends JFrame {
 		//PI
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
+		PI.setForeground(new Color(255, 255, 255));
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
@@ -67,6 +70,7 @@ public class ListaProyectos extends JFrame {
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
+		Alumnos.setForeground(new Color(255, 255, 255));
 		
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
 		Alumnos.add(Lista);
@@ -80,6 +84,7 @@ public class ListaProyectos extends JFrame {
 
 		//Area
 		JMenu Area = new JMenu("Área");
+		Area.setForeground(new Color(255, 255, 255));
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -108,7 +113,7 @@ public class ListaProyectos extends JFrame {
 		Juegos.addActionListener(menuListener);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 86, 939, 114);
+		panel.setBounds(10, 20, 939, 114);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -185,7 +190,7 @@ public class ListaProyectos extends JFrame {
 		panel.add(label_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 233, 939, 340);
+		scrollPane.setBounds(10, 144, 939, 340);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -220,6 +225,7 @@ public class ListaProyectos extends JFrame {
 		JComboBox<Object> comboBox = new JComboBox<Object>(v);
 		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
+
 		
 		
 	}

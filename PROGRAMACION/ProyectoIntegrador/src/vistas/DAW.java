@@ -26,7 +26,7 @@ public class DAW extends JFrame {
 	 */
 	public DAW() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 748, 410);
+		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
 		setResizable(false);
 
@@ -109,18 +109,18 @@ public class DAW extends JFrame {
 
 		  // JLabel centrado con el texto especificado
 		  JLabel texto = new JLabel("<html>Codigo de area: 001<br></br><br></br>Descripcion:<br></br>El Desarrollo de Aplicaciones Web es aquel que permite crear herramientas a las que los usuarios pueden acceder a través de Internet. En la web podremos obtener información o interactuar con elementos que nos permitan la comunicación entre nosotros, los usuarios y la web</html>");
-		  texto.setFont(new Font("Arial", Font.PLAIN, 16));
+		  texto.setFont(new Font("Arial", Font.PLAIN, 20));
 		  texto.setHorizontalAlignment(JLabel.CENTER);
 		  texto.setForeground(Color.white);
-		  texto.setBounds(50, 50, 650, 250);
+		  texto.setBounds(163, 228, 650, 250);
 		  contentPane.add(texto);
 
 		  //label dam
 		  JLabel labelDAW = new JLabel("DAW");
-		  labelDAW.setFont(new Font("Arial", Font.BOLD, 30));
+		  labelDAW.setFont(new Font("Arial", Font.BOLD, 35));
 		  labelDAW.setHorizontalAlignment(JLabel.CENTER);
-		  labelDAW.setForeground(Color.WHITE);
-		  labelDAW.setBounds(50, 50, 650, 30);
+	      labelDAW.setForeground(Color.WHITE);
+		  labelDAW.setBounds(138, 111, 650, 30);
 		  contentPane.add(labelDAW);
 	}
 

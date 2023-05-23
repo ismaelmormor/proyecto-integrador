@@ -34,7 +34,7 @@ public class ListaDeAlumnos
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		
+
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
@@ -44,12 +44,14 @@ public class ListaDeAlumnos
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		menuBar.setBackground(new Color(3, 8, 62));
 		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		JMenuItem item = new JMenuItem(resizedIcon);
 		item.setRolloverEnabled(false);
+		item.setBackground(new Color(3, 8, 62));
 		
 		item.setIcon(resizedIcon);
 		menuBar.add(item);
@@ -57,6 +59,7 @@ public class ListaDeAlumnos
 		//PI
 		JMenu PI = new JMenu("P.I.");
 		menuBar.add(PI);
+		PI.setForeground(new Color(255, 255, 255));
 
 		JMenuItem Consulta = new JMenuItem("Consulta");
 		PI.add(Consulta);
@@ -71,7 +74,8 @@ public class ListaDeAlumnos
 		//Alumnos
 		JMenu Alumnos = new JMenu("Alumnos");
 		menuBar.add(Alumnos);
-		
+		Alumnos.setForeground(new Color(255, 255, 255));
+
 		JMenuItem Lista = new JMenuItem("Lista de Alumnos");
 		Alumnos.add(Lista);
 
@@ -84,6 +88,7 @@ public class ListaDeAlumnos
 
 		//Area
 		JMenu Area = new JMenu("Área");
+		Area.setForeground(new Color(255, 255, 255));
 		menuBar.add(Area);
 		
 		JMenuItem Daw = new JMenuItem("DAW");
@@ -112,7 +117,7 @@ public class ListaDeAlumnos
 		Juegos.addActionListener(menuListener);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 86, 939, 114);
+		panel.setBounds(10, 10, 939, 114);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -164,7 +169,7 @@ public class ListaDeAlumnos
 		panel.add(filtroBtn);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 233, 939, 340);
+		scrollPane.setBounds(10, 143, 939, 340);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();

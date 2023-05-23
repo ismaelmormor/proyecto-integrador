@@ -9,7 +9,11 @@ import javax.swing.border.EmptyBorder;
 import controlador.alumno.MenuListenerA;
 import modelo.AccesoBD;
 
-public class DAWA extends JFrame {
+    /**
+ 	* Constructor de la clase DawA.
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
+   public class DAWA extends JFrame {
 
 	private JPanel contentPane;
 	private String descripcion, nombre;
@@ -17,8 +21,9 @@ public class DAWA extends JFrame {
 	private MenuListenerA menuListener = new MenuListenerA(this);
 
 	/**
-	 * Creamos el frame
-	 */
+ 	* Constructor de la clase DawA.
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 	public DAWA() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);

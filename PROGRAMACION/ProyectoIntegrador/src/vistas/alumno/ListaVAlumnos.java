@@ -11,7 +11,10 @@ import controlador.alumno.MenuListenerA;
 import controlador.alumno.filtroVAlumnoListener;
 import modelo.AccesoBD;
 
-
+/**
+ 	* ListaVAlumnos
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 public class ListaVAlumnos
 		extends JFrame {
 
@@ -26,8 +29,9 @@ public class ListaVAlumnos
 
 	private TextField nExpedienteTxt, nombreTxt, apellidoTxt, IDProyectoTxt;
 	/**
-	 * 
-	 */
+ 	* Constructor de la clase ListaVAlumnos.
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 	public ListaVAlumnos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
@@ -199,23 +203,46 @@ public class ListaVAlumnos
 		scrollPane.setViewportView(table);
 	}
 
+	/**
+	 * Obtiene el nombre ingresado en el campo de texto.
+	 * @return El nombre ingresado.
+	 */
 	public String getNombre(){
 		String nombre = nombreTxt.getText();
 		return nombre;
 	}
+	
+	/**
+	 * Obtiene los apellidos ingresados en el campo de texto.
+	 * @return Los apellidos ingresados.
+	 */
 	public String getApellidos(){
 		String apellidos = apellidoTxt.getText();
 		return apellidos;
 	}
+
+	/**
+	 * Obtiene el número de expediente ingresado en el campo de texto.
+	 * @return El número de expediente ingresado.
+	 */
 	public String getNExpediente(){
 		String expediente = nExpedienteTxt.getText();
 		return expediente;
 	}
+	
+	/**
+	 * Obtiene el ID del proyecto ingresado en el campo de texto.
+	 * @return El ID del proyecto ingresado.
+	 */
 	public String getIDProyecto(){
 		String id = IDProyectoTxt.getText();
 		return id;
 	}
 
+	/**
+	 * Actualiza la tabla de alumnos con los datos obtenidos de la consulta.
+	 * @param query La consulta SQL para obtener los datos.
+	 */
 	public void actualizarTabla(String query){
 		// Vaciamos la tabla
 		model.setRowCount(0);
@@ -240,6 +267,10 @@ public class ListaVAlumnos
 		table.setModel(model);
 	}
 
+	/**
+	 * Obtiene el ID del alumno seleccionado en la tabla.
+	 * @return El ID del alumno seleccionado.
+	 */
 	public int seleccionTabla(){
 		int selectedRow = table.getSelectedRow();
 		int id = -1;
@@ -259,6 +290,10 @@ public class ListaVAlumnos
 
 	}
 
+	/**
+     * Obtiene la tabla de alumnos.
+     * @return La tabla de alumnos.
+     */
     public JTable getTable() {
         return table;
     }

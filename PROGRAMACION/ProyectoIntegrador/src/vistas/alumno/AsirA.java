@@ -9,6 +9,10 @@ import javax.swing.border.EmptyBorder;
 import controlador.alumno.MenuListenerA;
 import modelo.AccesoBD;
 
+/**
+ * Clase que representa la ventana de AsirA
+ * Extiende JFrame para crear el frame de la ventana.
+ */
 public class AsirA extends JFrame {
 
 	private JPanel contentPane;
@@ -17,8 +21,9 @@ public class AsirA extends JFrame {
 	private MenuListenerA menuListener = new MenuListenerA(this);
 
 	/**
-	 * Creamos el frame
-	 */
+ 	* Constructor de la clase AsirA.
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 	public AsirA() {
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

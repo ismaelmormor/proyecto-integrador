@@ -8,7 +8,11 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.alumno.MenuListenerA;
 import modelo.AccesoBD;
-
+ 
+    /**
+ 	* Constructor de la clase JuegosA.
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 public class JuegosA extends JFrame {
 
 	private JPanel contentPane;
@@ -17,8 +21,9 @@ public class JuegosA extends JFrame {
 	private MenuListenerA menuListener = new MenuListenerA(this);
 
 	/**
-	 * Creamos el frame
-	 */
+ 	* Constructor de la clase JuegosA.
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 	public JuegosA() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);

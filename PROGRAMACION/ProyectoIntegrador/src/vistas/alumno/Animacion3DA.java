@@ -9,6 +9,10 @@ import javax.swing.border.EmptyBorder;
 import controlador.alumno.MenuListenerA;
 import modelo.AccesoBD;
 
+/**
+ * Clase que representa la ventana de animación3D.
+ * Extiende JFrame para crear el frame de la ventana.
+ */
 public class Animacion3DA extends JFrame {
 
 	private JPanel contentPane;
@@ -17,8 +21,9 @@ public class Animacion3DA extends JFrame {
 	private MenuListenerA menuListener = new MenuListenerA(this);	
 	
 	/**
-	 * Creamos el frame
-	 */
+ 	* Constructor de la clase Animacion3DA.
+    * Crea el frame de la ventana y configura sus propiedades.
+ 	*/
 	public Animacion3DA() {
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

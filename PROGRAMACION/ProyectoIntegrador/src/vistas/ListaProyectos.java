@@ -4,6 +4,7 @@ import java.sql.*;
 import java.awt.*;
 
 import controlador.MenuListener;
+import controlador.filtroProyectoListener;
 import controlador.modProyectoBtn;
 import modelo.AccesoBD;
 
@@ -13,9 +14,11 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class ListaProyectos extends JFrame {
-	private static final long serialVersionUID = 1L;
+
+	private TextField proyectoTxt, nombreTxt, cursoTxt, grupoTxt, yearTxt, urlTxt, notaTxt, areaTxt;
 	private JPanel contentPane;
 	private JTable table;
+	private DefaultTableModel model = new DefaultTableModel();
 	private MenuListener menuListener = new MenuListener(this);	
 
 
@@ -116,78 +119,82 @@ public class ListaProyectos extends JFrame {
 		panel.setBounds(10, 20, 939, 114);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		// Labels y text fields
+		Label labelFiltros = new Label("Filtros");
+		labelFiltros.setFont(new Font("Dialog", Font.PLAIN, 30));
+		labelFiltros.setBounds(35, 10, 142, 62);
+		panel.add(labelFiltros);
+
+		Label labelProyecto = new Label("ID_Proyecto");
+		labelProyecto.setBounds(184, 3, 147, 36);
+		panel.add(labelProyecto);
+
+		proyectoTxt= new TextField();
+		proyectoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		proyectoTxt.setBounds(178, 45, 153, 27);
+		panel.add(proyectoTxt);
 		
-		TextField textField = new TextField();
-		textField.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField.setBounds(178, 45, 153, 27);
-		panel.add(textField);
+		Label labelNombre = new Label("Nombre");
+		labelNombre.setBounds(369, 10, 66, 29);
+		panel.add(labelNombre);
 		
-		Label label = new Label("Filtros");
-		label.setFont(new Font("Dialog", Font.PLAIN, 30));
-		label.setBounds(35, 10, 142, 62);
-		panel.add(label);
+		nombreTxt = new TextField();
+		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nombreTxt.setBounds(347, 45, 108, 27);
+		panel.add(nombreTxt);
 		
-		TextField textField_1 = new TextField();
-		textField_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1.setBounds(347, 45, 108, 27);
-		panel.add(textField_1);
+		Label labelCurso = new Label("Curso");
+		labelCurso.setBounds(471, 10, 49, 29);
+		panel.add(labelCurso);
 		
-		Label label_1_1 = new Label("Nombre");
-		label_1_1.setBounds(369, 10, 66, 29);
-		panel.add(label_1_1);
+		cursoTxt = new TextField();
+		cursoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		cursoTxt.setBounds(461, 45, 60, 27);
+		panel.add(cursoTxt);
 		
-		TextField textField_1_1 = new TextField();
-		textField_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1.setBounds(461, 45, 60, 27);
-		panel.add(textField_1_1);
+		Label labelGrupo = new Label("Grupo");
+		labelGrupo.setBounds(531, 10, 60, 29);
+		panel.add(labelGrupo);
 		
-		Label label_1_1_1 = new Label("Curso");
-		label_1_1_1.setBounds(471, 10, 49, 29);
-		panel.add(label_1_1_1);
+	 	grupoTxt = new TextField();
+		grupoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		grupoTxt.setBounds(531, 45, 60, 27);
+		panel.add(grupoTxt);
 		
-		Label label_1_1_1_1 = new Label("Grupo");
-		label_1_1_1_1.setBounds(531, 10, 60, 29);
-		panel.add(label_1_1_1_1);
+		Label labelYear = new Label("Año");
+		labelYear.setBounds(603, 18, 66, 21);
+		panel.add(labelYear);
+
+		yearTxt = new TextField();
+		yearTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		yearTxt.setBounds(597, 45, 60, 27);
+		panel.add(yearTxt);
 		
-		TextField textField_1_1_1 = new TextField();
-		textField_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1.setBounds(531, 45, 60, 27);
-		panel.add(textField_1_1_1);
+		Label labelNota = new Label("Nota");
+		labelNota.setBounds(675, 10, 43, 29);
+		panel.add(labelNota);
 		
-		TextField textField_1_1_1_1 = new TextField();
-		textField_1_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1_1.setBounds(597, 45, 60, 27);
-		panel.add(textField_1_1_1_1);
+		notaTxt = new TextField();
+		notaTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		notaTxt.setBounds(663, 45, 60, 27);
+		panel.add(notaTxt);
 		
-		Label label_1_1_1_1_1 = new Label("Año");
-		label_1_1_1_1_1.setBounds(603, 18, 66, 21);
-		panel.add(label_1_1_1_1_1);
+		Label labelArea = new Label("ID_Area");
+		labelArea.setBounds(731, 10, 66, 29);
+		panel.add(labelArea);
 		
-		Label label_1_1_2 = new Label("Nota");
-		label_1_1_2.setBounds(675, 10, 43, 29);
-		panel.add(label_1_1_2);
+		areaTxt = new TextField();
+		areaTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
+		areaTxt.setBounds(729, 45, 60, 27);
+		panel.add(areaTxt);
 		
-		TextField textField_1_1_1_1_1 = new TextField();
-		textField_1_1_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1_1_1.setBounds(663, 45, 60, 27);
-		panel.add(textField_1_1_1_1_1);
-		
-		Label label_1_1_2_1 = new Label("ID_Area");
-		label_1_1_2_1.setBounds(731, 10, 66, 29);
-		panel.add(label_1_1_2_1);
-		
-		TextField textField_1_1_1_1_1_1 = new TextField();
-		textField_1_1_1_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		textField_1_1_1_1_1_1.setBounds(729, 45, 60, 27);
-		panel.add(textField_1_1_1_1_1_1);
-		
+		// Botón filtro
 		JButton btnNewButton = new JButton("Buscar");
 		btnNewButton.setBounds(827, 49, 89, 23);
 		panel.add(btnNewButton);
-		
-		Label label_1 = new Label("ID_Proyecto");
-		label_1.setBounds(184, 3, 147, 36);
-		panel.add(label_1);
+
+		filtroProyectoListener filtro = new filtroProyectoListener(this);
+		btnNewButton.addActionListener(filtro);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 144, 939, 340);
@@ -196,7 +203,6 @@ public class ListaProyectos extends JFrame {
 		table = new JTable();
 		table.setBackground(new Color(255, 255, 255));
 		table.setForeground(new Color(0, 128, 255));
-		DefaultTableModel model = new DefaultTableModel();
 		model.setColumnIdentifiers(new String[] {"ID_Proyecto", "Nombre", "Curso", "Grupo", "Año", "URL", "Nota", "ID_Area"});
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
@@ -225,6 +231,31 @@ public class ListaProyectos extends JFrame {
 		contentPane.add(modButton);
 		modButton.addActionListener(btnModificar);
 	}
+	public void actualizarTabla(String query){
+		// Vaciamos la tabla
+		model.setRowCount(0);
+		// Sacamos los datos de la BD
+		AccesoBD acceso = new AccesoBD();
+		Connection con = acceso.getConexion();
+		try {
+			Statement statement = con.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+
+			while (resultSet.next()) {
+				Object[] row = new Object[model.getColumnCount()];
+				for (int i = 1; i <= row.length; i++) {
+					row[i-1] = resultSet.getObject(i);
+				}
+				model.addRow(row);
+			}			
+		} catch (Exception e) {
+			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
+			// TODO: handle exception
+		}
+		
+		table.setModel(model);
+	}
+
 		public int seleccionTabla(){
 			int selectedRow = table.getSelectedRow();
 			int id = -1;
@@ -243,5 +274,30 @@ public class ListaProyectos extends JFrame {
 			return id;
 	
 		}
-}
+
+		public String getProyecto() {
+			return proyectoTxt.getText();
+		}
+		public String getNombre() {
+			return nombreTxt.getText();
+		}
+		public String getCurso() {
+			return cursoTxt.getText();
+		}
+		public String getGrupo() {
+			return grupoTxt.getText();
+		}
+		public String getYear() {
+			return yearTxt.getText();
+		}
+		public String getUrl() {
+			return urlTxt.getText();
+		}
+		public String getNota() {
+			return notaTxt.getText();
+		}
+		public String getArea() {
+			return areaTxt.getText();
+		}
+	}
 

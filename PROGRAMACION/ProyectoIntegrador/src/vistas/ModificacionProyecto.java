@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 import java.awt.*;
 import controlador.MenuListener;
+import controlador.modificarProyecto;
 
 import javax.swing.JButton;
 
@@ -183,7 +184,10 @@ public class ModificacionProyecto extends JFrame {
 		btnNewButton.setBackground(new Color(0, 191, 255));
 		btnNewButton.setBounds(541, 227, 143, 43);
 		panel.add(btnNewButton);
-			
+		
+		modificarProyecto modificarBtn = new modificarProyecto(this, idProyecto);
+		btnNewButton.addActionListener(modificarBtn);
+		panel.add(btnNewButton);
 	}
 
 	public String getNombre() {

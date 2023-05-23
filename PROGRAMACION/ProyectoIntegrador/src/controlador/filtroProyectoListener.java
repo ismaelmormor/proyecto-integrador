@@ -9,7 +9,6 @@ public class filtroProyectoListener implements ActionListener {
     private String curso;
     private String grupo;
     private String year;
-    private String link;
     private String nota;
     private String id_area;
     private String idProyecto;
@@ -27,7 +26,6 @@ public class filtroProyectoListener implements ActionListener {
         curso = ventana.getCurso();
         grupo = ventana.getGrupo();
 		year = ventana.getYear();
-		link = ventana.getUrl();
 		nota = ventana.getNota();
 		id_area = ventana.getNota();
 
@@ -67,14 +65,6 @@ public class filtroProyectoListener implements ActionListener {
                     query += "AND Año = '"+year+"'";
                 }
             }
-            if (!link.isEmpty()){
-                if(primeraCond){
-                    query += "url = '"+link+"'";
-                    primeraCond=false;
-                }else{
-                    query += "AND url = '"+link+"'";
-                }
-            }
             if (!nota.isEmpty()){
                 if(primeraCond){
                     query += "Nota = "+nota;
@@ -99,7 +89,7 @@ public class filtroProyectoListener implements ActionListener {
                     query += " AND ID_Area = "+id_area;
                 }
             }
-            if (idProyecto.isEmpty() && nombre.isEmpty() && curso.isEmpty() && grupo.isEmpty() && year.isEmpty() && link.isEmpty() && nota.isEmpty() && id_area.isEmpty()){
+            if (idProyecto.isEmpty() && nombre.isEmpty() && curso.isEmpty() && grupo.isEmpty() && year.isEmpty() && nota.isEmpty() && id_area.isEmpty()){
                 query="Select * from PROYECTO_INTEGRADOR";
             }
             ventana.actualizarTabla(query);

@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ListaProyectos extends JFrame {
 
-	private TextField proyectoTxt, nombreTxt, cursoTxt, grupoTxt, yearTxt, urlTxt, notaTxt, areaTxt;
+	private TextField proyectoTxt, nombreTxt, cursoTxt, grupoTxt, yearTxt, notaTxt, areaTxt;
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel model = new DefaultTableModel();
@@ -289,9 +289,6 @@ public class ListaProyectos extends JFrame {
 		}
 		public String getYear() {
 			return yearTxt.getText();
-		}
-		public String getUrl() {
-			return urlTxt.getText();
 		}
 		public String getNota() {
 			return notaTxt.getText();

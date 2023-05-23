@@ -103,7 +103,7 @@ public class Animacion3DA extends JFrame {
 		Juegos.addActionListener(menuListener);
 
 		//Login
-		JMenu Login = new JMenu("Lógin");
+		JMenu Login = new JMenu("Login");
 		menuBar.add(Login);
 
 		JMenuItem admin = new JMenuItem("Admin");

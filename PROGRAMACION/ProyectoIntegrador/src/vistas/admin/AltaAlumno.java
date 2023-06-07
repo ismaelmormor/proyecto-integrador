@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import controlador.admin.MenuListener;
 import controlador.admin.altaAlumnoButton;
+import modelo.Alumno;
+
 import java.awt.*;
 
 /**
@@ -175,38 +177,18 @@ public class AltaAlumno extends JFrame {
 	// -----------------------
 
 	/**
-	 * Obtiene el nombre ingresado en el formulario.
+	 * Obtiene el objeto Alumno de todos los datos introducidos
 	 *
-	 * @return El nombre ingresado como una cadena de caracteres.
+	 * @return Alumno
 	 */
-	public String getNombre() {
-		return nombreTxt.getText();
-	}
+	public Alumno getAlumno() {
+		String nombre = nombreTxt.getText();
+		String apellido = apellidoTxt.getText();
+		int nExpediente = Integer.parseInt(nExpedienteTxt.getText());
+		int idProyecto = Integer.parseInt(idProyectoTxt.getText());
 
-	/**
-	 * Obtiene el apellido ingresado en el formulario.
-	 *
-	 * @return El apellido ingresado como una cadena de caracteres.
-	 */
-	public String getApellido() {
-		return apellidoTxt.getText();
-	}
-
-	/**
-	 * Obtiene el número de expediente ingresado en el formulario.
-	 *
-	 * @return El número de expediente ingresado como una cadena de caracteres.
-	 */
-	public String getNExpediente() {
-		return nExpedienteTxt.getText();
-	}
-
-	/**
-	 * Obtiene el ID del proyecto ingresado en el formulario.
-	 *
-	 * @return El ID del proyecto ingresado como una cadena de caracteres.
-	 */
-	public String getIdProyecto() {
-		return idProyectoTxt.getText();
+		Alumno a = new Alumno(nombre, apellido, nExpediente, idProyecto);
+		
+		return a;
 	}
 }

@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.admin.MenuListener;
 import controlador.admin.altaProyectoButton;
+import modelo.Proyecto;
 
 /**
  * La clase `AltaProyecto` representa una ventana JFrame para agregar un nuevo
@@ -217,66 +218,16 @@ public class AltaProyecto extends JFrame {
 	 * 
 	 * @return el nombre del proyecto.
 	 */
-	public String getNombre() {
+	public Proyecto getProyecto() {
 		String nombre = nombreTxt.getText();
-		return nombre;
-	}
-
-	/**
-	 * Obtiene el curso del proyecto ingresado.
-	 * 
-	 * @return el curso del proyecto.
-	 */
-	public String getCurso() {
 		String curso = cursoTxt.getText();
-		return curso;
-	}
-
-	/**
-	 * Obtiene el grupo del proyecto ingresado.
-	 * 
-	 * @return el grupo del proyecto.
-	 */
-	public String getGrupo() {
 		String grupo = grupoTxt.getText();
-		return grupo;
-	}
-
-	/**
-	 * Obtiene el año del proyecto ingresado.
-	 * 
-	 * @return el año del proyecto.
-	 */
-	public String getYear() {
-		String year = yearTxt.getText();
-		return year;
-	}
-
-	/**
-	 * Obtiene el enlace del proyecto ingresado.
-	 * 
-	 * @return el enlace del proyecto.
-	 */
-	public String getUrl() {
+		int year = Integer.parseInt(yearTxt.getText());
 		String link = linkTxt.getText();
-		return link;
-	}
+		int nota = Integer.parseInt(notaTxt.getText());
+		int area = Integer.parseInt(areaTxt.getText());
 
-	/**
-	 * Obtiene la nota del proyecto ingresado.
-	 * @return la nota del proyecto.
-	 */
-	public String getNota() {
-		String nota = notaTxt.getText();
-		return nota;
-	}
-
-	/**
-	 * Obtiene el ID del área del proyecto ingresado.
-	 * @return el ID del área del proyecto.
-	 */
-	public String getIDArea() {
-		String area = areaTxt.getText();
-		return area;
+		Proyecto p = new Proyecto(nombre, curso, grupo, year, link, nota, area);
+		return p;
 	}
 }

@@ -40,6 +40,7 @@ public class altaProyectoButton implements ActionListener {
         year = ventana.getYear();
         link = ventana.getUrl();
         nota = ventana.getNota();
+		id_area = ventana.getIDArea();
         // Conexión con BBDD
         AccesoBD access = new AccesoBD();
         con = access.getConexion();

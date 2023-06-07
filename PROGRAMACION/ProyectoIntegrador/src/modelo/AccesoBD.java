@@ -8,7 +8,7 @@ public class AccesoBD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/ProyectoIntegrador";
 	private String usuario = "root";
-	private String pword = "root";
+	private String pword = "SkillMoreno";
 	/**
 	 * Método para obtener la conexión
 	 * @return con - Devuelve la conexión con la base de datos

@@ -3,6 +3,7 @@ package controlador.admin;
 import java.awt.*;
 import java.awt.event.*;
 
+import modelo.Alumno;
 import vistas.admin.ListaDeAlumnos;
 import vistas.admin.ModificacionEstudiante;
 /**
@@ -11,7 +12,7 @@ import vistas.admin.ModificacionEstudiante;
  */
 public class modAlumnoBtn implements ActionListener {
 	// Variables
-    private int id;
+    private Alumno a;
     private ListaDeAlumnos ventana;
 	/**
 	 * Método constructor
@@ -26,11 +27,11 @@ public class modAlumnoBtn implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
-        id = ventana.seleccionTabla();
+        a = ventana.seleccionTabla();
 		// Si la id que recopilamos no es -1 significa que hemos cogido la seleccionada
-        if (id != -1){
+        if (a!=null){
 			// Mnadamos al usuario a la ventana modificar
-            ModificacionEstudiante ventanaNueva = new ModificacionEstudiante(id);
+            ModificacionEstudiante ventanaNueva = new ModificacionEstudiante(a);
             ventana.dispose();
             ventanaNueva.setVisible(true);
         }

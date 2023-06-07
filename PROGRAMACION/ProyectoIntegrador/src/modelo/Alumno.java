@@ -2,13 +2,33 @@ package modelo;
 
 public class Alumno {
     private String nombre, apellidos;
-    private int nExpediente, idProyecto;
+    private int idAlumno, nExpediente, idProyecto;
 
     public Alumno(String nom, String ap, int nExp, int idP){
         this.nombre = nom;
         this.apellidos = ap;
         this.nExpediente = nExp;
         this.idProyecto = idP;
+    }
+
+    public Alumno(int idAl, String nom, String ap, int nExp, int idP){
+        this.idAlumno = idAl;
+        this.nombre = nom;
+        this.apellidos = ap;
+        this.nExpediente = nExp;
+        this.idProyecto = idP;
+    }
+    /**
+     * Constructor para cuando queremos hacer un objeto nulo
+     */
+    // public Alumno(){};
+
+    public int getIdAlumno() {
+        return idAlumno;
+    }
+
+    public void setIdAlumno(int idAlumno) {
+        this.idAlumno = idAlumno;
     }
 
     public String getNombre() {

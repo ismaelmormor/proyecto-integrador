@@ -13,6 +13,7 @@ import controlador.admin.eliminarAlumno;
 import controlador.admin.filtroAlumnoListener;
 import controlador.admin.modAlumnoBtn;
 import modelo.AccesoBD;
+import modelo.Alumno;
 
 /**
  * ListaVAlumnos
@@ -297,22 +298,23 @@ public class ListaDeAlumnos
 	 * 
 	 * @return El ID del alumno seleccionado.
 	 */
-	public int seleccionTabla(){
-		int selectedRow = table.getSelectedRow();
-		int id = -1;
-		if (selectedRow != -1) {
-		    // Obtener los datos de la fila seleccionada
-		    Object[] rowData = new Object[table.getColumnCount()];
-		    for (int i = 0; i < table.getColumnCount(); i++) {
-		        rowData[i] = table.getValueAt(selectedRow, i);
-		    }
-		
-		    // Hacer algo con los datos de la fila seleccionada
-		    // Por ejemplo, imprimir los valores
-		    id = (Integer) rowData[0];
-			return id;
+	public Alumno seleccionTabla(){
+		int filaSeleccionada = table.getSelectedRow();
+		Alumno a;
+		if (filaSeleccionada != -1){
+			int id = (int) model.getValueAt(filaSeleccionada, 0);
+			int nExpediente = (int) model.getValueAt(filaSeleccionada, 1);
+			String nombre = (String) model.getValueAt(filaSeleccionada, 2);
+			String apellidos = (String) model.getValueAt(filaSeleccionada, 3);
+			int idProyecto = (int) model.getValueAt(filaSeleccionada, 4);
+
+			a = new Alumno(id, nombre, apellidos, nExpediente, idProyecto);
+			return a;
+		}else{
+			a = null;
+			return a;
 		}
-		return id;
+		
 
 	}
 }

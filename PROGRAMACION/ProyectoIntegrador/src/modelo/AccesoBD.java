@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 import javax.swing.JFrame;
+
+import vistas.admin.ListaDeAlumnos;
 /**
  * Clase para realizar la conexión con la base de datos
  */
@@ -112,7 +114,43 @@ public class AccesoBD {
 		}
 	}
 
+	public void modAlumno(Alumno a , JFrame v){
+		con = getConexion();
+		ventana = v;
 
+		try {
+			// Preparamos la consulta a la base de datos
+			Statement statement = con.createStatement();
+			String query = "UPDATE ALUMNO SET Nombre = '"
+            +a.getNombre()+"', Apellidos='"+a.getApellidos()+"', N_Expediente="+a.getnExpediente()+", ID_Proyecto="+a.getIdProyecto()+" where ID_Alumno="+a.getIdAlumno();
+            statement.executeUpdate(query);
+            statement.close();
+			con.close();
+			showMessageDialog("Se han introducido los datos correctamente");
+            ventana.dispose();
+            ListaDeAlumnos ventanaNueva = new ListaDeAlumnos();
+            ventanaNueva.setVisible(true);
+
+		} catch (SQLException e) {
+            // Cuando da error de las foreign keys
+			if (e.getErrorCode() == 1452) {
+				showMessageDialog("ID_Proyecto tiene que existir");
+			}
+			// Cuando se intentan introducir valores más largos de lo permitido
+			else if (e.getErrorCode() == 1406) {
+				showMessageDialog("Acuérdate del límite de caracteres");
+            }
+			// Cuando se mete por ejemplo un string en un int
+			else if (e.getErrorCode() == 1366) {
+				showMessageDialog("Error en tipo de carácter");
+			} else {
+                System.out.println("Error con el botón de modificar Alumno: "+e.getMessage());
+			    showMessageDialog("Hubo un error al cambiar los datos");
+            }
+		} catch (Exception e){
+            System.out.println("Ocurrió un error inesperado");
+        }
+	}
 	/**
 	 * Método para mostrar un dialog
 	 * @param message

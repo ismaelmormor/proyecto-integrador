@@ -16,6 +16,7 @@ public class ModificacionProyecto extends JFrame {
 	private TextField nombreTxt, cursoTxt, grupoTxt, yearTxt, urlTxt, notaTxt, areaTxt;
 	private JPanel contentPane;
 	private MenuListener menuListener = new MenuListener(this);
+	private Label error;
 
 	/**
 	 * Crea la ventana de ModificacionProyecto.
@@ -198,6 +199,10 @@ public class ModificacionProyecto extends JFrame {
 		modificarProyecto modificarBtn = new modificarProyecto(this);
 		btnNewButton.addActionListener(modificarBtn);
 		panel.add(btnNewButton);
+
+		error = new Label("");
+		error.setBounds(500, 260, 330, 30);
+		panel.add(error);
 	}
 
 	/**
@@ -206,14 +211,68 @@ public class ModificacionProyecto extends JFrame {
 	 */
 	public Proyecto getProyectoMod() {
 		String nombre = nombreTxt.getText();
-		String curso =  cursoTxt.getText();
+		String curso = cursoTxt.getText();
 		String grupo = grupoTxt.getText();
-		int year = Integer.parseInt(yearTxt.getText());
-		String url = urlTxt.getText();
-		int nota = Integer.parseInt(notaTxt.getText());
-		int idArea = Integer.parseInt(areaTxt.getText());
+		int year = 0;
+		String link = urlTxt.getText();
+		int nota = 0;
+		int area = 0;
+		
+		if(curso.length()>2){
+			error.setText("El campo curso debe tener una longitud menor a 3 caracteres");
+			return null;  // Retorna null si hay un error de validación
+		}
 
-		proyectoMod = new Proyecto(p.getIdProyecto(), nombre, curso, grupo, year, url, nota, idArea);
+		// Validación del campo year
+		String yearStr = yearTxt.getText();
+		if (!yearStr.isEmpty()) {
+			try {
+				if(yearStr.length()>4){
+					error.setText("El campo Año debe ser un número de 4 cifras o menos");
+					return null;  // Retorna null si hay un error de validación
+				}else{
+					year = Integer.parseInt(yearStr);
+				}
+				
+			} catch (NumberFormatException e) {
+				year = 0;
+				error.setText("El campo Año debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}
+	
+		// Validación del campo nota
+		String notaStr = notaTxt.getText();
+		if (!notaStr.isEmpty()) {
+			try {
+				if(notaStr.length()>3){
+					error.setText("El campo Nota debe ser un número de 1 o 2 cifras");
+					return null;  // Retorna null si hay un error de validación
+				}else{
+					nota = Integer.parseInt(notaStr);
+				}
+				
+			} catch (NumberFormatException e) {
+				nota = 0;
+				error.setText("El campo Nota debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}
+	
+		// Validación del campo area
+		String areaStr = areaTxt.getText();
+		if (!areaStr.isEmpty()) {
+			try {
+				area = Integer.parseInt(areaStr);
+			} catch (NumberFormatException e) {
+				area = 0;
+				error.setText("El campo Area debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}
+	
+		error.setText("");
+		proyectoMod = new Proyecto(p.getIdProyecto(), nombre, curso, grupo, year, link, nota, area);
 		return proyectoMod;
 	}
 }

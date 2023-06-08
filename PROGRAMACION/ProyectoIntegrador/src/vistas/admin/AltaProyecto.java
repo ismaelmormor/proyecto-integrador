@@ -233,15 +233,26 @@ public class AltaProyecto extends JFrame {
 		String link = linkTxt.getText();
 		int nota = 0;
 		int area = 0;
-	
+		
+		if(curso.length()>2){
+			error.setText("El campo curso debe tener una longitud menor a 3 caracteres");
+			return null;  // Retorna null si hay un error de validación
+		}
+
 		// Validación del campo year
 		String yearStr = yearTxt.getText();
 		if (!yearStr.isEmpty()) {
 			try {
-				year = Integer.parseInt(yearStr);
+				if(yearStr.length()>4){
+					error.setText("El campo Año debe ser un número de 4 cifras o menos");
+					return null;  // Retorna null si hay un error de validación
+				}else{
+					year = Integer.parseInt(yearStr);
+				}
+				
 			} catch (NumberFormatException e) {
 				year = 0;
-				error.setText("El campo Year debe ser un número válido");
+				error.setText("El campo Año debe ser un número válido");
 				return null;  // Retorna null si hay un error de validación
 			}
 		}
@@ -250,7 +261,13 @@ public class AltaProyecto extends JFrame {
 		String notaStr = notaTxt.getText();
 		if (!notaStr.isEmpty()) {
 			try {
-				nota = Integer.parseInt(notaStr);
+				if(notaStr.length()>3){
+					error.setText("El campo Nota debe ser un número de 1 o 2 cifras");
+					return null;  // Retorna null si hay un error de validación
+				}else{
+					nota = Integer.parseInt(notaStr);
+				}
+				
 			} catch (NumberFormatException e) {
 				nota = 0;
 				error.setText("El campo Nota debe ser un número válido");

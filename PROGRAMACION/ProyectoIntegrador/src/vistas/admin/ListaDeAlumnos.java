@@ -5,7 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import java.sql.*;
+import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
 
 import controlador.admin.MenuListener;
@@ -27,6 +28,7 @@ public class ListaDeAlumnos
 	private JTable table;
 	private DefaultTableModel model;
 	private MenuListener menuListener = new MenuListener(this);	
+	private ArrayList<Alumno> listaAlumnos;
 
 	private TextField nExpedienteTxt, nombreTxt, apellidoTxt, IDProyectoTxt;
 	 
@@ -185,25 +187,11 @@ public class ListaDeAlumnos
 		
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
-		Connection con = acceso.getConexion();
-		try {
-			Statement statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Alumno");
-			
-			while (resultSet.next()) {
-				Object[] row = new Object[model.getColumnCount()];
-				
-				for (int i = 1; i <= row.length; i++) {
-					row[i-1] = resultSet.getObject(i);
-					
-				}
-
-				model.addRow(row);
-			}			
-		} catch (Exception e) {
-			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
-		}
-		
+		listaAlumnos = acceso.listaAlumnos("SELECT * FROM ALUMNO");
+		for (Alumno alumno : listaAlumnos) {
+            Object[] row = {alumno.getIdAlumno(),alumno.getnExpediente(), alumno.getNombre(), alumno.getApellidos(), alumno.getIdProyecto()};
+            model.addRow(row);
+        }
 		table.setModel(model);
 		
 		scrollPane.setViewportView(table);
@@ -274,22 +262,11 @@ public class ListaDeAlumnos
 		model.setRowCount(0);
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
-		Connection con = acceso.getConexion();
-		try {
-			Statement statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery(query);
-
-			while (resultSet.next()) {
-				Object[] row = new Object[model.getColumnCount()];
-				for (int i = 1; i <= row.length; i++) {
-					row[i-1] = resultSet.getObject(i);
-				}
-				model.addRow(row);
-			}			
-		} catch (Exception e) {
-			System.out.println("Error con la consulta de Proyectos: "+e.getMessage());
-		}
-		
+		listaAlumnos = acceso.listaAlumnos(query);
+		for (Alumno alumno : listaAlumnos) {
+            Object[] row = {alumno.getIdAlumno(),alumno.getnExpediente(), alumno.getNombre(), alumno.getApellidos(), alumno.getIdProyecto()};
+            model.addRow(row);
+        }
 		table.setModel(model);
 	}
 

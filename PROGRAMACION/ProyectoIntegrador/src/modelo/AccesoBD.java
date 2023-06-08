@@ -7,6 +7,7 @@ import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -151,6 +152,59 @@ public class AccesoBD {
             System.out.println("Ocurrió un error inesperado");
         }
 	}
+	
+	public void eliminarAlumno(Alumno a, JFrame v){
+		con = getConexion();
+		ventana = v;
+
+		try {
+			// Preparamos la consulta a la base de datos
+			Statement statement = con.createStatement();
+			String query = "DELETE FROM ALUMNO WHERE ID_ALUMNO = "+a.getIdAlumno();
+			statement.executeUpdate(query);
+            statement.close();
+		    con.close();
+		    showMessageDialog("Se han eliminado los datos correctamente");
+            String query2 = "SELECT * FROM ALUMNO";
+            ((ListaDeAlumnos) ventana).actualizarTabla(query2);
+            
+		} catch (SQLException e) {
+            System.out.println("Error con el botón de eliminar Alumno: "+e.getMessage());
+			showMessageDialog("Hubo un error al cambiar los datos");
+		} catch (Exception e){
+            System.out.println("Ocurrió un error inesperado");
+        }
+	}
+
+	public ArrayList<Alumno> listaAlumnos(String query){
+		ArrayList<Alumno> lista = new ArrayList<>();
+		con = getConexion();
+		try {
+			Statement statement = con.createStatement();
+        	ResultSet resultSet = statement.executeQuery(query);
+
+			while (resultSet.next()) {
+				// Obtenemos los datos del ResultSet y creamos un objeto Alumno
+				int id = resultSet.getInt(1);
+				int nExpediente = resultSet.getInt(2);
+				String nombre = resultSet.getString(3);
+				String apellidos = resultSet.getString(4);
+				int idProyecto = resultSet.getInt(5);
+	
+				Alumno alumno = new Alumno(id, nombre, apellidos, nExpediente, idProyecto);
+	
+				// Agregamos el objeto Alumno a la lista
+				lista.add(alumno);
+			}	
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Excepción en la lista alumnos");
+		}
+		return lista;
+	}
+
+
 	/**
 	 * Método para mostrar un dialog
 	 * @param message

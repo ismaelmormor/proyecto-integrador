@@ -2,8 +2,8 @@ package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 import modelo.AccesoBD;
+import modelo.Alumno;
 import vistas.admin.ListaDeAlumnos;
 
 /**
@@ -11,9 +11,8 @@ import vistas.admin.ListaDeAlumnos;
  */
 public class eliminarAlumno implements ActionListener {
 	// Variables
-    private int id;
+    private Alumno a;
     private ListaDeAlumnos ventana;
-    private Connection con;
 
 	/**
 	 * Método constructor
@@ -28,30 +27,11 @@ public class eliminarAlumno implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
-        id = ventana.seleccionTabla();
+        a = ventana.seleccionTabla();
 		// Si la id que recopilamos no es -1 significa que hemos cogido la seleccionada
-        if (id != -1){
+        if (a != null){
             AccesoBD access = new AccesoBD();
-            con = access.getConexion();
-            
-		    try {
-		    	// Preparamos la consulta a la base de datos
-		    	Statement statement = con.createStatement();
-		    	String query = "DELETE FROM ALUMNO WHERE ID_ALUMNO = "+id;
-                statement.executeUpdate(query);
-                statement.close();
-		    	con.close();
-		    	showMessageDialog("Se han eliminado los datos correctamente");
-                String query2 = "SELECT * FROM ALUMNO";
-                ventana.actualizarTabla(query2);
-            
-		    } catch (SQLException e) {
-                System.out.println("Error con el botón de eliminar Alumno: "+e.getMessage());
-		    	showMessageDialog("Hubo un error al cambiar los datos");
-
-		    } catch (Exception e){
-                System.out.println("Ocurrió un error inesperado");
-            }
+            access.eliminarAlumno(a, ventana);
         }
         else{
             showMessageDialog("Selecciona una fila de la tabla");

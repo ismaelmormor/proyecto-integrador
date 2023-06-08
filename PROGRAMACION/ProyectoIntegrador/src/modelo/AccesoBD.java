@@ -40,7 +40,6 @@ public class AccesoBD {
 		return con;
 	}
 
-
 	public void altaAlumno(Alumno a, JFrame v){
 		con = getConexion();
 		ventana = v;
@@ -170,9 +169,8 @@ public class AccesoBD {
 		return lista;
 	}
 
-
 // PROYECTOS
-public void altaProyecto(Proyecto p, JFrame v){
+	public void altaProyecto(Proyecto p, JFrame v){
 	con = getConexion();
 	ventana = v;
 	try {
@@ -213,7 +211,7 @@ public void altaProyecto(Proyecto p, JFrame v){
 	}
 }
 
-public void modProyecto(Proyecto p , JFrame v){
+	public void modProyecto(Proyecto p , JFrame v){
 	con = getConexion();
 	ventana = v;
 
@@ -252,7 +250,7 @@ public void modProyecto(Proyecto p , JFrame v){
 	}
 }
 
-public void eliminarProyecto(Proyecto p, JFrame v){
+	public void eliminarProyecto(Proyecto p, JFrame v){
 	con = getConexion();
 	ventana = v;
 
@@ -275,7 +273,7 @@ public void eliminarProyecto(Proyecto p, JFrame v){
 	}
 }
 
-public ArrayList<Proyecto> listaProyectos(String query){
+	public ArrayList<Proyecto> listaProyectos(String query){
 	ArrayList<Proyecto> lista = new ArrayList<>();
 	con = getConexion();
 	try {
@@ -330,7 +328,6 @@ public ArrayList<Proyecto> listaProyectos(String query){
 		
 		
 	}
-
 
 	/**
 	 * Método para mostrar un dialog

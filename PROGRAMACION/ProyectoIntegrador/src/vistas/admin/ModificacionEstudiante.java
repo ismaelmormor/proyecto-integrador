@@ -1,23 +1,11 @@
 package vistas.admin;
 
-import java.awt.Image;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.Color;
-import javax.swing.ImageIcon;
-import java.awt.TextField;
-import java.awt.Label;
-import java.awt.Font;
+import java.awt.*;
 
-import controlador.admin.MenuListener;
-import controlador.admin.modificarAlumno;
-import modelo.Alumno;
-
-import javax.swing.JButton;
+import controlador.admin.*;
+import modelo.*;
 
 /**
  * La clase ModificacionEstudiante crea el marco de la ventana y configura sus
@@ -27,6 +15,7 @@ public class ModificacionEstudiante extends JFrame {
 	private Alumno alumno,alumnoMod;
 	private JPanel contentPane;
 	private TextField nombreTxt, apellidosTxt, expedienteTxt, proyectoTxt;
+	private Label error;
 	private MenuListener menuListener = new MenuListener(this);
 
 	/**
@@ -182,19 +171,55 @@ public class ModificacionEstudiante extends JFrame {
 		modificarAlumno modificarBtn = new modificarAlumno(this);
 		btnNewButton.addActionListener(modificarBtn);
 		panel.add(btnNewButton);
+		// --------------------
+		error = new Label("");
+		error.setBounds(270, 410, 330, 30);
+		error.setForeground(new Color(255, 0 , 0));
+		panel.add(error);
 
 	}
 
 	/**
-	 * Obtiene el nombre ingresado.
-	 * 
-	 * @return el nombre ingresado.
+	 * Método para recibir el alumno ya modificado
+	 * @return alumno - Obeto Alumno modificado
 	 */
 	public Alumno getAlumnoMod() {
 		String nombre = nombreTxt.getText();
-		String apellidos =  apellidosTxt.getText();
-		int nExpediente = Integer.parseInt(expedienteTxt.getText());
-		int idProyecto = Integer.parseInt(proyectoTxt.getText());
+		String apellidos = apellidosTxt.getText();
+		int nExpediente = 0;
+		int idProyecto = 0;
+		// Validación del campo nExpediente
+		String nExpedienteStr = expedienteTxt.getText();
+		if (!nExpedienteStr.isEmpty()) {
+			try {
+				if(nExpedienteStr.length()>9){
+					error.setText("El campo Nº Expediente debe tener 9 o menos cifras");
+					return null;  // Retorna null si hay un error de validación
+				}else{
+					nExpediente = Integer.parseInt(nExpedienteStr);
+				}
+			} catch (NumberFormatException e) {
+				nExpediente = 0;
+				error.setText("El campo Nº Expediente debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}
+		// Validación del campo idProyecto
+		String idProyectoStr = proyectoTxt.getText();
+		if (!idProyectoStr.isEmpty()) {
+			try {
+				idProyecto = Integer.parseInt(idProyectoStr);
+			} catch (NumberFormatException e) {
+				idProyecto = 0;
+				error.setText("El campo ID Proyecto debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}else{
+			error.setText("El campo ID Proyecto debe rellenarse");
+			return null;  // Retorna null si hay un error de validación
+		}
+		
+		error.setText("");
 
 		alumnoMod = new Alumno(alumno.getIdAlumno(), nombre, apellidos, nExpediente, idProyecto);
 		return alumnoMod;

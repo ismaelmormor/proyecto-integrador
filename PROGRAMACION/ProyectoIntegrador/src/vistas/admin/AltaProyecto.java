@@ -27,6 +27,7 @@ public class AltaProyecto extends JFrame {
 	private TextField linkTxt;
 	private TextField notaTxt;
 	private TextField areaTxt;
+	private Label error;
 
 	/**
 	 * Crea la ventana.
@@ -211,6 +212,12 @@ public class AltaProyecto extends JFrame {
 		label_1_1_1_1_1_1_1.setFont(new Font("HP Simplified", Font.PLAIN, 12));
 		label_1_1_1_1_1_1_1.setBounds(341, 345, 43, 29);
 		panel.add(label_1_1_1_1_1_1_1);
+
+		//--------------
+		error = new Label("");
+		error.setBounds(330, 500, 330, 30);
+		error.setForeground(new Color(255, 0 , 0));
+		panel.add(error);
 	}
 
 	/**
@@ -222,12 +229,50 @@ public class AltaProyecto extends JFrame {
 		String nombre = nombreTxt.getText();
 		String curso = cursoTxt.getText();
 		String grupo = grupoTxt.getText();
-		int year = Integer.parseInt(yearTxt.getText());
+		int year = 0;
 		String link = linkTxt.getText();
-		int nota = Integer.parseInt(notaTxt.getText());
-		int area = Integer.parseInt(areaTxt.getText());
-
+		int nota = 0;
+		int area = 0;
+	
+		// Validación del campo year
+		String yearStr = yearTxt.getText();
+		if (!yearStr.isEmpty()) {
+			try {
+				year = Integer.parseInt(yearStr);
+			} catch (NumberFormatException e) {
+				year = 0;
+				error.setText("El campo Year debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}
+	
+		// Validación del campo nota
+		String notaStr = notaTxt.getText();
+		if (!notaStr.isEmpty()) {
+			try {
+				nota = Integer.parseInt(notaStr);
+			} catch (NumberFormatException e) {
+				nota = 0;
+				error.setText("El campo Nota debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}
+	
+		// Validación del campo area
+		String areaStr = areaTxt.getText();
+		if (!areaStr.isEmpty()) {
+			try {
+				area = Integer.parseInt(areaStr);
+			} catch (NumberFormatException e) {
+				area = 0;
+				error.setText("El campo Area debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}
+	
 		Proyecto p = new Proyecto(nombre, curso, grupo, year, link, nota, area);
+		error.setText("");
 		return p;
 	}
+	
 }

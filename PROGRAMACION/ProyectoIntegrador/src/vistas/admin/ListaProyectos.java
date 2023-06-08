@@ -1,13 +1,10 @@
 package vistas.admin;
 
-import java.sql.*;
+import java.util.ArrayList;
 import java.awt.*;
 
-import controlador.admin.MenuListener;
-import controlador.admin.eliminarProyecto;
-import controlador.admin.filtroProyectoListener;
-import controlador.admin.modProyectoBtn;
-import modelo.AccesoBD;
+import controlador.admin.*;
+import modelo.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -25,6 +22,7 @@ public class ListaProyectos extends JFrame {
 	private JTable table;
 	private DefaultTableModel model = new DefaultTableModel();
 	private MenuListener menuListener = new MenuListener(this);
+	private ArrayList<Proyecto> listaProyectos;
 
 	/**
 	 * Constructor de la clase ListaVProyectos.
@@ -214,24 +212,16 @@ public class ListaProyectos extends JFrame {
 				new String[] { "ID_Proyecto", "Nombre", "Curso", "Grupo", "Año", "URL", "Nota", "ID_Area" });
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
-		Connection con = acceso.getConexion();
-		try {
-			Statement statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Proyecto_Integrador");
-
-			while (resultSet.next()) {
-				Object[] row = new Object[model.getColumnCount()];
-				for (int i = 1; i <= row.length; i++) {
-					row[i - 1] = resultSet.getObject(i);
-				}
-				model.addRow(row);
-			}
-		} catch (Exception e) {
-			System.out.println("Error con la consulta de Proyectos: " + e.getMessage());
-		}
-
+		listaProyectos = acceso.listaProyectos("SELECT * FROM PROYECTO_INTEGRADOR");
+		for (Proyecto proyecto : listaProyectos) {
+            Object[] row = {proyecto.getIdProyecto(), proyecto.getNombre(), proyecto.getCurso(),
+				 proyecto.getCurso(), proyecto.getYear(), proyecto.getUrl(), proyecto.getNota(),
+				 proyecto.getIdArea()};
+            model.addRow(row);
+        }
 		table.setModel(model);
 		scrollPane.setViewportView(table);
+
 		// SE AÑADEN BOTONES EXTRA
 		modProyectoBtn btnModificar = new modProyectoBtn(this);
 		JButton modButton = new JButton("Modificar");
@@ -256,22 +246,13 @@ public class ListaProyectos extends JFrame {
 		model.setRowCount(0);
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
-		Connection con = acceso.getConexion();
-		try {
-			Statement statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery(query);
-
-			while (resultSet.next()) {
-				Object[] row = new Object[model.getColumnCount()];
-				for (int i = 1; i <= row.length; i++) {
-					row[i - 1] = resultSet.getObject(i);
-				}
-				model.addRow(row);
-			}
-		} catch (Exception e) {
-			System.out.println("Error con la consulta de Proyectos: " + e.getMessage());
-		}
-
+		listaProyectos = acceso.listaProyectos(query);
+		for (Proyecto proyecto : listaProyectos) {
+            Object[] row = {proyecto.getIdProyecto(), proyecto.getNombre(), proyecto.getCurso(),
+				 proyecto.getCurso(), proyecto.getYear(), proyecto.getUrl(), proyecto.getNota(),
+				 proyecto.getIdArea()};
+            model.addRow(row);
+        }
 		table.setModel(model);
 	}
 
@@ -280,23 +261,25 @@ public class ListaProyectos extends JFrame {
 	 *
 	 * @return ID del proyecto seleccionado, o -1 si no hay ninguna selección.
 	 */
-	public int seleccionTabla() {
-		int selectedRow = table.getSelectedRow();
-		int id = -1;
-		if (selectedRow != -1) {
-			// Obtener los datos de la fila seleccionada
-			Object[] rowData = new Object[table.getColumnCount()];
-			for (int i = 0; i < table.getColumnCount(); i++) {
-				rowData[i] = table.getValueAt(selectedRow, i);
-			}
+	public Proyecto seleccionTabla() {
+		int filaSeleccionada = table.getSelectedRow();
+		Proyecto p;
+		if (filaSeleccionada != -1){
+			int id = (int) model.getValueAt(filaSeleccionada, 0);
+			String nombre = (String) model.getValueAt(filaSeleccionada, 1);
+			String curso = (String) model.getValueAt(filaSeleccionada, 2);
+			String grupo = (String) model.getValueAt(filaSeleccionada, 3);
+			int year = (int) model.getValueAt(filaSeleccionada, 4);
+			String link = (String) model.getValueAt(filaSeleccionada, 5);
+			int nota = (int) model.getValueAt(filaSeleccionada, 6);
+			int area = (int) model.getValueAt(filaSeleccionada, 7);
 
-			// Hacer algo con los datos de la fila seleccionada
-			// Por ejemplo, imprimir los valores
-			id = (Integer) rowData[0];
-			return id;
+			p = new Proyecto(id, nombre, curso, grupo, year, link, nota, area);
+			return p;
+		}else{
+			p = null;
+			return p;
 		}
-		return id;
-
 	}
 
 	/**

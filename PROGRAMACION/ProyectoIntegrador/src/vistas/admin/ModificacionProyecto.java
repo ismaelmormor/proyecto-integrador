@@ -1,22 +1,18 @@
 package vistas.admin;
 
-import java.awt.Image;
-
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 import java.awt.*;
 
-import controlador.admin.MenuListener;
-import controlador.admin.modificarProyecto;
-
-import javax.swing.JButton;
+import controlador.admin.*;
+import modelo.*;
 
 /**
  * La clase ModificacionProyecto crea el marco de la ventana y configura sus
  * propiedades.
  */
 public class ModificacionProyecto extends JFrame {
-	private int idProyecto;
+	private Proyecto p, proyectoMod;
 	private TextField nombreTxt, cursoTxt, grupoTxt, yearTxt, urlTxt, notaTxt, areaTxt;
 	private JPanel contentPane;
 	private MenuListener menuListener = new MenuListener(this);
@@ -26,8 +22,8 @@ public class ModificacionProyecto extends JFrame {
 	 * 
 	 * @param id el ID del proyecto a modificar.
 	 */
-	public ModificacionProyecto(int id) {
-		this.idProyecto = id;
+	public ModificacionProyecto(Proyecto p) {
+		this.p = p;
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana
@@ -129,6 +125,7 @@ public class ModificacionProyecto extends JFrame {
 		nombreTxt = new TextField();
 		nombreTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		nombreTxt.setBounds(213, 87, 153, 27);
+		nombreTxt.setText(p.getNombre());
 		panel.add(nombreTxt);
 
 		Label labelCurso = new Label("Curso");
@@ -138,6 +135,7 @@ public class ModificacionProyecto extends JFrame {
 		cursoTxt = new TextField();
 		cursoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		cursoTxt.setBounds(213, 138, 153, 27);
+		cursoTxt.setText(p.getCurso());
 		panel.add(cursoTxt);
 
 		Label labelGrupo = new Label("Grupo");
@@ -147,6 +145,7 @@ public class ModificacionProyecto extends JFrame {
 		grupoTxt = new TextField();
 		grupoTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		grupoTxt.setBounds(213, 190, 153, 27);
+		grupoTxt.setText(p.getGrupo());
 		panel.add(grupoTxt);
 
 		Label labelYear = new Label("Año");
@@ -156,6 +155,7 @@ public class ModificacionProyecto extends JFrame {
 		yearTxt = new TextField();
 		yearTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		yearTxt.setBounds(213, 243, 153, 27);
+		yearTxt.setText(""+p.getYear());
 		panel.add(yearTxt);
 
 		Label labelUrl = new Label("URL");
@@ -165,6 +165,7 @@ public class ModificacionProyecto extends JFrame {
 		urlTxt = new TextField();
 		urlTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		urlTxt.setBounds(213, 289, 153, 27);
+		urlTxt.setText(p.getUrl());
 		panel.add(urlTxt);
 
 		Label labelNota = new Label("Nota");
@@ -174,6 +175,7 @@ public class ModificacionProyecto extends JFrame {
 		notaTxt = new TextField();
 		notaTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		notaTxt.setBounds(560, 87, 153, 27);
+		notaTxt.setText(""+p.getNota());
 		panel.add(notaTxt);
 
 		Label labelArea = new Label("ID_Area");
@@ -183,6 +185,7 @@ public class ModificacionProyecto extends JFrame {
 		areaTxt = new TextField();
 		areaTxt.setFont(new Font("Dialog", Font.PLAIN, 20));
 		areaTxt.setBounds(560, 138, 153, 27);
+		areaTxt.setText(""+p.getIdArea());
 		panel.add(areaTxt);
 
 		JButton btnNewButton = new JButton("Cambiar");
@@ -192,72 +195,25 @@ public class ModificacionProyecto extends JFrame {
 		btnNewButton.setBounds(541, 227, 143, 43);
 		panel.add(btnNewButton);
 
-		modificarProyecto modificarBtn = new modificarProyecto(this, idProyecto);
+		modificarProyecto modificarBtn = new modificarProyecto(this);
 		btnNewButton.addActionListener(modificarBtn);
 		panel.add(btnNewButton);
 	}
 
 	/**
-	 * Obtiene el nombre ingresado.
-	 * 
-	 * @return el nombre ingresado.
+	 * Método para recibir el proyecto ya modificado
+	 * @return proyectoMod - Obeto Proyecto modificado
 	 */
-	public String getNombre() {
-		return nombreTxt.getText();
-	}
+	public Proyecto getProyectoMod() {
+		String nombre = nombreTxt.getText();
+		String curso =  cursoTxt.getText();
+		String grupo = grupoTxt.getText();
+		int year = Integer.parseInt(yearTxt.getText());
+		String url = urlTxt.getText();
+		int nota = Integer.parseInt(notaTxt.getText());
+		int idArea = Integer.parseInt(areaTxt.getText());
 
-	/**
-	 * Obtiene el curso ingresado.
-	 * 
-	 * @return el curso ingresado.
-	 */
-	public String getCurso() {
-		return cursoTxt.getText();
+		proyectoMod = new Proyecto(p.getIdProyecto(), nombre, curso, grupo, year, url, nota, idArea);
+		return proyectoMod;
 	}
-
-	/**
-	 * Obtiene el grupo ingresado.
-	 * 
-	 * @return el grupo ingresado.
-	 */
-	public String getGrupo() {
-		return grupoTxt.getText();
-	}
-
-	/**
-	 * Obtiene el año ingresado.
-	 * 
-	 * @return el año ingresado.
-	 */
-	public String getYear() {
-		return yearTxt.getText();
-	}
-
-	/**
-	 * Obtiene la URL ingresada.
-	 * 
-	 * @return la URL ingresada.
-	 */
-	public String getUrl() {
-		return urlTxt.getText();
-	}
-
-	/**
-	 * Obtiene la nota ingresada.
-	 * 
-	 * @return la nota ingresada.
-	 */
-	public String getNota() {
-		return notaTxt.getText();
-	}
-
-	/**
-	 * Obtiene el área ingresada.
-	 * 
-	 * @return el área ingresada.
-	 */
-	public String getArea() {
-		return areaTxt.getText();
-	}
-
 }

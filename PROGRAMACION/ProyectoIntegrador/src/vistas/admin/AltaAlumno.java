@@ -25,6 +25,7 @@ public class AltaAlumno extends JFrame {
 	private TextField apellidoTxt;
 	private TextField nExpedienteTxt;
 	private TextField idProyectoTxt;
+	private Label error;
 
 	/**
 	 * Constructor de la clase AltaAlumno.
@@ -173,6 +174,12 @@ public class AltaAlumno extends JFrame {
 		altaAlumnoButton altaAbtn = new altaAlumnoButton(this);
 		btnNewButton.addActionListener(altaAbtn);
 		panel.add(btnNewButton);
+		// -----------------------
+		error = new Label("");
+		error.setBounds(270, 410, 330, 30);
+		error.setForeground(new Color(255, 0 , 0));
+		panel.add(error);
+
 	}
 	// -----------------------
 
@@ -184,11 +191,41 @@ public class AltaAlumno extends JFrame {
 	public Alumno getAlumno() {
 		String nombre = nombreTxt.getText();
 		String apellido = apellidoTxt.getText();
-		int nExpediente = Integer.parseInt(nExpedienteTxt.getText());
-		int idProyecto = Integer.parseInt(idProyectoTxt.getText());
-
-		Alumno a = new Alumno(nombre, apellido, nExpediente, idProyecto);
+		int nExpediente = 0;
+		int idProyecto = 0;
+		// Validación del campo nExpediente
+		String nExpedienteStr = nExpedienteTxt.getText();
+		if (!nExpedienteStr.isEmpty()) {
+			try {
+				if(nExpedienteStr.length()>9){
+					error.setText("El campo Nº Expediente debe tener 9 o menos cifras");
+					return null;  // Retorna null si hay un error de validación
+				}else{
+					nExpediente = Integer.parseInt(nExpedienteStr);
+				}
+			} catch (NumberFormatException e) {
+				nExpediente = 0;
+				error.setText("El campo Nº Expediente debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}
+		// Validación del campo idProyecto
+		String idProyectoStr = idProyectoTxt.getText();
+		if (!idProyectoStr.isEmpty()) {
+			try {
+				idProyecto = Integer.parseInt(idProyectoStr);
+			} catch (NumberFormatException e) {
+				idProyecto = 0;
+				error.setText("El campo ID Proyecto debe ser un número válido");
+				return null;  // Retorna null si hay un error de validación
+			}
+		}else{
+			error.setText("El campo ID Proyecto debe rellenarse");
+			return null;  // Retorna null si hay un error de validación
+		}
 		
+		Alumno a = new Alumno(nombre, apellido, nExpediente, idProyecto);
+		error.setText("");
 		return a;
 	}
 }

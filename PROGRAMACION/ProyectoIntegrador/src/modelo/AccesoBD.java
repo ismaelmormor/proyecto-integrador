@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import vistas.admin.ListaDeAlumnos;
+import vistas.admin.ListaProyectos;
 /**
  * Clase para realizar la conexión con la base de datos
  */
@@ -51,7 +52,11 @@ public class AccesoBD {
 			statement.executeUpdate(query);
 			statement.close();
 			con.close();
+			ventana.dispose();
+			ListaDeAlumnos nuevaVetana = new ListaDeAlumnos();
+			nuevaVetana.setVisible(true);
 			showMessageDialog("Alumno añadido con éxito");
+
 		} catch (SQLException e) {
 			// Cuando da error de las foreign keys
 			if (e.getErrorCode() == 1452) {
@@ -75,45 +80,6 @@ public class AccesoBD {
 			System.out.println("Hubo un error inesperado: "+e.getMessage());
 		}
     }
-	
-	public void altaProyecto(Proyecto p, JFrame v){
-		con = getConexion();
-		ventana = v;
-		try {
-			// Preparamos la consulta a la base de datos
-			Statement statement = con.createStatement();
-            
-            String query = "Insert into Proyecto_Integrador (Nombre, Curso, Grupo, Año, url, nota, id_area) values ('"+
-            p.getNombre()+"','"+p.getCurso()+"','"+p.getGrupo()+"','"+p.getYear()+"','"+p.getUrl()+"',"+p.getNota()+","+ p.getIdArea() +")";
-
-            statement.executeUpdate(query);
-            statement.close();
-			con.close();
-
-            showMessageDialog("Datos introducidos correctamente");
-
-		} catch (SQLException e) {
-			// Cuando da error de las foreign keys
-			if (e.getErrorCode() == 1452) {
-				showMessageDialog("ID_Proyecto tiene que existir");
-			}
-			// Cuando se intentan introducir valores más largos de lo permitido
-			else if (e.getErrorCode() == 1406) {
-				showMessageDialog("Acuérdate del límite de caracteres");
-            }
-			// Cuando se mete por ejemplo un string en un int
-			else if (e.getErrorCode() == 1366) {
-				showMessageDialog("Error en tipo de carácter");
-			}
-			else{
-				System.out.println("Error con el botón de alta Proyecto: "+e.getMessage());
-				showMessageDialog("Hubo un error al introducir los datos");
-			}
-			
-		} catch(Exception e){
-			System.out.println("Hubo un error inesperado: "+e.getMessage());
-		}
-	}
 
 	public void modAlumno(Alumno a , JFrame v){
 		con = getConexion();
@@ -203,6 +169,142 @@ public class AccesoBD {
 		}
 		return lista;
 	}
+
+
+// PROYECTOS
+public void altaProyecto(Proyecto p, JFrame v){
+	con = getConexion();
+	ventana = v;
+	try {
+		// Preparamos la consulta a la base de datos
+		Statement statement = con.createStatement();
+		
+		String query = "Insert into Proyecto_Integrador (Nombre, Curso, Grupo, Año, url, nota, id_area) values ('"+
+		p.getNombre()+"','"+p.getCurso()+"','"+p.getGrupo()+"','"+p.getYear()+"','"+p.getUrl()+"',"+p.getNota()+","+ p.getIdArea() +")";
+
+		statement.executeUpdate(query);
+		statement.close();
+		con.close();
+		ventana.dispose();
+		ListaProyectos nuevaVetana = new ListaProyectos();
+		nuevaVetana.setVisible(true);
+		showMessageDialog("Datos introducidos correctamente");
+
+	} catch (SQLException e) {
+		// Cuando da error de las foreign keys
+		if (e.getErrorCode() == 1452) {
+			showMessageDialog("ID_Proyecto tiene que existir");
+		}
+		// Cuando se intentan introducir valores más largos de lo permitido
+		else if (e.getErrorCode() == 1406) {
+			showMessageDialog("Acuérdate del límite de caracteres");
+		}
+		// Cuando se mete por ejemplo un string en un int
+		else if (e.getErrorCode() == 1366) {
+			showMessageDialog("Error en tipo de carácter");
+		}
+		else{
+			System.out.println("Error con el botón de alta Proyecto: "+e.getMessage());
+			showMessageDialog("Hubo un error al introducir los datos");
+		}
+		
+	} catch(Exception e){
+		System.out.println("Hubo un error inesperado: "+e.getMessage());
+	}
+}
+
+public void modProyecto(Proyecto p , JFrame v){
+	con = getConexion();
+	ventana = v;
+
+	try {
+		// Preparamos la consulta a la base de datos
+		Statement statement = con.createStatement();
+		String query = "UPDATE PROYECTO_INTEGRADOR SET Nombre = '"
+        +p.getNombre()+"', Curso='"+p.getCurso()+"', Grupo='"+p.getGrupo()+"', Año='"+p.getYear()+
+			"', url='"+p.getUrl()+"', Nota="+p.getNota()+", id_area="+p.getIdArea()+" where ID_Proyecto="+p.getIdProyecto();
+        statement.executeUpdate(query);
+        statement.close();
+		con.close();
+		showMessageDialog("Se han introducido los datos correctamente");
+        ventana.dispose();
+        ListaProyectos ventanaNueva = new ListaProyectos();
+        ventanaNueva.setVisible(true);
+
+	} catch (SQLException e) {
+		// Cuando da error de las foreign keys
+		if (e.getErrorCode() == 1452) {
+			showMessageDialog("ID_Proyecto tiene que existir");
+		}
+		// Cuando se intentan introducir valores más largos de lo permitido
+		else if (e.getErrorCode() == 1406) {
+			showMessageDialog("Acuérdate del límite de caracteres");
+		}
+		// Cuando se mete por ejemplo un string en un int
+		else if (e.getErrorCode() == 1366) {
+			showMessageDialog("Error en tipo de carácter");
+		} else {
+			System.out.println("Error con el botón de modificar Proyecto: "+e.getMessage());
+			showMessageDialog("Hubo un error al cambiar los datos");
+		}
+	} catch (Exception e){
+		System.out.println("Ocurrió un error inesperado");
+	}
+}
+
+public void eliminarProyecto(Proyecto p, JFrame v){
+	con = getConexion();
+	ventana = v;
+
+	try {
+		// Preparamos la consulta a la base de datos
+		Statement statement = con.createStatement();
+		String query = "DELETE FROM PROYECTO_INTEGRADOR WHERE ID_PROYECTO = "+p.getIdProyecto();
+		statement.executeUpdate(query);
+		statement.close();
+		con.close();
+		showMessageDialog("Se han eliminado los datos correctamente");
+		String query2 = "SELECT * FROM PROYECTO_INTEGRADOR";
+		((ListaProyectos) ventana).actualizarTabla(query2);
+		
+	} catch (SQLException e) {
+		System.out.println("Error con el botón de eliminar Proyecto: "+e.getMessage());
+		showMessageDialog("Hubo un error al cambiar los datos");
+	} catch (Exception e){
+		System.out.println("Ocurrió un error inesperado");
+	}
+}
+
+public ArrayList<Proyecto> listaProyectos(String query){
+	ArrayList<Proyecto> lista = new ArrayList<>();
+	con = getConexion();
+	try {
+		Statement statement = con.createStatement();
+		ResultSet resultSet = statement.executeQuery(query);
+
+		while (resultSet.next()) {
+			// Obtenemos los datos del ResultSet y creamos un objeto Alumno
+			int id = resultSet.getInt(1);
+			String nombre = resultSet.getString(2);
+			String curso = resultSet.getString(3);
+			String grupo = resultSet.getString(4);
+			int year = resultSet.getInt(5);
+			String url = resultSet.getString(6);
+			int nota = resultSet.getInt(7);
+			int idProyecto = resultSet.getInt(8);
+
+			Proyecto proyecto = new Proyecto(id, nombre, curso, grupo, year, url, nota, idProyecto);
+
+			// Agregamos el objeto Alumno a la lista
+			lista.add(proyecto);
+		}	
+
+	} catch (Exception e) {
+		// TODO: handle exception
+		System.out.println("Excepción en la lista alumnos");
+	}
+	return lista;
+}
 
 
 	/**

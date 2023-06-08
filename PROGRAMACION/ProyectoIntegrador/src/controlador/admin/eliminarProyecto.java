@@ -2,17 +2,16 @@ package controlador.admin;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 import modelo.AccesoBD;
+import modelo.Proyecto;
 import vistas.admin.ListaProyectos;
 /**
  * Clase para cuando queremos eliminar un proyecto
  */
 public class eliminarProyecto implements ActionListener {
 	// Variables
-    private int id;
+    private Proyecto p;
     private ListaProyectos ventana;
-    private Connection con;
 	/**
 	 * Método constructor
 	 * @param ventana - ventana desde donde se llama
@@ -26,30 +25,11 @@ public class eliminarProyecto implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
-        id = ventana.seleccionTabla();
+        p = ventana.seleccionTabla();
 		// Si la id que recopilamos no es -1 significa que hemos cogido la seleccionada
-        if (id != -1){
+        if (p != null){
             AccesoBD access = new AccesoBD();
-            con = access.getConexion();
-            
-		    try {
-		    	// Preparamos la consulta a la base de datos
-		    	Statement statement = con.createStatement();
-		    	String query = "DELETE FROM PROYECTO_INTEGRADOR WHERE ID_Proyecto = "+id;
-                statement.executeUpdate(query);
-                statement.close();
-		    	con.close();
-		    	showMessageDialog("Se han eliminado los datos correctamente");
-                String query2 = "SELECT * FROM PROYECTO_INTEGRADOR";
-                ventana.actualizarTabla(query2);
-            
-		    } catch (SQLException e) {
-                System.out.println("Error con el botón de eliminar Proyecto: "+e.getMessage());
-		    	showMessageDialog("Hubo un error al cambiar los datos");
-
-		    } catch (Exception e){
-                System.out.println("Ocurrió un error inesperado");
-            }
+            access.eliminarProyecto(p, ventana);
         }
         else{
             showMessageDialog("Selecciona una fila de la tabla");

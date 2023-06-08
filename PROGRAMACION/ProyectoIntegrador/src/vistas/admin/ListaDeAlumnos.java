@@ -9,21 +9,15 @@ import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
 
-import controlador.admin.MenuListener;
-import controlador.admin.eliminarAlumno;
-import controlador.admin.filtroAlumnoListener;
-import controlador.admin.modAlumnoBtn;
-import modelo.AccesoBD;
-import modelo.Alumno;
+import controlador.admin.*;
+import modelo.*;
 
 /**
  * ListaVAlumnos
  * Crea el frame de la ventana y configura sus propiedades.
  */
-public class ListaDeAlumnos
-		extends JFrame {
+public class ListaDeAlumnos extends JFrame {
 
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel model;

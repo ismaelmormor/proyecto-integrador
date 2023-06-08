@@ -3,6 +3,7 @@ package controlador.admin;
 import java.awt.*;
 import java.awt.event.*;
 
+import modelo.Proyecto;
 import vistas.admin.ListaProyectos;
 import vistas.admin.ModificacionProyecto;
 /**
@@ -11,7 +12,7 @@ import vistas.admin.ModificacionProyecto;
  */
 public class modProyectoBtn implements ActionListener {
 	// Variables
-    private int id;
+    private Proyecto p;
     private ListaProyectos ventana;
 	/**
 	 * Método constructor
@@ -26,10 +27,10 @@ public class modProyectoBtn implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ev) {
         // Recolección de datos
-        id = ventana.seleccionTabla();
+        p = ventana.seleccionTabla();
 		// Si la id que recopilamos no es -1 significa que hemos cogido la seleccionada
-		if (id != -1){
-            ModificacionProyecto ventanaNueva = new ModificacionProyecto(id);
+		if (p != null){
+            ModificacionProyecto ventanaNueva = new ModificacionProyecto(p);
             ventana.dispose();
             ventanaNueva.setVisible(true);
         }

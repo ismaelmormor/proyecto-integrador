@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.admin.MenuListener;
+import modelo.AccesoBD;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -111,21 +112,23 @@ public class DAM extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-                // JLabel centrado con el texto especificado
-                JLabel texto = new JLabel("<html>Codigo de area: 002<br></br><br></br>Descripcion:<br></br>El desarrollo de aplicaciones multiplataforma es una estrategia que utiliza software para crear aplicaciones para las plataformas iOS y Android simultáneamente. Esto permite a las empresas llegar a una base de clientes más amplia proporcionándoles una aplicación compatible con varios dispositivos.</html>");
-				texto.setFont(new Font("Arial", Font.PLAIN, 20));
-				texto.setHorizontalAlignment(JLabel.CENTER);
-				texto.setForeground(Color.white);
-				texto.setBounds(163, 228, 650, 250);
-                contentPane.add(texto);
+		AccesoBD access = new AccesoBD();
+		modelo.Area a = access.getArea(2);
 
-                //label dam
-                JLabel labelDAM = new JLabel("DAM");
-                labelDAM.setFont(new Font("Arial", Font.BOLD, 35));
-		  		labelDAM.setHorizontalAlignment(JLabel.CENTER);
-	      		labelDAM.setForeground(Color.WHITE);
-		  		labelDAM.setBounds(138, 111, 650, 30);
-                contentPane.add(labelDAM);
+         // JLabel centrado con el texto especificado
+         JLabel texto = new JLabel("<html>Codigo de area: "+a.getId()+"<br></br><br></br>Descripcion:<br></br>"+a.getDescripcion()+"</html>");
+		texto.setFont(new Font("Arial", Font.PLAIN, 20));
+		texto.setHorizontalAlignment(JLabel.CENTER);
+		texto.setForeground(Color.white);
+		texto.setBounds(163, 228, 650, 250);
+    	contentPane.add(texto);
+         //label dam
+         JLabel labelDAM = new JLabel(a.getNombre());
+         labelDAM.setFont(new Font("Arial", Font.BOLD, 35));
+		labelDAM.setHorizontalAlignment(JLabel.CENTER);
+	    labelDAM.setForeground(Color.WHITE);
+		labelDAM.setBounds(138, 111, 650, 30);
+         contentPane.add(labelDAM);
 	}
 
 }

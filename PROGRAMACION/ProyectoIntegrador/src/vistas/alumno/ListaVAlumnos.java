@@ -4,28 +4,29 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import java.sql.*;
+import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
 
 import controlador.alumno.MenuListenerA;
 import controlador.alumno.filtroVAlumnoListener;
 import modelo.AccesoBD;
+import modelo.Alumno;
 
 /**
  	* ListaVAlumnos
     * Crea el frame de la ventana y configura sus propiedades.
  	*/
-public class ListaVAlumnos
-		extends JFrame {
+public class ListaVAlumnos extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel model;
 	private MenuListenerA menuListener = new MenuListenerA(this);
+	private ArrayList<Alumno> listaAlumnos;
 
 	private TextField nExpedienteTxt, nombreTxt, apellidoTxt, IDProyectoTxt;
 
@@ -179,28 +180,15 @@ public class ListaVAlumnos
 				new String[] { "ID_Alumnos", "N\u00BA expendiente", "Nombre", "Apellidos", "ID_Proyecto" });
 
 		// Sacamos los datos de la BD
+		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
-		Connection con = acceso.getConexion();
-		try {
-			Statement statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Alumno");
-
-			while (resultSet.next()) {
-				Object[] row = new Object[model.getColumnCount()];
-
-				for (int i = 1; i <= row.length; i++) {
-					row[i - 1] = resultSet.getObject(i);
-
-				}
-
-				model.addRow(row);
-			}
-		} catch (Exception e) {
-			System.out.println("Error con la consulta de Proyectos: " + e.getMessage());
-		}
-
+		listaAlumnos = acceso.listaAlumnos("SELECT * FROM ALUMNO");
+		for (Alumno alumno : listaAlumnos) {
+            Object[] row = {alumno.getIdAlumno(),alumno.getnExpediente(), alumno.getNombre(), alumno.getApellidos(), alumno.getIdProyecto()};
+            model.addRow(row);
+        }
 		table.setModel(model);
-
+		
 		scrollPane.setViewportView(table);
 	}
 
@@ -248,27 +236,16 @@ public class ListaVAlumnos
 	 * Actualiza la tabla de alumnos con los datos obtenidos de la consulta.
 	 * @param query La consulta SQL para obtener los datos.
 	 */
-	public void actualizarTabla(String query) {
+	public void actualizarTabla(String query){
 		// Vaciamos la tabla
 		model.setRowCount(0);
 		// Sacamos los datos de la BD
 		AccesoBD acceso = new AccesoBD();
-		Connection con = acceso.getConexion();
-		try {
-			Statement statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery(query);
-
-			while (resultSet.next()) {
-				Object[] row = new Object[model.getColumnCount()];
-				for (int i = 1; i <= row.length; i++) {
-					row[i - 1] = resultSet.getObject(i);
-				}
-				model.addRow(row);
-			}
-		} catch (Exception e) {
-			System.out.println("Error con la consulta de Proyectos: " + e.getMessage());
-		}
-
+		listaAlumnos = acceso.listaAlumnos(query);
+		for (Alumno alumno : listaAlumnos) {
+            Object[] row = {alumno.getIdAlumno(),alumno.getnExpediente(), alumno.getNombre(), alumno.getApellidos(), alumno.getIdProyecto()};
+            model.addRow(row);
+        }
 		table.setModel(model);
 	}
 
@@ -277,22 +254,23 @@ public class ListaVAlumnos
 	 * 
 	 * @return El ID del alumno seleccionado.
 	 */
-	public int seleccionTabla() {
-		int selectedRow = table.getSelectedRow();
-		int id = -1;
-		if (selectedRow != -1) {
-			// Obtener los datos de la fila seleccionada
-			Object[] rowData = new Object[table.getColumnCount()];
-			for (int i = 0; i < table.getColumnCount(); i++) {
-				rowData[i] = table.getValueAt(selectedRow, i);
-			}
+	public Alumno seleccionTabla(){
+		int filaSeleccionada = table.getSelectedRow();
+		Alumno a;
+		if (filaSeleccionada != -1){
+			int id = (int) model.getValueAt(filaSeleccionada, 0);
+			int nExpediente = (int) model.getValueAt(filaSeleccionada, 1);
+			String nombre = (String) model.getValueAt(filaSeleccionada, 2);
+			String apellidos = (String) model.getValueAt(filaSeleccionada, 3);
+			int idProyecto = (int) model.getValueAt(filaSeleccionada, 4);
 
-			// Hacer algo con los datos de la fila seleccionada
-			// Por ejemplo, imprimir los valores
-			id = (Integer) rowData[0];
-			return id;
+			a = new Alumno(id, nombre, apellidos, nExpediente, idProyecto);
+			return a;
+		}else{
+			a = null;
+			return a;
 		}
-		return id;
+		
 
 	}
 

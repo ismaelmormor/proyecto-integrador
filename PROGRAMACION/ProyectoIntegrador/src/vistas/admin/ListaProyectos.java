@@ -257,9 +257,9 @@ public class ListaProyectos extends JFrame {
 	}
 
 	/**
-	 * Obtiene el ID del proyecto seleccionado en la tabla.
+	 * Método que obtiene el proyecto seleccionado
 	 *
-	 * @return ID del proyecto seleccionado, o -1 si no hay ninguna selección.
+	 * @return Proyecto seleccionado o null si no está seleccionado
 	 */
 	public Proyecto seleccionTabla() {
 		int filaSeleccionada = table.getSelectedRow();

@@ -306,6 +306,31 @@ public ArrayList<Proyecto> listaProyectos(String query){
 	return lista;
 }
 
+	public Area getArea(int id){
+		con = getConexion();
+		Area area = null;
+		try {
+			// Preparamos la consulta a la base de datos
+			Statement statement = con.createStatement();
+			String query = "select * from AREAS where ID_AREA="+id;
+			ResultSet result = statement.executeQuery(query);
+			if (result.next()) {
+				String nombre = result.getString("Nombre");
+				String descripcion = result.getString("Descripcion");
+				area = new Area(id, nombre, descripcion);
+			}
+			statement.close();
+			con.close();
+			
+			return area;
+		} catch (Exception e) {
+			System.out.println("Hubo un error: " + e.getMessage());
+			return null;
+		}
+		
+		
+	}
+
 
 	/**
 	 * Método para mostrar un dialog

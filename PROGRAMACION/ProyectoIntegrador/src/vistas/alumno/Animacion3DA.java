@@ -1,7 +1,6 @@
 package vistas.alumno;
 
 import java.awt.*;
-import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -16,8 +15,6 @@ import modelo.AccesoBD;
 public class Animacion3DA extends JFrame {
 
 	private JPanel contentPane;
-	private String descripcion, nombre;
-	private Connection con;
 	private MenuListenerA menuListener = new MenuListenerA(this);	
 	
 	/**
@@ -112,39 +109,24 @@ public class Animacion3DA extends JFrame {
 		admin.addActionListener(menuListener);
 		
 		AccesoBD access = new AccesoBD();
-		con = access.getConexion();
+		modelo.Area a = access.getArea(5);
 
-		try {
-			// Preparamos la consulta a la base de datos
-			Statement statement = con.createStatement();
-			String query = "select * from AREAS where ID_AREA=5";
-			ResultSet result = statement.executeQuery(query);
-			
-			if (result.next()) {
-				nombre = result.getString("Nombre");
-				descripcion = result.getString("Descripcion");
-			}
-			statement.close();
-			con.close();
-		} catch (Exception e) {
-			System.out.println("Hubo un error: "+e.getMessage());
-		}
+		// JLabel centrado con el texto especificado
+		JLabel texto = new JLabel(
+				"<html>Codigo de area: "+a.getId()+"<br></br><br></br>Descripcion:<br></br>"+a.getDescripcion()+"</html>");
+		texto.setFont(new Font("Arial", Font.PLAIN, 20));
+		texto.setHorizontalAlignment(JLabel.CENTER);
+		texto.setForeground(Color.white);
+		texto.setBounds(163, 228, 650, 250);
+		contentPane.add(texto);
 
-		 // JLabel centrado con el texto especificado
-		 JLabel texto = new JLabel("<html>Codigo de area: 005<br></br><br></br>Descripcion:<br></br>"+descripcion+"</html>");
-		 texto.setFont(new Font("Arial", Font.PLAIN, 20));
-		 texto.setHorizontalAlignment(JLabel.CENTER);
-		 texto.setForeground(Color.white);
-		 texto.setBounds(163, 228, 650, 250);
-		 contentPane.add(texto);
-
-		 //label ANIMACION
-		 JLabel label3D = new JLabel(nombre);
-		 label3D.setFont(new Font("Arial", Font.BOLD, 35));
-		 label3D.setHorizontalAlignment(JLabel.CENTER);
-	     label3D.setForeground(Color.WHITE);
-		 label3D.setBounds(138, 111, 650, 30);
-		 contentPane.add(label3D);
+		// label ANIMACION
+		JLabel label3D = new JLabel(a.getNombre());
+		label3D.setFont(new Font("Arial", Font.BOLD, 35));
+		label3D.setHorizontalAlignment(JLabel.CENTER);
+		label3D.setForeground(Color.WHITE);
+		label3D.setBounds(138, 111, 650, 30);
+		contentPane.add(label3D);
 	}
 
 }

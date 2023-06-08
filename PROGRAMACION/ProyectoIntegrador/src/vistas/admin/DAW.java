@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.admin.MenuListener;
+import modelo.AccesoBD;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -112,9 +113,12 @@ public class DAW extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		AccesoBD access = new AccesoBD();
+		modelo.Area a = access.getArea(1);
+
 		// JLabel centrado con el texto especificado
 		JLabel texto = new JLabel(
-				"<html>Codigo de area: 001<br></br><br></br>Descripcion:<br></br>El Desarrollo de Aplicaciones Web es aquel que permite crear herramientas a las que los usuarios pueden acceder a través de Internet. En la web podremos obtener información o interactuar con elementos que nos permitan la comunicación entre nosotros, los usuarios y la web</html>");
+				"<html>Codigo de area: "+a.getId()+"<br></br><br></br>Descripcion:<br></br>"+a.getDescripcion()+"</html>");
 		texto.setFont(new Font("Arial", Font.PLAIN, 20));
 		texto.setHorizontalAlignment(JLabel.CENTER);
 		texto.setForeground(Color.white);
@@ -122,7 +126,7 @@ public class DAW extends JFrame {
 		contentPane.add(texto);
 
 		// label dam
-		JLabel labelDAW = new JLabel("DAW");
+		JLabel labelDAW = new JLabel(a.getNombre());
 		labelDAW.setFont(new Font("Arial", Font.BOLD, 35));
 		labelDAW.setHorizontalAlignment(JLabel.CENTER);
 		labelDAW.setForeground(Color.WHITE);

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.admin.MenuListener;
+import modelo.AccesoBD;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -112,9 +113,12 @@ public class Juegos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		AccesoBD access = new AccesoBD();
+		modelo.Area a = access.getArea(4);
+
 		// JLabel centrado con el texto especificado
 		JLabel texto = new JLabel(
-				"<html>Codigo de area: 004<br></br><br></br>Descripcion:<br></br>El diseño de videojuegos incluye la creación de historias, personajes, metas, reglas y desafíos que impulsen las interacciones con otros personajes, usuarios u objetos. Se trata de definir en qué se va a convertir el juego y cómo se va a relacionar el jugador con todos los elementos que componen una historia interactiva.</html>");
+				"<html>Codigo de area: "+a.getId()+"<br></br><br></br>Descripcion:<br></br>"+a.getDescripcion()+"</html>");
 		texto.setFont(new Font("Arial", Font.PLAIN, 20));
 		texto.setHorizontalAlignment(JLabel.CENTER);
 		texto.setForeground(Color.white);
@@ -122,7 +126,7 @@ public class Juegos extends JFrame {
 		contentPane.add(texto);
 
 		// label ANIMACION
-		JLabel labelJuego = new JLabel("Videojuegos");
+		JLabel labelJuego = new JLabel(a.getNombre());
 		labelJuego.setFont(new Font("Arial", Font.BOLD, 35));
 		labelJuego.setHorizontalAlignment(JLabel.CENTER);
 		labelJuego.setForeground(Color.WHITE);

@@ -49,7 +49,7 @@ public class ListaProyectos extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		menuBar.setBackground(new Color(3, 8, 62));
-		ImageIcon logo = new ImageIcon("proyecto-integrador/PROGRAMACION/ProyectoIntegrador/img/logo.png");
+		ImageIcon logo = new ImageIcon("PROGRAMACION/ProyectoIntegrador/img/logo.png");
 		Image originalImage = logo.getImage();
 		Image resizedImage = originalImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);

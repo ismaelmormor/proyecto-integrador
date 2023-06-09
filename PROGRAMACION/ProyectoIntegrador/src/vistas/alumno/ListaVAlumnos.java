@@ -35,6 +35,8 @@ public class ListaVAlumnos extends JFrame {
 	 * Crea el frame de la ventana y configura sus propiedades.
 	 */
 	public ListaVAlumnos() {
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);

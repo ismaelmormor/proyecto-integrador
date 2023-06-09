@@ -20,6 +20,8 @@ public class VentanaLogin extends JFrame {
 	 * Configura la apariencia y los componentes de la ventana de inicio de sesión.
 	 */
 	public VentanaLogin() {
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 		setResizable(false);

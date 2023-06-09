@@ -2,6 +2,7 @@ package vistas.admin;
 
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 import javax.swing.ImageIcon;
@@ -31,6 +32,8 @@ public class Animacion3D extends JFrame {
 	 * Crea el frame de la ventana y configura sus propiedades.
 	 */
 	public Animacion3D() {
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana

@@ -25,7 +25,9 @@ public class ModificacionEstudiante extends JFrame {
 	 */
 	public ModificacionEstudiante(Alumno a) {
 		this.alumno = a;
-
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana

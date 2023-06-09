@@ -22,6 +22,8 @@ import modelo.AccesoBD;
     * Crea el frame de la ventana y configura sus propiedades.
  	*/
 	public DAWA() {
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
@@ -102,7 +104,7 @@ import modelo.AccesoBD;
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		AccesoBD access = new AccesoBD();
-		modelo.Area a = access.getArea(1);
+		modelo.Area a = access.getArea(2);
 
 		// JLabel centrado con el texto especificado
 		JLabel texto = new JLabel(

@@ -22,6 +22,8 @@ public class DAMA extends JFrame {
 	 * Crea el frame de la ventana y configura sus propiedades.
 	 */
 	public DAMA() {
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);
@@ -103,7 +105,7 @@ public class DAMA extends JFrame {
 		contentPane.setLayout(null);
 
 		AccesoBD access = new AccesoBD();
-		modelo.Area a = access.getArea(2);
+		modelo.Area a = access.getArea(1);
 
          // JLabel centrado con el texto especificado
          JLabel texto = new JLabel("<html>Codigo de area: "+a.getId()+"<br></br><br></br>Descripcion:<br></br>"+a.getDescripcion()+"</html>");

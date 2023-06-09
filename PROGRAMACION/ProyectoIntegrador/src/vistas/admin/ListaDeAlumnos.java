@@ -30,6 +30,8 @@ public class ListaDeAlumnos extends JFrame {
 	 * Crea la ventana de ListaDeAlumnos.
 	 */
 	public ListaDeAlumnos() {
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);

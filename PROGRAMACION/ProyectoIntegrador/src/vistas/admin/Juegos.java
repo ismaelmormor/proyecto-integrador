@@ -2,6 +2,7 @@ package vistas.admin;
 
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 import javax.swing.ImageIcon;
@@ -31,6 +32,8 @@ public class Juegos extends JFrame {
     * Crea el frame de la ventana y configura sus propiedades.
  	*/
 	public Juegos() {
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 973, 658);
 		setLocationRelativeTo(null);

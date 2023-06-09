@@ -2,6 +2,7 @@ package vistas.alumno;
 
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 import javax.swing.ImageIcon;
@@ -32,6 +33,8 @@ public class VentanaVistaAlumno extends JFrame {
  	*/
 	public VentanaVistaAlumno() {
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana
 		setBounds(100, 100, 973, 658);

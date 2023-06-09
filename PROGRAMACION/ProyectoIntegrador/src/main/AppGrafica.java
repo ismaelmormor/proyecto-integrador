@@ -14,6 +14,8 @@ public class AppGrafica {
 				try {
 					// Creamos y hacemos visible la ventana principal de la aplicación
 					VentanaVistaAlumno frame = new VentanaVistaAlumno();
+					Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+                    frame.setIconImage(icon);
 					frame.hacerVisible();
 				} catch (Exception e) {
 					e.printStackTrace();

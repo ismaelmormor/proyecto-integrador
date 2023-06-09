@@ -17,6 +17,7 @@ import java.awt.*;
  * datos ingresados.
  */
 public class AltaAlumno extends JFrame {
+	
 	// Variables
 	private JPanel contentPane;
 	// Creación de la variable del MenuListener
@@ -32,6 +33,8 @@ public class AltaAlumno extends JFrame {
 	 * Crea el frame de la ventana y configura sus propiedades.
 	 */
 	public AltaAlumno() {
+		Image icon = Toolkit.getDefaultToolkit().getImage("PROGRAMACION/ProyectoIntegrador/img/logo.png");
+        this.setIconImage(icon);
 		// Establecemos que cuando se cierre la pestaña se acabe el programa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ajustamos el tamaño de la ventana
